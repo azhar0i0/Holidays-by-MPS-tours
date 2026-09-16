@@ -1,0 +1,2223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Holidays by MPS Tours | Signature holiday packages, planned by one advisor</title>
+<meta name="description" content="Flights, hotels, transfers and guided days arranged by one trip advisor. Signature holiday packages to Greece, Italy, Japan, Peru, the Maldives and more. From $1,459 per person.">
+<meta name="theme-color" content="#0b3a3d">
+<meta property="og:title" content="Holidays by MPS Tours">
+<meta property="og:description" content="The whole trip, handled. Signature holiday packages with flights, hotels, transfers and guided days included.">
+<meta property="og:type" content="website">
+
+<!-- Favicon: the H mark with the swoosh, inline SVG -->
+<link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon.png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,500;0,600;0,700;0,800;1,600&family=Rubik:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- Icon family: Phosphor (regular + bold + fill). One family for the whole site. -->
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+
+<style>
+/* ==========================================================================
+   TOKENS
+   Brand palette from the brief, plus two derived neutrals for text and surfaces.
+   ========================================================================== */
+:root{
+  --amber-glow:#ff9f1c;
+  --honey-bronze:#ffbf69;
+  --white:#ffffff;
+  --frozen-water:#cbf3f0;
+  --light-sea-green:#2ec4b6;
+
+  --lagoon:#0b3a3d;          /* deep ink, from the logo wordmark */
+  --lagoon-2:#0f4c50;
+  --sea-deep:#159a90;        /* darker teal for text-on-white uses (AA) */
+  --ink:#122a2b;
+  --ink-2:#3d5658;
+  --ink-3:#6b8284;
+  --surface:#f4fbfa;
+  --surface-2:#eaf7f5;
+  --line:rgba(11,58,61,.10);
+  --line-2:rgba(11,58,61,.16);
+
+  --font-display:"Plus Jakarta Sans",system-ui,sans-serif;
+  --font-body:"Rubik",system-ui,sans-serif;
+
+  --r-card:20px;
+  --r-input:12px;
+  --r-pill:999px;
+
+  --ease-out:cubic-bezier(.16,1,.3,1);
+  --ease-soft:cubic-bezier(.32,.72,0,1);
+  --dur:.7s;
+
+  --shadow-card:0 1px 2px rgba(11,58,61,.04), 0 18px 40px -18px rgba(11,58,61,.22);
+  --shadow-lift:0 2px 4px rgba(11,58,61,.05), 0 30px 60px -22px rgba(11,58,61,.32);
+  --shadow-amber:0 14px 30px -12px rgba(255,159,28,.55);
+
+  --nav-h:76px;
+  --container:1280px;
+  --gutter:clamp(20px,4vw,48px);
+
+  /* z-index scale */
+  --z-nav:40; --z-menu:50; --z-modal:60; --z-toast:70;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+
+/* Scrollbars are hidden everywhere; scrolling itself is untouched. */
+/* clip, not hidden, so nothing becomes a scroll container */
+html{scrollbar-width:none;-ms-overflow-style:none;overflow-x:clip}
+html::-webkit-scrollbar,body::-webkit-scrollbar,*::-webkit-scrollbar{width:0;height:0;display:none}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;font-family:var(--font-body);color:var(--ink);background:var(--white);
+  font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  scrollbar-width:none;-ms-overflow-style:none;
+}
+body.no-scroll{overflow:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;padding:0}
+ul{margin:0;padding:0;list-style:none}
+h1,h2,h3,h4{font-family:var(--font-display);margin:0;letter-spacing:-.02em;line-height:1.1;color:var(--lagoon)}
+p{margin:0}
+:focus-visible{outline:2px solid var(--amber-glow);outline-offset:3px;border-radius:6px}
+::selection{background:var(--frozen-water);color:var(--lagoon)}
+
+.container{width:min(var(--container),100% - var(--gutter)*2);margin-inline:auto}
+.section{padding-block:clamp(72px,9vw,128px)}
+.section--tight{padding-block:clamp(56px,7vw,96px)}
+
+/* Type scale: deliberately restrained */
+.h-display{font-size:clamp(2.2rem,4.6vw,3.9rem);font-weight:800;line-height:1.04}
+.h-1{font-size:clamp(2rem,3.6vw,3.1rem);font-weight:800}
+.h-2{font-size:clamp(1.65rem,2.8vw,2.5rem);font-weight:800}
+.h-3{font-size:clamp(1.25rem,1.8vw,1.55rem);font-weight:700}
+.h-4{font-size:1.1rem;font-weight:700}
+.lead{font-size:clamp(1.02rem,1.25vw,1.18rem);color:var(--ink-2);line-height:1.6;max-width:60ch}
+.muted{color:var(--ink-3)}
+.label{font-family:var(--font-display);font-weight:700;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--sea-deep)}
+
+.section-head{max-width:720px;margin-bottom:clamp(36px,4vw,56px)}
+.section-head .lead{margin-top:14px}
+.section-head--center{margin-inline:auto;text-align:center}
+.section-head--center .lead{margin-inline:auto}
+
+/* ==========================================================================
+   BUTTONS  (text-only pill system; no icon chips)
+   ========================================================================== */
+.btn{
+  --bg:var(--lagoon);--fg:#fff;
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  padding:14px 26px;border-radius:var(--r-pill);
+  background:var(--bg);color:var(--fg);font-family:var(--font-display);font-weight:700;font-size:.95rem;
+  white-space:nowrap;line-height:1;position:relative;isolation:isolate;overflow:hidden;
+  transition:transform .5s var(--ease-soft),box-shadow .5s var(--ease-soft),background .4s var(--ease-soft),color .4s;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(0) scale(.98)}
+.btn--amber{--bg:var(--amber-glow);--fg:var(--lagoon);box-shadow:var(--shadow-amber)}
+.btn--amber:hover{--bg:#ffab3a}
+.btn--white{--bg:#fff;--fg:var(--lagoon);box-shadow:var(--shadow-card)}
+.btn--ghost{--bg:transparent;--fg:var(--lagoon);box-shadow:inset 0 0 0 1.5px var(--line-2)}
+.btn--ghost:hover{background:var(--surface)}
+.btn--ghost.on-dark{--fg:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.35)}
+.btn--ghost.on-dark:hover{background:rgba(255,255,255,.08)}
+.btn--teal{--bg:var(--light-sea-green);--fg:var(--lagoon)}
+.btn--wa{--bg:#25d366;--fg:#062d17}
+.btn--sm{padding:11px 18px;font-size:.88rem}
+.btn--lg{padding:17px 32px;font-size:1.02rem}
+.btn--block{width:100%}
+
+.link-arrow{
+  display:inline-flex;align-items:center;gap:8px;font-family:var(--font-display);font-weight:700;color:var(--sea-deep);
+  position:relative;padding-bottom:2px;
+}
+.link-arrow i{transition:transform .5s var(--ease-soft)}
+.link-arrow::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:100%;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .5s var(--ease-soft)}
+.link-arrow:hover::after{transform:scaleX(1);transform-origin:left}
+.link-arrow:hover i{transform:translateX(4px)}
+
+/* ==========================================================================
+   NAV
+   ========================================================================== */
+.nav-sentinel{position:absolute;top:0;left:0;height:90px;width:1px;pointer-events:none}
+.nav{
+  position:fixed;inset:0 0 auto 0;height:var(--nav-h);z-index:var(--z-nav);
+  color:#fff;
+  transition:background .5s var(--ease-soft),color .5s,box-shadow .5s,transform .6s var(--ease-soft);
+}
+.nav.scrolled{
+  background:rgba(255,255,255,.86);backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%);
+  color:var(--lagoon);
+  box-shadow:0 1px 0 var(--line),0 12px 30px -20px rgba(11,58,61,.35);
+}
+.nav__inner{
+  height:100%;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:24px;
+}
+.nav__links{display:flex;align-items:center;gap:6px}
+.nav__links--right{justify-content:flex-end}
+.nav__link{
+  font-family:var(--font-display);font-weight:600;font-size:.95rem;padding:10px 14px;border-radius:var(--r-pill);position:relative;
+  transition:opacity .3s;
+}
+.nav__link::after{content:"";position:absolute;left:14px;right:14px;bottom:6px;height:2px;border-radius:2px;background:var(--amber-glow);transform:scaleX(0);transform-origin:right;transition:transform .45s var(--ease-soft)}
+.nav__link:hover::after{transform:scaleX(1);transform-origin:left}
+.nav__cta{margin-left:8px}
+.nav.scrolled .nav__cta{--bg:var(--lagoon);--fg:#fff}
+.nav:not(.scrolled) .nav__cta{--bg:#fff;--fg:var(--lagoon)}
+/* Two baked variants: the standard mark, and a knockout for the dark contexts
+   (nav over the hero, the open menu, the footer). */
+.logo{display:inline-flex;align-items:center;justify-content:center}
+.logo__mark{height:38px;width:auto;display:block}
+.logo__mark--knockout{display:none}
+.nav:not(.scrolled) .logo__mark,.nav.menu-open .logo__mark,.footer .logo__mark{display:none}
+.nav:not(.scrolled) .logo__mark--knockout,.nav.menu-open .logo__mark--knockout,.footer .logo__mark--knockout{display:block}
+.nav .nav__burger{display:none}
+.nav.menu-open{z-index:calc(var(--z-menu) + 1);background:transparent;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;color:#fff}
+
+/* Mobile burger + overlay menu */
+.burger{
+  width:46px;height:46px;border-radius:50%;display:grid;place-items:center;position:relative;
+  background:rgba(255,255,255,.14);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  transition:background .4s;
+}
+.nav.scrolled .burger{background:var(--surface-2)}
+.burger span{position:absolute;width:20px;height:2px;border-radius:2px;background:currentColor;transition:transform .5s var(--ease-soft),opacity .3s}
+.burger span:nth-child(1){transform:translateY(-6px)}
+.burger span:nth-child(3){transform:translateY(6px)}
+.burger.open span:nth-child(1){transform:rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.burger.open span:nth-child(3){transform:rotate(-45deg)}
+.burger.open{background:rgba(255,255,255,.14);color:#fff}
+
+.menu{
+  position:fixed;inset:0;z-index:var(--z-menu);background:var(--lagoon);color:#fff;
+  clip-path:circle(0px at calc(100% - 44px) 38px);pointer-events:none;
+  transition:clip-path .9s var(--ease-soft);
+  display:flex;flex-direction:column;padding:calc(var(--nav-h) + 24px) var(--gutter) 40px;
+}
+.menu.open{clip-path:circle(160% at calc(100% - 44px) 38px);pointer-events:auto}
+.menu__links{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+.menu__link{
+  font-family:var(--font-display);font-weight:800;font-size:clamp(2rem,9vw,2.8rem);letter-spacing:-.02em;line-height:1.15;
+  display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.1);
+  opacity:0;transform:translateY(28px);transition:opacity .6s var(--ease-out),transform .8s var(--ease-out);
+}
+.menu.open .menu__link{opacity:1;transform:none;transition-delay:calc(.25s + var(--i)*.07s)}
+.menu__link i{font-size:1.4rem;color:var(--honey-bronze);transition:transform .4s var(--ease-soft)}
+.menu__link:hover i{transform:translate(3px,-3px)}
+.menu__foot{margin-top:auto;display:flex;flex-wrap:wrap;gap:10px;opacity:0;transform:translateY(20px);transition:opacity .6s .6s,transform .8s .6s var(--ease-out)}
+.menu.open .menu__foot{opacity:1;transform:none}
+
+/* ==========================================================================
+   HERO
+   ========================================================================== */
+.hero{
+  position:relative;min-height:100dvh;display:flex;align-items:flex-end;color:#fff;overflow:hidden;
+  padding:calc(var(--nav-h) + 40px) 0 clamp(56px,8vw,96px);
+}
+.hero__bg{position:absolute;inset:0;z-index:-2}
+.hero__bg img{width:100%;height:100%;object-fit:cover;object-position:center 60%;transform:scale(1.08);animation:heroZoom 2.2s var(--ease-out) forwards}
+@keyframes heroZoom{to{transform:scale(1)}}
+.hero__scrim{position:absolute;inset:0;z-index:-1;background:
+  linear-gradient(180deg,rgba(11,58,61,.45) 0%,rgba(11,58,61,.12) 35%,rgba(11,58,61,.55) 78%,rgba(11,58,61,.86) 100%),
+  linear-gradient(90deg,rgba(11,58,61,.55) 0%,rgba(11,58,61,.1) 60%)}
+.hero__grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:40px;align-items:end}
+.hero h1{color:#fff;max-width:14ch}
+.hero .lead{color:rgba(255,255,255,.86);margin-top:20px;max-width:46ch}
+.hero__cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.hero__aside{justify-self:end;width:min(100%,360px)}
+.hero-card{display:block;border-radius:var(--r-card);box-shadow:var(--shadow-lift);transition:transform .6s var(--ease-soft)}
+.hero-card:hover{transform:translateY(-4px)}
+.hero-card__in{background:#fff;color:var(--lagoon);border-radius:var(--r-card);padding:18px 20px;display:flex;gap:14px;align-items:center}
+.hero-card__in img{width:64px;height:64px;border-radius:14px;object-fit:cover;flex:none}
+.hero-card__in .h-4{line-height:1.2}
+.hero-card__in .muted{font-size:.85rem;margin-top:3px}
+.hero-card__in .price{margin-left:auto;text-align:right;font-family:var(--font-display);font-weight:800;font-size:1.05rem;white-space:nowrap}
+.hero-card__in .price small{display:block;font-weight:500;font-size:.72rem;color:var(--ink-3)}
+
+/* Line-mask reveal for the hero headline */
+.mask{display:block;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em}
+.mask > span{display:block;transform:translateY(110%);transition:transform 1.1s var(--ease-out)}
+.hero.ready .mask > span{transform:none}
+.hero.ready .mask:nth-child(2) > span{transition-delay:.08s}
+.hero.ready .mask:nth-child(3) > span{transition-delay:.16s}
+.hero__fade{opacity:0;transform:translateY(18px);transition:opacity .9s var(--ease-out),transform 1s var(--ease-out)}
+.hero.ready .hero__fade{opacity:1;transform:none}
+.hero.ready .hero__fade.d1{transition-delay:.35s}
+.hero.ready .hero__fade.d2{transition-delay:.5s}
+.hero.ready .hero__fade.d3{transition-delay:.65s}
+
+/* Scroll-driven parallax on hero image (progressive enhancement) */
+@supports (animation-timeline: scroll()){
+  .hero__bg img{animation:heroZoom 2.2s var(--ease-out) forwards, heroDrift linear both;animation-timeline:auto, scroll(root);animation-range:normal, 0 100vh}
+  @keyframes heroDrift{to{transform:translateY(12%) scale(1.02)}}
+}
+
+/* ==========================================================================
+   MARQUEE (the one marquee on the page)
+   ========================================================================== */
+.marquee{background:var(--lagoon);color:#fff;padding:18px 0;overflow:hidden;position:relative;--gap:18px}
+.marquee__track{display:flex;gap:var(--gap);width:max-content;animation:marquee 46s linear infinite}
+.marquee:hover .marquee__track{animation-play-state:paused}
+.marquee__item{display:inline-flex;align-items:center;gap:var(--gap);font-family:var(--font-display);font-weight:700;font-size:1.05rem;white-space:nowrap;padding-right:var(--gap)}
+.marquee__item i{color:var(--amber-glow);font-size:1rem}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+/* ==========================================================================
+   ABOUT
+   ========================================================================== */
+.about__grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(40px,6vw,96px);align-items:center}
+.about__collage{position:relative;aspect-ratio:1/1;max-width:560px}
+.about__collage img{position:absolute;object-fit:cover;border-radius:var(--r-card);box-shadow:var(--shadow-lift)}
+.about__collage .im1{width:66%;height:72%;left:0;top:0}
+.about__collage .im2{width:52%;height:52%;right:0;bottom:0;outline:8px solid #fff}
+.about__badge{
+  position:absolute;left:8%;bottom:6%;background:#fff;border-radius:16px;padding:14px 18px;box-shadow:var(--shadow-lift);
+  display:flex;align-items:center;gap:12px;
+}
+.about__badge i{width:42px;height:42px;border-radius:12px;background:var(--frozen-water);color:var(--sea-deep);display:grid;place-items:center;font-size:20px}
+.about__badge b{font-family:var(--font-display);font-size:1.15rem;display:block;line-height:1.1;color:var(--lagoon)}
+.about__badge small{color:var(--ink-3);font-size:.8rem}
+.about__points{display:grid;gap:18px;margin-top:32px}
+.point{display:flex;gap:14px;align-items:flex-start}
+.point i{flex:none;width:40px;height:40px;border-radius:12px;background:var(--frozen-water);color:var(--sea-deep);display:grid;place-items:center;font-size:19px}
+.point b{font-family:var(--font-display);color:var(--lagoon);display:block;margin-bottom:2px}
+.point p{color:var(--ink-2);font-size:.95rem}
+
+/* ==========================================================================
+   PACKAGE CARDS
+   ========================================================================== */
+.pk-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(14px,2vw,24px)}
+.pk{
+  display:flex;flex-direction:column;background:#fff;border-radius:var(--r-card);overflow:hidden;
+  box-shadow:0 0 0 1px var(--line);transition:transform .6s var(--ease-soft),box-shadow .6s var(--ease-soft);
+  position:relative;
+}
+.pk:hover{transform:translateY(-6px);box-shadow:0 0 0 1px var(--line),var(--shadow-lift)}
+.pk__media{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--surface-2)}
+.pk__media img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s var(--ease-soft)}
+.pk:hover .pk__media img{transform:scale(1.07)}
+.pk__go{
+  position:absolute;top:12px;right:12px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.9);color:var(--lagoon);
+  display:grid;place-items:center;font-size:18px;backdrop-filter:blur(6px);
+  transform:translate(6px,-6px) scale(.85);opacity:0;transition:transform .55s var(--ease-soft),opacity .4s;
+}
+.pk:hover .pk__go{transform:none;opacity:1}
+.pk__body{padding:16px 16px 18px;display:flex;flex-direction:column;gap:6px;flex:1}
+.pk__route{font-size:.8rem;color:var(--sea-deep);font-weight:500;display:flex;align-items:center;gap:6px}
+.pk__route i{font-size:.9rem}
+.pk__title{font-size:1.06rem;line-height:1.25}
+.pk__meta{margin-top:auto;padding-top:12px;display:flex;justify-content:space-between;align-items:flex-end;gap:10px;border-top:1px solid var(--line)}
+.pk__meta .nights{font-size:.85rem;color:var(--ink-3);display:flex;align-items:center;gap:6px}
+.pk__price{font-family:var(--font-display);font-weight:800;color:var(--lagoon);font-size:1.05rem;white-space:nowrap;text-align:right}
+.pk__price small{display:block;font-weight:500;font-size:.7rem;color:var(--ink-3);letter-spacing:0}
+.pk-more{display:flex;justify-content:center;margin-top:clamp(32px,4vw,48px)}
+
+/* ==========================================================================
+   PUNCH (the one dark block on the page)
+   ========================================================================== */
+.punch{background:var(--lagoon);color:#fff;position:relative;overflow:hidden}
+.punch::before{content:"";position:absolute;width:60vw;height:60vw;max-width:800px;max-height:800px;border-radius:50%;right:-20vw;top:-30vw;background:radial-gradient(closest-side,rgba(46,196,182,.28),transparent 70%)}
+.punch::after{content:"";position:absolute;width:40vw;height:40vw;max-width:600px;max-height:600px;border-radius:50%;left:-15vw;bottom:-25vw;background:radial-gradient(closest-side,rgba(255,159,28,.2),transparent 70%)}
+.punch__grid{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(32px,5vw,80px);align-items:center}
+.punch h2{color:#fff;font-size:clamp(2rem,4.2vw,3.6rem);line-height:1.05;max-width:16ch}
+.punch h2 em{font-style:italic;color:var(--honey-bronze)}
+.punch .lead{color:rgba(255,255,255,.78)}
+.punch__pains{display:grid;gap:12px}
+.pain{
+  display:flex;gap:14px;align-items:center;padding:16px 18px;border-radius:16px;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+  transition:background .4s,transform .5s var(--ease-soft);
+}
+.pain:hover{background:rgba(255,255,255,.1);transform:translateX(6px)}
+.pain i{flex:none;width:38px;height:38px;border-radius:12px;background:rgba(255,159,28,.15);color:var(--honey-bronze);display:grid;place-items:center;font-size:18px}
+.pain p{color:rgba(255,255,255,.88);font-size:.98rem}
+.pain p b{color:#fff;font-family:var(--font-display)}
+
+/* ==========================================================================
+   STEPS (numbered, stair-stepped on desktop)
+   ========================================================================== */
+.steps{background:var(--surface)}
+.steps__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2.4vw,28px);align-items:start}
+.step{
+  background:#fff;border-radius:var(--r-card);padding:8px;box-shadow:0 0 0 1px var(--line);
+  transition:transform .6s var(--ease-soft),box-shadow .6s var(--ease-soft);
+}
+.step:hover{transform:translateY(-6px);box-shadow:0 0 0 1px var(--line),var(--shadow-lift)}
+.step:nth-child(2){margin-top:40px}
+.step:nth-child(3){margin-top:80px}
+.step__in{border-radius:calc(var(--r-card) - 8px);background:var(--surface);padding:26px 24px 28px;height:100%}
+.step__num{
+  font-family:var(--font-display);font-weight:800;font-size:2.6rem;line-height:1;color:var(--light-sea-green);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.step__num i{font-size:1.5rem;color:var(--lagoon);width:48px;height:48px;border-radius:14px;background:#fff;display:grid;place-items:center;box-shadow:0 0 0 1px var(--line)}
+.step h3{margin-top:22px;font-size:1.3rem}
+.step p{margin-top:10px;color:var(--ink-2);font-size:.97rem}
+.step__tag{margin-top:18px;display:inline-flex;align-items:center;gap:8px;font-size:.85rem;font-weight:500;color:var(--sea-deep)}
+
+/* ==========================================================================
+   FEATURED (full-image cards + stats)
+   ========================================================================== */
+.feat__head{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;margin-bottom:clamp(32px,4vw,48px)}
+.feat__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2vw,24px)}
+.fcard{
+  position:relative;border-radius:var(--r-card);overflow:hidden;aspect-ratio:4/4.6;color:#fff;display:flex;align-items:flex-end;
+  isolation:isolate;box-shadow:var(--shadow-card);transition:transform .6s var(--ease-soft),box-shadow .6s var(--ease-soft);
+}
+.fcard:hover{transform:translateY(-6px);box-shadow:var(--shadow-lift)}
+.fcard img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform 1.2s var(--ease-soft)}
+.fcard:hover img{transform:scale(1.06)}
+.fcard::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(11,58,61,0) 40%,rgba(11,58,61,.9) 100%)}
+.fcard__go{position:absolute;top:16px;right:16px;width:46px;height:46px;border-radius:50%;border:1.5px solid rgba(255,255,255,.7);display:grid;place-items:center;font-size:20px;transition:background .4s,transform .55s var(--ease-soft)}
+.fcard:hover .fcard__go{background:#fff;color:var(--lagoon);transform:rotate(45deg)}
+.fcard__body{padding:24px}
+.fcard__body h3{color:#fff;font-size:1.35rem;max-width:16ch}
+.fcard__meta{display:flex;justify-content:space-between;align-items:baseline;margin-top:14px;gap:12px}
+.fcard__meta span{font-size:.9rem;color:rgba(255,255,255,.85)}
+.fcard__meta b{font-family:var(--font-display);font-size:1.2rem;white-space:nowrap}
+.stats{margin-top:clamp(48px,6vw,80px);padding-top:clamp(40px,5vw,64px);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{text-align:center;padding:12px 16px;border-left:1px solid var(--line)}
+.stat:first-child{border-left:0}
+.stat b{font-family:var(--font-display);font-weight:800;font-size:clamp(2.2rem,4vw,3.2rem);line-height:1;display:block;letter-spacing:-.03em}
+.stat:nth-child(odd) b{color:var(--amber-glow)}
+.stat:nth-child(even) b{color:var(--light-sea-green)}
+.stat span{display:block;margin-top:10px;font-weight:500;color:var(--ink-2)}
+
+/* ==========================================================================
+   REVIEWS
+   ========================================================================== */
+.reviews{background:var(--surface)}
+.rev__grid{display:grid;grid-template-columns:minmax(260px,.9fr) minmax(0,2.1fr);gap:clamp(32px,5vw,72px);align-items:start}
+.rev__summary{position:sticky;top:calc(var(--nav-h) + 24px)}
+.rev__score{display:flex;align-items:baseline;gap:10px;margin-top:22px}
+.rev__score b{font-family:var(--font-display);font-size:4rem;font-weight:800;line-height:1;color:var(--lagoon);letter-spacing:-.04em}
+.rev__stars{color:var(--amber-glow);font-size:1.1rem;display:flex;gap:2px}
+.rev__ctrls{display:flex;gap:10px;margin-top:28px}
+.rev__btn{width:46px;height:46px;border-radius:50%;background:#fff;box-shadow:0 0 0 1px var(--line);display:grid;place-items:center;font-size:18px;color:var(--lagoon);transition:background .35s,transform .45s var(--ease-soft),color .3s}
+.rev__btn:hover{background:var(--lagoon);color:#fff;transform:translateY(-2px)}
+.rev__track{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:6px var(--gutter) 6px 6px;margin:-6px calc(-1 * var(--gutter)) -6px -6px;-webkit-overflow-scrolling:touch}
+.rev__track::-webkit-scrollbar{display:none}
+.rcard{
+  flex:0 0 min(100%,380px);scroll-snap-align:start;background:#fff;border-radius:var(--r-card);padding:26px 26px 22px;
+  box-shadow:0 0 0 1px var(--line);display:flex;flex-direction:column;gap:16px;
+  transition:transform .6s var(--ease-soft),box-shadow .6s var(--ease-soft);
+}
+.rcard:hover{transform:translateY(-5px);box-shadow:0 0 0 1px var(--line),var(--shadow-lift)}
+.rcard__top{display:flex;justify-content:space-between;align-items:center}
+.rcard__trip{font-size:.8rem;font-weight:500;color:var(--sea-deep);background:var(--frozen-water);padding:5px 10px;border-radius:var(--r-pill)}
+.rcard q{quotes:"\201C" "\201D";font-size:1.02rem;line-height:1.55;color:var(--ink);font-weight:400}
+.rcard q::before,.rcard q::after{color:var(--light-sea-green);font-family:var(--font-display);font-weight:800}
+.rcard__who{display:flex;align-items:center;gap:12px;margin-top:auto;padding-top:14px;border-top:1px solid var(--line)}
+.avatar{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-family:var(--font-display);font-weight:800;font-size:.85rem;color:var(--lagoon);background:linear-gradient(135deg,var(--frozen-water),var(--honey-bronze))}
+.rcard__who b{font-family:var(--font-display);display:block;line-height:1.15;color:var(--lagoon)}
+.rcard__who small{color:var(--ink-3)}
+
+/* ==========================================================================
+   FAQ
+   ========================================================================== */
+.faq__grid{display:grid;grid-template-columns:minmax(260px,.9fr) minmax(0,1.6fr);gap:clamp(32px,5vw,80px);align-items:start}
+.faq__side{position:sticky;top:calc(var(--nav-h) + 24px)}
+.faq__list{display:grid;gap:10px}
+.faq{
+  background:#fff;border-radius:16px;box-shadow:0 0 0 1px var(--line);overflow:hidden;
+  transition:box-shadow .5s var(--ease-soft),background .4s;
+}
+.faq.open{box-shadow:0 0 0 1px var(--line-2),var(--shadow-card)}
+.faq__q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 22px;text-align:left;font-family:var(--font-display);font-weight:700;font-size:1.05rem;color:var(--lagoon)}
+.faq__q i{flex:none;width:34px;height:34px;border-radius:50%;background:var(--surface-2);color:var(--sea-deep);display:grid;place-items:center;font-size:16px;transition:transform .6s var(--ease-soft),background .4s,color .4s}
+.faq.open .faq__q i{transform:rotate(135deg);background:var(--lagoon);color:#fff}
+.faq__a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .6s var(--ease-soft)}
+.faq.open .faq__a{grid-template-rows:1fr}
+.faq__a > div{overflow:hidden}
+.faq__a p{padding:0 22px 22px;color:var(--ink-2);max-width:62ch;opacity:0;transform:translateY(-6px);transition:opacity .45s .1s,transform .5s .1s var(--ease-out)}
+.faq.open .faq__a p{opacity:1;transform:none}
+
+/* ==========================================================================
+   CONTACT
+   ========================================================================== */
+.contact__grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(32px,5vw,80px);align-items:start}
+.contact__list{display:grid;gap:12px;margin-top:32px}
+.crow{
+  display:flex;gap:16px;align-items:center;padding:16px 18px;border-radius:16px;background:var(--surface);
+  transition:transform .5s var(--ease-soft),background .4s;
+}
+.crow:hover{background:var(--surface-2);transform:translateX(6px)}
+.crow i.ic{flex:none;width:46px;height:46px;border-radius:14px;background:#fff;color:var(--sea-deep);display:grid;place-items:center;font-size:21px;box-shadow:0 0 0 1px var(--line)}
+.crow small{display:block;color:var(--ink-3);font-size:.8rem}
+.crow b{font-family:var(--font-display);color:var(--lagoon);font-size:1.02rem}
+.crow i.arr{margin-left:auto;color:var(--ink-3);transition:transform .4s var(--ease-soft)}
+.crow:hover i.arr{transform:translate(3px,-3px);color:var(--lagoon)}
+
+/* Form system */
+.form-card{background:#fff;border-radius:var(--r-card);overflow:hidden;box-shadow:0 0 0 1px var(--line),var(--shadow-lift)}
+.form-card__head{
+  background:linear-gradient(135deg,var(--lagoon) 0%,var(--lagoon-2) 55%,#13646a 100%);
+  color:#fff;padding:clamp(22px,3vw,30px) clamp(20px,3vw,32px);position:relative;
+}
+.form-card__head::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(120% 140% at 100% 0%,rgba(46,196,182,.35),transparent 60%);
+}
+.form-card__head::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:3px;
+  background:linear-gradient(90deg,var(--amber-glow),var(--honey-bronze) 45%,var(--light-sea-green));
+}
+.form-card__head h3{color:#fff;position:relative}
+.form-card__head p{color:rgba(219,245,243,.82);position:relative;margin:6px 0 0;font-size:.92rem}
+.form-card__in{background:#fff;padding:clamp(22px,3vw,32px)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.field{display:flex;flex-direction:column;gap:8px;position:relative}
+.field.full{grid-column:1/-1}
+.field label{font-family:var(--font-display);font-weight:600;font-size:.82rem;letter-spacing:.04em;text-transform:uppercase;color:var(--sea-deep)}
+.field .hint{font-size:.78rem;color:var(--ink-3)}
+.field .err{font-size:.78rem;color:#b3261e;display:none}
+.field.invalid .err{display:block}
+.input{
+  width:100%;height:52px;border-radius:var(--r-input);background:var(--surface);border:1.5px solid transparent;
+  box-shadow:inset 0 0 0 1px var(--line);padding:0 16px;
+  font:inherit;color:var(--ink);transition:border-color .3s,box-shadow .3s,background .3s;
+}
+textarea.input{height:auto;min-height:120px;padding:14px 16px;resize:vertical}
+.input::placeholder{color:#8aa1a3}
+.input:hover{box-shadow:inset 0 0 0 1px var(--line-2)}
+.input:focus{outline:0;background:#fff;border-color:var(--light-sea-green);box-shadow:0 0 0 4px rgba(46,196,182,.2)}
+.field.invalid .input{border-color:#b3261e;background:#fdf4f3;box-shadow:none}
+
+/* Custom select */
+.sel{position:relative}
+.sel__btn{
+  width:100%;height:52px;border-radius:var(--r-input);background:var(--surface);border:1.5px solid transparent;
+  box-shadow:inset 0 0 0 1px var(--line);padding:0 44px 0 16px;
+  display:flex;align-items:center;text-align:left;color:var(--ink);transition:border-color .3s,box-shadow .3s,background .3s;
+}
+.sel__btn:hover{box-shadow:inset 0 0 0 1px var(--line-2)}
+.sel__btn.placeholder{color:#8aa1a3}
+.sel__btn i{position:absolute;right:16px;color:var(--ink-3);transition:transform .5s var(--ease-soft)}
+.sel.open .sel__btn{background:#fff;border-color:var(--light-sea-green);box-shadow:0 0 0 4px rgba(46,196,182,.2)}
+.sel.open .sel__btn i{transform:rotate(180deg)}
+.sel__menu{
+  position:absolute;top:calc(100% + 8px);left:0;right:0;background:#fff;border-radius:14px;padding:6px;z-index:5;
+  box-shadow:0 0 0 1px var(--line),var(--shadow-lift);transform-origin:top;
+  opacity:0;transform:translateY(-6px) scale(.98);pointer-events:none;transition:opacity .3s,transform .45s var(--ease-soft);
+  max-height:280px;overflow:auto;
+}
+.sel.open .sel__menu{opacity:1;transform:none;pointer-events:auto}
+.sel__opt{width:100%;text-align:left;padding:11px 12px;border-radius:9px;display:flex;justify-content:space-between;align-items:center;transition:background .25s}
+.sel__opt:hover,.sel__opt.active{background:var(--surface-2)}
+.sel__opt.selected{color:var(--sea-deep);font-weight:500}
+.sel__opt i{opacity:0;transition:opacity .2s}
+.sel__opt.selected i{opacity:1}
+
+/* Custom checkbox */
+.chk{
+  display:inline-flex;align-items:center;gap:10px;cursor:pointer;user-select:none;font-size:.92rem;
+  padding:9px 15px 9px 11px;border-radius:var(--r-pill);background:var(--surface);
+  box-shadow:inset 0 0 0 1px var(--line);transition:background .3s,box-shadow .3s;
+}
+.chk:has(input:checked){background:var(--frozen-water);box-shadow:inset 0 0 0 1px rgba(46,196,182,.55)}
+.chk input{position:absolute;opacity:0;width:0;height:0}
+.chk__box{width:20px;height:20px;border-radius:6px;border:1.5px solid var(--line-2);background:#fff;flex:none;display:grid;place-items:center;transition:background .3s,border-color .3s,transform .3s var(--ease-soft)}
+.chk__box i{font-size:13px;color:#fff;transform:scale(0);transition:transform .4s var(--ease-soft)}
+.chk input:checked + .chk__box{background:var(--lagoon);border-color:var(--lagoon)}
+.chk input:checked + .chk__box i{transform:scale(1)}
+.chk:hover .chk__box{border-color:var(--light-sea-green)}
+.chk input:focus-visible + .chk__box{box-shadow:0 0 0 4px rgba(46,196,182,.18)}
+.chk-row{display:flex;flex-wrap:wrap;gap:10px}
+
+/* Custom date picker */
+.dp{position:relative}
+.dp__btn{
+  width:100%;height:52px;border-radius:var(--r-input);background:var(--surface);border:1.5px solid transparent;
+  box-shadow:inset 0 0 0 1px var(--line);padding:0 44px 0 16px;
+  display:flex;align-items:center;text-align:left;color:#8aa1a3;transition:border-color .3s,box-shadow .3s,background .3s;
+}
+.dp__btn:hover{box-shadow:inset 0 0 0 1px var(--line-2)}
+.dp__btn.has{color:var(--ink)}
+.dp__btn i{position:absolute;right:16px;color:var(--ink-3)}
+.dp.open .dp__btn{background:#fff;border-color:var(--light-sea-green);box-shadow:0 0 0 4px rgba(46,196,182,.2)}
+.cal{
+  position:absolute;top:calc(100% + 8px);left:0;width:min(320px,100%);background:#fff;border-radius:16px;padding:14px;z-index:6;
+  box-shadow:0 0 0 1px var(--line),var(--shadow-lift);transform-origin:top left;
+  opacity:0;transform:translateY(-6px) scale(.97);pointer-events:none;transition:opacity .3s,transform .45s var(--ease-soft);
+}
+.dp.open .cal{opacity:1;transform:none;pointer-events:auto}
+.cal__head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.cal__head b{font-family:var(--font-display);color:var(--lagoon)}
+.cal__nav{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:var(--surface);color:var(--lagoon);transition:background .3s}
+.cal__nav:hover{background:var(--frozen-water)}
+.cal__grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
+.cal__dow{text-align:center;font-size:.72rem;color:var(--ink-3);font-weight:500;padding:4px 0}
+.cal__d{aspect-ratio:1;border-radius:9px;display:grid;place-items:center;font-size:.88rem;color:var(--ink);position:relative;transition:background .25s,color .25s}
+.cal__d:hover:not(:disabled){background:var(--surface-2)}
+.cal__d:disabled{color:#b6c6c7;cursor:not-allowed}
+.cal__d.today{font-weight:600;color:var(--sea-deep)}
+.cal__d.in{background:var(--frozen-water);border-radius:0}
+.cal__d.start,.cal__d.end{background:var(--lagoon);color:#fff;border-radius:9px}
+.cal__d.start{border-radius:9px 0 0 9px}.cal__d.end{border-radius:0 9px 9px 0}
+.cal__d.start.end{border-radius:9px}
+.cal__foot{display:flex;justify-content:space-between;align-items:center;margin-top:10px;font-size:.8rem;color:var(--ink-3)}
+.cal__foot button{color:var(--sea-deep);font-weight:500}
+.cal__body{transition:opacity .25s,transform .35s var(--ease-soft)}
+.cal__body.slide-l{opacity:0;transform:translateX(-10px)}
+.cal__body.slide-r{opacity:0;transform:translateX(10px)}
+
+.form-actions{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;margin-top:26px;padding-top:22px;border-top:1px solid var(--line)}
+.form-actions .fine{font-size:.78rem;color:var(--ink-3);max-width:34ch}
+.form-success{display:none;text-align:center;padding:30px 10px}
+.form-success i{font-size:54px;color:var(--light-sea-green)}
+.form-success h3{margin-top:12px}
+.form-success p{margin-top:8px;color:var(--ink-2)}
+.form-success .row{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:22px}
+.form-card.done form{display:none}
+.form-card.done .form-success{display:block}
+
+/* ==========================================================================
+   LEGAL PAGES  (Privacy Policy, SMS Terms)
+   ========================================================================== */
+.lhero{
+  position:relative;color:#fff;overflow:hidden;
+  background:linear-gradient(135deg,var(--lagoon) 0%,var(--lagoon-2) 52%,#0d5258 100%);
+  padding:calc(var(--nav-h) + 54px) 0 clamp(44px,5vw,66px);
+  border-bottom:3px solid var(--amber-glow);
+}
+.lhero::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(90% 130% at 88% 0%,rgba(46,196,182,.3),transparent 62%)}
+.lhero .container{position:relative}
+.lhero__crumb{display:flex;flex-wrap:wrap;gap:8px;font-family:var(--font-display);font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(203,243,240,.62);margin-bottom:20px}
+.lhero__crumb a:hover{color:#fff}
+.lhero h1{color:#fff;max-width:18ch}
+.lhero h1 em{font-style:italic;font-weight:600;color:var(--honey-bronze)}
+.lhero .lead{color:rgba(219,245,243,.78);margin-top:16px;max-width:52ch}
+.lpill{display:inline-flex;align-items:center;gap:9px;margin-top:24px;padding:9px 18px;border-radius:var(--r-pill);background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.2);font-size:.84rem;color:rgba(219,245,243,.85)}
+.lpill b{color:var(--honey-bronze);font-weight:600}
+
+.legal{background:var(--surface)}
+.legal__wrap{max-width:800px;margin-inline:auto}
+
+/* intro callout */
+.lnote{display:flex;gap:14px;padding:20px 22px;border-radius:var(--r-card);background:var(--surface-2);box-shadow:inset 0 0 0 1px var(--line);color:var(--ink-2);line-height:1.7}
+.lnote i{font-size:20px;color:var(--sea-deep);flex:none;margin-top:2px}
+
+/* numbered sections */
+.lsec{margin-top:clamp(38px,4vw,52px)}
+.lsec__head{display:flex;align-items:baseline;gap:18px;padding-bottom:13px;border-bottom:1px solid var(--line-2)}
+.lsec__n{font-family:var(--font-display);font-weight:700;font-size:.92rem;letter-spacing:.08em;color:var(--amber-glow);flex:none}
+.lsec__head h2{font-size:1.14rem;font-weight:700;letter-spacing:-.01em}
+.lsec p{margin-top:18px;color:var(--ink-2);line-height:1.75}
+.lsec ul{margin-top:16px;padding-left:22px;display:grid;gap:9px;color:var(--ink-2);line-height:1.65}
+.lsec li{list-style:disc}
+.lsec li::marker{color:var(--light-sea-green)}
+.lsec strong{color:var(--lagoon);font-weight:700}
+.lsec a:not(.lchip){color:var(--sea-deep);font-weight:500;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.lsec a:not(.lchip):hover{color:var(--lagoon)}
+
+/* pulled-out highlight */
+.lcall{margin-top:22px;padding:18px 22px;border-left:4px solid var(--amber-glow);border-radius:0 12px 12px 0;background:var(--surface-2);color:var(--ink-2);line-height:1.7}
+.lcall b{color:var(--lagoon)}
+
+/* keyword pills, e.g. Reply STOP */
+.lchip{display:inline-flex;align-items:center;gap:8px;margin-top:18px;padding:8px 16px;border-radius:var(--r-pill);font-family:var(--font-display);font-weight:600;font-size:.85rem;background:var(--frozen-water);color:var(--lagoon);box-shadow:inset 0 0 0 1px rgba(46,196,182,.4)}
+.lchip--stop{background:#fdeeee;color:#9b2c22;box-shadow:inset 0 0 0 1px rgba(179,38,30,.22)}
+.lchip--help{background:#fff4e2;color:#8a5200;box-shadow:inset 0 0 0 1px rgba(255,159,28,.35)}
+
+/* contact card */
+.help-card{
+  margin-top:clamp(48px,6vw,72px);border-radius:var(--r-card);text-align:center;color:#fff;
+  background:linear-gradient(135deg,var(--lagoon) 0%,var(--lagoon-2) 60%,#0d5258 100%);
+  padding:clamp(34px,4.5vw,52px) clamp(22px,4vw,44px);box-shadow:var(--shadow-lift);position:relative;overflow:hidden;
+}
+.help-card::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(80% 120% at 50% 0%,rgba(46,196,182,.28),transparent 62%)}
+.help-card > *{position:relative}
+.help-card__eyebrow{font-family:var(--font-display);font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--honey-bronze)}
+.help-card h2{color:#fff;margin-top:12px}
+.help-card h2 em{font-style:italic;font-weight:600;color:var(--honey-bronze)}
+.help-card__rows{display:grid;gap:10px;margin-top:22px;font-size:.95rem;color:rgba(219,245,243,.85)}
+.help-card__rows b{color:var(--honey-bronze);font-weight:600;margin-right:6px}
+.help-card__rows a:hover{color:#fff}
+
+.legal__updated{margin-top:34px;text-align:center;font-size:.85rem;color:var(--ink-3)}
+
+@media (max-width:640px){
+  .lsec__head{gap:12px}
+  .lhero h1{max-width:none}
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+.footer{background:var(--lagoon);color:rgba(255,255,255,.8);padding:clamp(56px,7vw,88px) 0 28px;position:relative;overflow:hidden}
+.footer__grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:40px}
+.footer .logo__mark{height:44px}
+.footer__about{margin-top:18px;max-width:38ch;font-size:.95rem}
+.footer h4{color:#fff;font-size:.95rem;margin-bottom:16px}
+.footer li{margin-bottom:10px}
+.footer li a{transition:color .3s,transform .3s;display:inline-block}
+.footer li a:hover{color:#fff;transform:translateX(3px)}
+.footer__social{display:flex;gap:8px;margin-top:20px}
+.footer__social a{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.08);display:grid;place-items:center;font-size:18px;color:#fff;transition:background .3s,transform .4s var(--ease-soft)}
+.footer__social a:hover{background:var(--amber-glow);color:var(--lagoon);transform:translateY(-3px)}
+.footer__social a.is-wa{background:rgba(37,211,102,.18);color:#5df299}
+.footer__social a.is-wa:hover{background:#25d366;color:#062d17}
+.footer__bottom{margin-top:48px;padding-top:22px;border-top:1px solid rgba(255,255,255,.1);display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:.85rem;color:rgba(255,255,255,.55)}
+.footer__bottom a:hover{color:#fff}
+
+/* ==========================================================================
+   VIEWS / ROUTING
+   ========================================================================== */
+.view{display:none}
+.view.active{display:block;animation:viewIn .7s var(--ease-out)}
+@keyframes viewIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+/* Page hero (all packages + detail) */
+.phero{position:relative;min-height:62vh;display:flex;align-items:flex-end;color:#fff;overflow:hidden;padding:calc(var(--nav-h) + 60px) 0 clamp(40px,5vw,64px)}
+.phero.tall{min-height:76vh}
+.phero__bg{position:absolute;inset:0;z-index:-2}
+.phero__bg img{width:100%;height:100%;object-fit:cover;transform:scale(1.06);animation:heroZoom 1.8s var(--ease-out) forwards}
+.phero__scrim{position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(11,58,61,.4) 0%,rgba(11,58,61,.15) 40%,rgba(11,58,61,.85) 100%)}
+.phero h1{color:#fff;max-width:18ch}
+.phero .lead{color:rgba(255,255,255,.85);margin-top:14px}
+.crumb{display:inline-flex;align-items:center;gap:8px;font-size:.88rem;color:rgba(255,255,255,.8);margin-bottom:18px}
+.crumb a:hover{color:#fff}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.chip{display:inline-flex;align-items:center;gap:7px;padding:8px 13px;border-radius:var(--r-pill);background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(8px);font-size:.85rem;font-weight:500}
+.chip i{color:var(--honey-bronze)}
+
+/* Filters (all packages) */
+.filters{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:14px;align-items:end;padding:8px;background:#fff;border-radius:var(--r-card);box-shadow:0 0 0 1px var(--line),var(--shadow-card);margin-top:-44px;position:relative;z-index:2}
+.filters__in{padding:14px;border-radius:calc(var(--r-card) - 8px);background:var(--surface);display:contents}
+.filters .field{padding:14px;background:var(--surface);border-radius:calc(var(--r-card) - 8px)}
+.filters .search{position:relative}
+.filters .search i{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--ink-3)}
+.filters .search .input{padding-left:40px}
+.filters__row{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding:6px 14px 10px}
+.result-count{font-size:.9rem;color:var(--ink-3)}
+.empty{text-align:center;padding:60px 20px;color:var(--ink-2)}
+.empty i{font-size:44px;color:var(--light-sea-green)}
+.empty h3{margin-top:10px}
+
+/* Detail page */
+.detail__grid{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(300px,.85fr);gap:clamp(32px,4vw,64px);align-items:start}
+.detail__main > * + *{margin-top:clamp(48px,6vw,72px)}
+.hl-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.hl{padding:20px;border-radius:16px;background:var(--surface);display:flex;gap:14px;transition:transform .5s var(--ease-soft),background .4s}
+.hl:hover{background:var(--surface-2);transform:translateY(-3px)}
+.hl i{flex:none;width:40px;height:40px;border-radius:12px;background:#fff;color:var(--sea-deep);display:grid;place-items:center;font-size:19px;box-shadow:0 0 0 1px var(--line)}
+.hl b{font-family:var(--font-display);color:var(--lagoon);display:block;margin-bottom:4px}
+.hl p{font-size:.93rem;color:var(--ink-2)}
+
+.tabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:4px;margin:22px -4px 0;background:var(--surface);border-radius:var(--r-pill);width:fit-content;max-width:100%}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:none;padding:10px 16px;border-radius:var(--r-pill);font-family:var(--font-display);font-weight:600;font-size:.9rem;color:var(--ink-2);transition:background .35s,color .3s,box-shadow .35s;white-space:nowrap}
+.tab.active{background:#fff;color:var(--lagoon);box-shadow:0 0 0 1px var(--line),0 6px 14px -8px rgba(11,58,61,.3)}
+.tab:hover:not(.active){color:var(--lagoon)}
+.stay{margin-top:22px;animation:stayIn .55s var(--ease-out)}
+@keyframes stayIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.stay__intro{display:grid;grid-template-columns:1.2fr .8fr;gap:20px;padding:22px;border-radius:16px;background:var(--surface)}
+.stay__intro h3{font-size:1.25rem}
+.stay__intro p{margin-top:8px;color:var(--ink-2);font-size:.96rem}
+.stay__facts{display:grid;gap:8px;align-content:start}
+.stay__facts span{display:flex;gap:9px;align-items:flex-start;font-size:.9rem;color:var(--ink-2)}
+.stay__facts span i{color:var(--sea-deep);margin-top:3px}
+.days{display:grid;gap:10px;margin-top:14px}
+.day{display:grid;grid-template-columns:64px 1fr;gap:16px;padding:18px 20px;border-radius:16px;background:#fff;box-shadow:0 0 0 1px var(--line);transition:transform .5s var(--ease-soft),box-shadow .5s var(--ease-soft)}
+.day:hover{transform:translateX(4px);box-shadow:0 0 0 1px var(--line-2),var(--shadow-card)}
+.day__n{font-family:var(--font-display);font-weight:800;color:var(--light-sea-green);font-size:.78rem;letter-spacing:.04em;text-transform:uppercase;line-height:1.2}
+.day__n b{display:block;font-size:1.6rem;color:var(--lagoon);letter-spacing:-.03em;line-height:1}
+.day__lbl{font-size:.8rem;font-weight:500;color:var(--sea-deep)}
+.day h4{font-size:1.05rem;margin-top:3px}
+.day p{margin-top:6px;color:var(--ink-2);font-size:.95rem}
+.inc-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.inc{padding:22px;border-radius:16px;background:var(--surface)}
+.inc h4{display:flex;align-items:center;gap:8px;margin-bottom:12px}
+.inc h4 i{color:var(--sea-deep)}
+.inc.no h4 i{color:#b3261e}
+.inc li{display:flex;gap:10px;align-items:flex-start;font-size:.93rem;color:var(--ink-2);padding:6px 0}
+.inc li i{flex:none;margin-top:4px;color:var(--light-sea-green);font-size:.9rem}
+.inc.no li i{color:#c9a19c}
+.tip{margin-top:14px;padding:18px 20px;border-radius:16px;background:linear-gradient(135deg,#fff6e8,#fff1d9);display:flex;gap:14px;align-items:flex-start;font-size:.93rem;color:var(--ink-2)}
+.tip i{flex:none;color:var(--amber-glow);font-size:22px}
+.tip b{color:var(--lagoon)}
+.price-table{width:100%;border-collapse:separate;border-spacing:0;margin-top:16px;font-size:.92rem;overflow:hidden;border-radius:14px;box-shadow:0 0 0 1px var(--line)}
+.price-table th,.price-table td{padding:12px 14px;text-align:left}
+.price-table th{background:var(--surface);font-family:var(--font-display);font-weight:700;color:var(--lagoon);font-size:.85rem}
+.price-table td{border-top:1px solid var(--line)}
+.price-table td b{font-family:var(--font-display);color:var(--lagoon)}
+
+.side{position:sticky;top:calc(var(--nav-h) + 20px)}
+.side-card{background:#fff;border-radius:var(--r-card);padding:8px;box-shadow:0 0 0 1px var(--line),var(--shadow-lift)}
+.side-card__in{border-radius:calc(var(--r-card) - 8px);background:var(--surface);padding:24px}
+.side-card .from{font-size:.85rem;color:var(--ink-3)}
+.side-card .big{font-family:var(--font-display);font-weight:800;font-size:2.4rem;color:var(--lagoon);letter-spacing:-.03em;line-height:1.05}
+.side-card .big small{font-size:.9rem;font-weight:500;color:var(--ink-3);letter-spacing:0;margin-left:6px}
+.side-card .note{font-size:.82rem;color:var(--ink-3);margin-top:6px}
+.facts{display:grid;gap:10px;margin:20px 0;padding:18px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.facts div{display:flex;justify-content:space-between;gap:14px;font-size:.9rem}
+.facts div span{color:var(--ink-3);display:flex;gap:8px;align-items:center}
+.facts div span i{color:var(--sea-deep)}
+.facts div b{font-family:var(--font-display);color:var(--lagoon);text-align:right}
+.side-card .stack{display:grid;gap:10px}
+.side-card .fine{font-size:.8rem;color:var(--ink-3);text-align:center;margin-top:12px}
+
+.sugg__track{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2vw,24px)}
+.contact-strip{background:var(--surface)}
+.contact-strip__in{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;padding:8px;background:#fff;border-radius:var(--r-card);box-shadow:0 0 0 1px var(--line)}
+.contact-strip__txt{padding:16px 24px}
+.contact-strip__btns{display:flex;flex-wrap:wrap;gap:10px;padding:8px}
+
+/* Modal */
+.modal{position:fixed;inset:0;z-index:var(--z-modal);display:grid;place-items:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .4s}
+.modal.open{opacity:1;pointer-events:auto}
+.modal__bd{position:absolute;inset:0;background:rgba(11,58,61,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.modal__panel{position:relative;width:min(720px,100%);max-height:calc(100dvh - 32px);overflow:auto;transform:translateY(24px) scale(.97);transition:transform .6s var(--ease-soft);border-radius:var(--r-card)}
+.modal.open .modal__panel{transform:none}
+.modal__close{position:absolute;top:18px;right:18px;width:40px;height:40px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:18px;color:var(--lagoon);box-shadow:0 0 0 1px var(--line);z-index:2;transition:transform .4s var(--ease-soft),background .3s}
+.modal__close:hover{transform:rotate(90deg);background:var(--frozen-water)}
+.modal .form-card__head{padding-right:72px}
+
+/* Toast */
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);z-index:var(--z-toast);background:var(--lagoon);color:#fff;padding:12px 18px;border-radius:var(--r-pill);font-weight:500;font-size:.92rem;opacity:0;pointer-events:none;transition:opacity .35s,transform .5s var(--ease-soft);display:flex;gap:10px;align-items:center;box-shadow:var(--shadow-lift)}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.toast i{color:var(--light-sea-green)}
+
+/* Floating WhatsApp */
+.fab{position:fixed;right:20px;bottom:20px;z-index:var(--z-nav);width:56px;height:56px;border-radius:50%;background:#25d366;color:#fff;display:grid;place-items:center;font-size:28px;box-shadow:0 14px 30px -10px rgba(37,211,102,.6);transition:transform .5s var(--ease-soft)}
+.fab:hover{transform:translateY(-3px) scale(1.04)}
+
+/* Scroll reveal */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease-out),transform 1s var(--ease-out);transition-delay:var(--d,0s)}
+.rv.in{opacity:1;transform:none}
+.rv--scale{transform:translateY(20px) scale(.97)}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+@media (max-width:1100px){
+  .pk-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .footer__grid{grid-template-columns:1fr 1fr}
+  .detail__grid{grid-template-columns:1fr}
+  .side{position:static}
+}
+@media (max-width:900px){
+  :root{--nav-h:68px}
+  .nav__inner{grid-template-columns:auto 1fr auto}
+  .nav__links{display:none}
+  .logo{justify-self:start}
+  .logo__mark{height:30px}
+  .nav .nav__burger{display:grid;grid-column:3}
+  .hero__grid{grid-template-columns:1fr}
+  .hero__aside{justify-self:start}
+  .about__grid,.punch__grid,.rev__grid,.faq__grid,.contact__grid{grid-template-columns:1fr}
+  .about__collage{max-width:100%}
+  .rev__summary,.faq__side{position:static}
+  .steps__grid{grid-template-columns:1fr}
+  .step:nth-child(2),.step:nth-child(3){margin-top:0}
+  .feat__head{flex-direction:column;align-items:flex-start;gap:14px}
+  .feat__grid{grid-template-columns:1fr 1fr}
+  .feat__grid .fcard:last-child{grid-column:1/-1;aspect-ratio:16/9}
+  .stats{grid-template-columns:1fr 1fr;gap:24px 0}
+  .stat:nth-child(3){border-left:0}
+  .filters{grid-template-columns:1fr;margin-top:-30px}
+  .sugg__track{grid-template-columns:1fr 1fr}
+  .stay__intro{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .section{padding-block:64px}
+  .pk-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .pk__body{padding:12px 12px 14px}
+  .pk__title{font-size:.95rem}
+  .pk__price{font-size:.95rem}
+  .pk__meta{flex-direction:column;align-items:flex-start;gap:4px}
+  .pk__price{text-align:left}
+  .feat__grid{grid-template-columns:1fr}
+  .feat__grid .fcard:last-child{aspect-ratio:4/4.6}
+  .form-grid{grid-template-columns:1fr}
+  .footer__grid{grid-template-columns:1fr}
+  .hl-grid,.inc-grid{grid-template-columns:1fr}
+  .sugg__track{grid-template-columns:1fr}
+  .day{grid-template-columns:1fr;gap:6px}
+  .hero{padding-bottom:64px}
+  .hero-card__in{padding:14px}
+  .hero-card__in .price{display:none}
+  .contact-strip__btns .btn{flex:1;justify-content:space-between}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+  .rv,.hero__fade,.mask>span{opacity:1;transform:none}
+  .marquee__track{animation:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ======================= NAV ======================= -->
+<header class="nav" id="nav">
+  <div class="container nav__inner">
+    <nav class="nav__links" aria-label="Primary">
+      <a class="nav__link" href="#/packages">Packages</a>
+      <a class="nav__link" href="#/" data-to="about">About</a>
+      <a class="nav__link" href="#/" data-to="steps">How it works</a>
+    </nav>
+    <a class="logo" href="#/" aria-label="Holidays by MPS Tours, home">
+      <img class="logo__mark" src="assets/img/logo.png" width="722" height="214" alt="Holidays by MPS Tours" decoding="async"><img class="logo__mark logo__mark--knockout" src="assets/img/logo-white.png" width="722" height="214" alt="" aria-hidden="true" decoding="async">
+    </a>
+    <nav class="nav__links nav__links--right" aria-label="Secondary">
+      <a class="nav__link" href="#/" data-to="reviews">Reviews</a>
+      <a class="nav__link" href="#/" data-to="faq">FAQ</a>
+      <a class="btn btn--sm nav__cta" href="#/" data-to="contact">Contact</a>
+    </nav>
+    <button class="burger nav__burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="menu" id="menu" aria-hidden="true">
+  <nav class="menu__links" aria-label="Mobile">
+    <a class="menu__link" style="--i:0" href="#/packages">Packages <i class="ph-bold ph-arrow-up-right"></i></a>
+    <a class="menu__link" style="--i:1" href="#/" data-to="about">About <i class="ph-bold ph-arrow-up-right"></i></a>
+    <a class="menu__link" style="--i:2" href="#/" data-to="steps">How it works <i class="ph-bold ph-arrow-up-right"></i></a>
+    <a class="menu__link" style="--i:3" href="#/" data-to="reviews">Reviews <i class="ph-bold ph-arrow-up-right"></i></a>
+    <a class="menu__link" style="--i:4" href="#/" data-to="faq">FAQ <i class="ph-bold ph-arrow-up-right"></i></a>
+    <a class="menu__link" style="--i:5" href="#/" data-to="contact">Contact <i class="ph-bold ph-arrow-up-right"></i></a>
+  </nav>
+  <div class="menu__foot">
+    <a class="btn btn--amber" href="tel:+15172344046">Call us</a>
+    <a class="btn btn--wa" href="https://wa.me/17342095812" target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+</div>
+
+<main id="app">
+
+<!-- ======================= HOME ======================= -->
+<section class="view active" id="view-home">
+  <div class="nav-sentinel" data-sentinel></div>
+
+  <!-- HERO -->
+  <div class="hero" id="hero">
+    <div class="hero__bg"><img src="assets/img/hero-santorini.jpg" alt="Whitewashed houses above the Santorini caldera at sunset" width="1920" height="1080" fetchpriority="high" decoding="async"></div>
+    <div class="hero__scrim"></div>
+    <div class="container hero__grid">
+      <div>
+        <h1 class="h-display">
+          <span class="mask"><span>The whole trip,</span></span>
+          <span class="mask"><span>handled. You</span></span>
+          <span class="mask"><span>just pack.</span></span>
+        </h1>
+        <p class="lead hero__fade d1">Flights, hotels, transfers and guided days, arranged by one advisor. Signature packages from $1,459 per person.</p>
+        <div class="hero__cta hero__fade d2">
+          <a class="btn btn--amber btn--lg" href="#/packages">Explore packages</a>
+          <button class="btn btn--ghost on-dark btn--lg" data-quote>Get a free quote</button>
+        </div>
+      </div>
+      <div class="hero__aside hero__fade d3">
+        <a class="hero-card" href="#/package/greece-signature-escape" aria-label="Greece Signature Escape, 9 days, from $2,990">
+          <div class="hero-card__in">
+            <img src="assets/img/mykonos-thumb.jpg" alt="" width="400" height="400" loading="lazy" decoding="async">
+            <div>
+              <div class="h-4">Greece Signature Escape</div>
+              <div class="muted">Athens, Mykonos, Santorini. 9 days.</div>
+            </div>
+            <div class="price">$2,990<small>per person</small></div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MARQUEE -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track" id="marquee"></div>
+  </div>
+
+  <!-- ABOUT -->
+  <div class="section" id="about">
+    <div class="container about__grid">
+      <div class="about__collage rv rv--scale">
+        <img class="im1" src="assets/img/about-kyoto.jpg" alt="Vermilion torii gates at Fushimi Inari in Kyoto" width="800" height="1000" loading="lazy" decoding="async">
+        <img class="im2" src="assets/img/about-maldives.jpg" alt="Overwater villas in the Maldives" width="760" height="760" loading="lazy" decoding="async">
+        <div class="about__badge"><i class="ph ph-timer"></i><div><b>1 business day</b><small>average time to your first quote</small></div></div>
+      </div>
+      <div>
+        <h2 class="h-2 rv">One advisor. One plan. Zero tabs open.</h2>
+        <p class="lead rv" style="--d:.08s">Holidays by MPS Tours is the holiday arm of MPS Tours LLC. We package flights, hotels, transfers and guided days into one itinerary, then a real person builds it around your dates.</p>
+        <div class="about__points">
+          <div class="point rv" style="--d:.12s"><i class="ph ph-airplane-tilt"></i><div><b>Flights are part of it</b><p>Round-trip international flights from major US gateways are included in most packages, not bolted on later.</p></div></div>
+          <div class="point rv" style="--d:.18s"><i class="ph ph-car-profile"></i><div><b>Met at every airport</b><p>Private transfers on arrival, between cities, and back to the airport for your flight home.</p></div></div>
+          <div class="point rv" style="--d:.24s"><i class="ph ph-chats-circle"></i><div><b>One person, start to finish</b><p>Your trip advisor quotes, books, and stays on WhatsApp with you for the whole trip.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PACKAGES -->
+  <div class="section" id="packages" style="padding-top:0">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="h-2 rv">Signature packages</h2>
+        <p class="lead rv" style="--d:.08s">Eight itineraries we have priced, tested and refined. Each one is a starting point your advisor adjusts to your dates, group and departure city.</p>
+      </div>
+      <div class="pk-grid" id="home-packages"></div>
+      <div class="pk-more rv"><a class="btn btn--lg" href="#/packages">See all packages</a></div>
+    </div>
+  </div>
+
+  <!-- PUNCH -->
+  <div class="section punch">
+    <div class="container punch__grid">
+      <div>
+        <h2 class="rv">Booking a great holiday shouldn't feel like a second job.</h2>
+        <p class="lead rv" style="--d:.1s;margin-top:20px">Forty tabs, three currencies, and a hotel that may or may not be near anything. We do that part, then send you one clean plan.</p>
+        <div class="rv" style="--d:.2s;margin-top:32px"><button class="btn btn--amber btn--lg" data-quote>Get a free quote</button></div>
+      </div>
+      <div class="punch__pains">
+        <div class="pain rv" style="--d:.1s"><i class="ph ph-browsers"></i><p><b>The tab pile-up.</b> Forty windows open and still no clearer answer.</p></div>
+        <div class="pain rv" style="--d:.18s"><i class="ph ph-map-trifold"></i><p><b>Transfer roulette.</b> Guessing how to get from the port to the hotel at 11pm.</p></div>
+        <div class="pain rv" style="--d:.26s"><i class="ph ph-clock-countdown"></i><p><b>The 2am price check.</b> Fares that change while you sleep on it.</p></div>
+        <div class="pain rv" style="--d:.34s"><i class="ph ph-question"></i><p><b>The "is it included?" spiral.</b> Breakfast, tickets, taxes. Nobody says.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEPS -->
+  <div class="section steps" id="steps">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="h-2 rv">Three steps from idea to boarding pass</h2>
+        <p class="lead rv" style="--d:.08s">No payment to start. No commitment until the itinerary reads exactly the way you want it.</p>
+      </div>
+      <div class="steps__grid">
+        <div class="step rv" style="--d:0s">
+          <div class="step__in">
+            <div class="step__num">1 <i class="ph ph-chat-teardrop-text"></i></div>
+            <h3>Tell us the shape of it</h3>
+            <p>Pick a package or describe the trip in your own words. Dates, group size, departure airport. Two minutes, nothing to pay.</p>
+            <span class="step__tag"><i class="ph-bold ph-check"></i> Free quote within 1 business day</span>
+          </div>
+        </div>
+        <div class="step rv" style="--d:.12s">
+          <div class="step__in">
+            <div class="step__num">2 <i class="ph ph-sliders-horizontal"></i></div>
+            <h3>We build it around you</h3>
+            <p>Your advisor prices flights from your airport, adjusts nights and hotel categories, and sends back one clear itinerary.</p>
+            <span class="step__tag"><i class="ph-bold ph-check"></i> Change anything, as often as you like</span>
+          </div>
+        </div>
+        <div class="step rv" style="--d:.24s">
+          <div class="step__in">
+            <div class="step__num">3 <i class="ph ph-airplane-takeoff"></i></div>
+            <h3>Confirm and go</h3>
+            <p>Lock it in with a deposit. Tickets, transfers and hotel confirmations arrive while you pack, and support stays on WhatsApp.</p>
+            <span class="step__tag"><i class="ph-bold ph-check"></i> Support for the whole trip</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURED -->
+  <div class="section" id="featured">
+    <div class="container">
+      <div class="feat__head">
+        <div style="max-width:640px">
+          <h2 class="h-2 rv">Three trips, three very different ways to travel</h2>
+          <p class="lead rv" style="--d:.08s">An all-inclusive island, a bullet-train grand tour, and a small-group climb to Machu Picchu. Flights and transfers included.</p>
+        </div>
+        <a class="link-arrow rv" href="#/packages" style="--d:.15s">See all packages <i class="ph-bold ph-arrow-right"></i></a>
+      </div>
+      <div class="feat__grid" id="featured-grid"></div>
+      <div class="stats">
+        <div class="stat rv"><b data-count="27000" data-suffix="K+" data-div="1000">0</b><span>Happy travelers</span></div>
+        <div class="stat rv" style="--d:.08s"><b data-count="50" data-suffix="+">0</b><span>Top destinations</span></div>
+        <div class="stat rv" style="--d:.16s"><b data-count="4.8" data-suffix="/5" data-dec="1">0</b><span>Customer rating</span></div>
+        <div class="stat rv" style="--d:.24s"><b data-count="30" data-suffix="+">0</b><span>Countries covered</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REVIEWS -->
+  <div class="section reviews" id="reviews">
+    <div class="container rev__grid">
+      <div class="rev__summary">
+        <h2 class="h-2 rv">What travelers say when they get home</h2>
+        <div class="rev__score rv" style="--d:.08s"><b>4.8</b><div><div class="rev__stars"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star-half"></i></div><div class="muted" style="font-size:.9rem">average customer rating</div></div></div>
+        <p class="lead rv" style="--d:.12s;margin-top:16px;font-size:1rem">Real trips, real names, lightly edited for length. Ask your advisor and we will happily put you in touch with past travelers.</p>
+        <div class="rev__ctrls rv" style="--d:.18s">
+          <button class="rev__btn" id="rev-prev" aria-label="Previous reviews"><i class="ph-bold ph-arrow-left"></i></button>
+          <button class="rev__btn" id="rev-next" aria-label="Next reviews"><i class="ph-bold ph-arrow-right"></i></button>
+        </div>
+      </div>
+      <div class="rev__track" id="rev-track"></div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="section" id="faq">
+    <div class="container faq__grid">
+      <div class="faq__side">
+        <h2 class="h-2 rv">Questions people ask before they book</h2>
+        <p class="lead rv" style="--d:.08s;margin-top:14px">If yours is not here, a trip advisor will answer it in plain language. No script.</p>
+        <div class="rv" style="--d:.14s;margin-top:24px"><a class="btn btn--ghost" href="https://wa.me/17342095812" target="_blank" rel="noopener">Ask on WhatsApp</a></div>
+      </div>
+      <div class="faq__list" id="faq-list"></div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="section" id="contact" style="padding-top:0">
+    <div class="container contact__grid">
+      <div>
+        <h2 class="h-2 rv">Talk to a trip advisor</h2>
+        <p class="lead rv" style="--d:.08s;margin-top:14px">Call, message, or send the form. Replies within one business day, usually much faster.</p>
+        <div class="contact__list">
+          <a class="crow rv" style="--d:.1s" href="tel:+15172344046"><i class="ic ph ph-phone"></i><div><small>Call</small><b>(517) 234-4046</b></div><i class="arr ph-bold ph-arrow-up-right"></i></a>
+          <a class="crow rv" style="--d:.16s" href="https://wa.me/17342095812" target="_blank" rel="noopener"><i class="ic ph ph-whatsapp-logo"></i><div><small>WhatsApp</small><b>+1 (734) 209-5812</b></div><i class="arr ph-bold ph-arrow-up-right"></i></a>
+          <a class="crow rv" style="--d:.22s" href="mailto:holidays@mpstours.com"><i class="ic ph ph-envelope-simple"></i><div><small>Email</small><b>holidays@mpstours.com</b></div><i class="arr ph-bold ph-arrow-up-right"></i></a>
+          <!-- TODO: replace with the full street address -->
+          <div class="crow rv" style="--d:.28s"><i class="ic ph ph-map-pin"></i><div><small>Office</small><b>MPS Tours LLC, Michigan, United States</b></div></div>
+        </div>
+      </div>
+      <div class="form-card rv rv--scale" style="--d:.1s" id="contact-form-card"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= ALL PACKAGES ======================= -->
+<section class="view" id="view-packages">
+  <div class="nav-sentinel" data-sentinel></div>
+  <div class="phero">
+    <div class="phero__bg"><img src="assets/img/italy-hero.jpg" alt="Florence and the Duomo seen across the Arno" width="1920" height="1080" fetchpriority="high" decoding="async"></div>
+    <div class="phero__scrim"></div>
+    <div class="container">
+      <div class="crumb"><a href="#/">Home</a><i class="ph-bold ph-caret-right"></i><span>All packages</span></div>
+      <h1 class="h-1">Every signature package</h1>
+      <p class="lead">Filter by region, length, or price. Every price is per person, based on two adults sharing.</p>
+    </div>
+  </div>
+  <div class="section" style="padding-top:0">
+    <div class="container">
+      <div class="filters" id="filters">
+        <div class="field">
+          <label for="f-search">Search</label>
+          <div class="search"><i class="ph ph-magnifying-glass"></i><input class="input" id="f-search" type="search" placeholder="Santorini, Kyoto, train, island..." autocomplete="off"></div>
+        </div>
+        <div class="field"><label>Region</label><div id="f-region"></div></div>
+        <div class="field"><label>Sort by</label><div id="f-sort"></div></div>
+        <div class="filters__row">
+          <div class="chk-row" id="f-duration">
+            <label class="chk"><input type="checkbox" value="short"><span class="chk__box"><i class="ph-bold ph-check"></i></span>Up to 7 nights</label>
+            <label class="chk"><input type="checkbox" value="mid"><span class="chk__box"><i class="ph-bold ph-check"></i></span>8 to 10 nights</label>
+            <label class="chk"><input type="checkbox" value="long"><span class="chk__box"><i class="ph-bold ph-check"></i></span>11 nights and more</label>
+          </div>
+          <span class="result-count" id="f-count"></span>
+        </div>
+      </div>
+      <div class="pk-grid" id="all-packages" style="margin-top:36px"></div>
+      <div class="empty" id="all-empty" style="display:none"><i class="ph ph-compass"></i><h3 class="h-3">Nothing matches those filters</h3><p style="margin-top:6px">Try a wider region, or tell us what you have in mind and we will build it.</p><div style="margin-top:20px"><button class="btn btn--amber" data-quote>Get a free quote</button></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= PACKAGE DETAIL (rendered by JS) ======================= -->
+<section class="view" id="view-detail"></section>
+
+</main>
+
+<!-- ======================= PRIVACY POLICY ======================= -->
+<section class="view" id="view-privacy">
+  <div class="nav-sentinel" data-sentinel></div>
+
+  <div class="lhero">
+    <div class="container">
+      <div class="lhero__crumb"><a href="#/">Holidays by MPS Tours</a><span>&rsaquo;</span><span>Privacy Policy</span></div>
+      <h1 class="h-1">Privacy <em>Policy</em></h1>
+      <p class="lead">How we collect, use and protect your information &mdash; including SMS and email communications.</p>
+      <span class="lpill"><b>Effective date:</b> 15 September 2026</span>
+    </div>
+  </div>
+
+  <div class="section legal">
+    <div class="container">
+      <div class="legal__wrap">
+
+        <div class="lnote rv"><i class="ph-fill ph-info"></i><p>Holidays by MPS Tours is the holiday arm of MPS Tours LLC. This policy explains what we collect, why we collect it, and what we do with it, including how we use text messages and email.</p></div>
+
+        <div class="lsec rv">
+          <div class="lsec__head"><span class="lsec__n">01</span><h2>Information we collect</h2></div>
+          <p>We collect personal information that you give us directly, including:</p>
+          <ul>
+            <li>Full name</li>
+            <li>Email address</li>
+            <li>Phone number</li>
+            <li>Departure city, travel dates and group size</li>
+            <li>Travel preferences and any accessibility or dietary needs you tell us about</li>
+            <li>Traveller details needed to issue tickets and hotel reservations, such as names exactly as they appear on passports</li>
+          </ul>
+          <p>We collect this information when you:</p>
+          <ul>
+            <li>Request a quote or send us an enquiry through this website</li>
+            <li>Book a package, or ask us to hold a reservation</li>
+            <li>Opt in to trip updates by SMS or email</li>
+            <li>Contact us by phone, WhatsApp or email</li>
+          </ul>
+        </div>
+
+        <div class="lsec rv">
+          <div class="lsec__head"><span class="lsec__n">02</span><h2>How we use your information</h2></div>
+          <p>Holidays by MPS Tours uses your information to:</p>
+          <ul>
+            <li>Prepare your quote and answer your enquiry</li>
+            <li>Book flights, hotels, transfers and experiences on your behalf</li>
+            <li>Send booking confirmations, travel documents, trip updates and reminders</li>
+            <li>Let your trip advisor stay in touch before and during your trip</li>
+            <li>Meet our legal, accounting and insurance obligations</li>
+          </ul>
+          <p><strong>We do not sell, rent or trade your personal information.</strong></p>
+        </div>
+
+        <div class="lsec rv">
+          <div class="lsec__head"><span class="lsec__n">03</span><h2>SMS / text message policy</h2></div>
+          <p>If you give us your mobile number, you agree to receive trip-related text messages from Holidays by MPS Tours &mdash; quote replies, booking confirmations, travel updates and messages from your trip advisor.</p>
+          <ul>
+            <li>Message frequency varies with your enquiry and your trip</li>
+            <li>Message and data rates may apply, depending on your carrier</li>
+            <li>You can opt out at any time by replying <strong>STOP</strong> to any message</li>
+            <li>For assistance, reply <strong>HELP</strong> or email us at <a href="mailto:holidays@mpstours.com">holidays@mpstours.com</a></li>
+          </ul>
+          <p>Full details are set out in our <a href="#/sms-terms">SMS Terms &amp; Conditions</a>.</p>
+          <div class="lcall"><b>We will never share or sell your phone number</b> to third parties for their own marketing.</div>
+        </div>
+
+        <div class="lsec rv">
+          <div class="lsec__head"><span class="lsec__n">04</span><h2>Your consent</h2></div>
+          <p>By using this website and giving us your details, you consent to the collection and use of your information as described in this policy.</p>
+          <p>Every form that collects personal data &mdash; quote requests and enquiries &mdash; states how the information will be used and links to this policy. You can withdraw your consent at any time by contacting us.</p>
+        </div>
+
+        <div class="lsec rv">
+          <div class="lsec__head"><span class="lsec__n">05</span><h2>Data security</h2></div>
+          <p>We protect your data with secure hosting, encrypted connections (HTTPS/SSL) and access restrictions. No system is completely secure, but we take reasonable and appropriate steps to protect your personal data and review those measures regularly.</p>
+        </div>
+
+        <div class="lsec rv">
+          <div class="lsec__head"><span class="lsec__n">06</span><h2>Service providers</h2></div>
+          <p>We use trusted third-party services to run our business, including email and CRM platforms, SMS gateways, payment processors and website hosting. These providers may process your data on our behalf. They are contractually required to safeguard it, and may only use it to deliver the service we have asked them to provide.</p>
+        </div>
+
+        <div class="lsec rv">
+          <div class="lsec__head"><span class="lsec__n">07</span><h2>Sharing with travel suppliers</h2></div>
+          <p>To book your trip we have to pass certain details to the suppliers who deliver it: airlines, hotels, ferry and rail operators, transfer companies and local tour operators. We share only what a supplier needs for your booking &mdash; typically names, dates and contact details.</p>
+          <p>Because our packages are international, some of these suppliers are outside the United States, so your details may be transferred abroad where your itinerary requires it. We never share your data for anyone else&rsquo;s marketing.</p>
+        </div>
+
+        <div class="lsec rv">
+          <div class="lsec__head"><span class="lsec__n">08</span><h2>Your rights</h2></div>
+          <p>You have the right to:</p>
+          <ul>
+            <li>Ask for a copy of the personal information we hold about you</li>
+            <li>Correct anything that is inaccurate or out of date</li>
+            <li>Ask us to delete your information, where we are not required to keep it</li>
+            <li>Opt out of marketing communications at any time</li>
+          </ul>
+          <p>Email <a href="mailto:holidays@mpstours.com">holidays@mpstours.com</a> and we will respond within 30 days.</p>
+        </div>
+
+        <div class="lsec rv">
+          <div class="lsec__head"><span class="lsec__n">09</span><h2>Internal data protection</h2></div>
+          <p>Only authorised personnel can access customer data, and that access is controlled and monitored. We keep booking records for as long as we need them to service your trip and to meet legal, tax and insurance requirements, after which they are securely deleted.</p>
+        </div>
+
+        <div class="lsec rv">
+          <div class="lsec__head"><span class="lsec__n">10</span><h2>Changes to this policy</h2></div>
+          <p>We may update this policy from time to time. The effective date at the top of the page always shows the current version, and any material change will be reflected here before it takes effect.</p>
+        </div>
+
+        <div class="help-card rv rv--scale">
+          <span class="help-card__eyebrow">Questions about this policy?</span>
+          <h2 class="h-2">We&rsquo;re here to <em>help</em></h2>
+          <div class="help-card__rows">
+            <a href="mailto:holidays@mpstours.com"><b>Email</b>holidays@mpstours.com</a>
+            <a href="tel:+15172344046"><b>Phone</b>(517) 234-4046</a>
+            <a href="https://wa.me/17342095812" target="_blank" rel="noopener"><b>WhatsApp</b>+1 (734) 209-5812</a>
+            <!-- TODO: replace with the full street address -->
+            <span><b>Office</b>MPS Tours LLC, Michigan, United States</span>
+          </div>
+        </div>
+        <p class="legal__updated">Last updated: September 2026</p>
+
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ======================= SMS TERMS ======================= -->
+<section class="view" id="view-sms-terms">
+  <div class="nav-sentinel" data-sentinel></div>
+
+  <div class="lhero">
+    <div class="container">
+      <div class="lhero__crumb"><a href="#/">Holidays by MPS Tours</a><span>&rsaquo;</span><span>SMS Terms &amp; Conditions</span></div>
+      <h1 class="h-1">SMS Terms <em>&amp;&nbsp;Conditions</em></h1>
+      <p class="lead">The terms that apply when you opt in to receive text messages from Holidays by MPS Tours.</p>
+      <span class="lpill"><b>Effective date:</b> 15 September 2026</span>
+    </div>
+  </div>
+
+  <div class="section legal">
+    <div class="container">
+      <div class="legal__wrap">
+
+        <div class="lnote rv"><i class="ph-fill ph-info"></i><p>By opting in to receive SMS messages from Holidays by MPS Tours (&ldquo;we&rdquo;, &ldquo;us&rdquo;, &ldquo;our&rdquo;), you agree to the following Terms and Conditions (the &ldquo;Terms&rdquo;).</p></div>
+
+        <div class="lsec rv">
+          <div class="lsec__head"><span class="lsec__n">01</span><h2>SMS messaging service</h2></div>
+          <p>By providing your mobile phone number, you consent to receive <strong>customer care messages only</strong> from Holidays by MPS Tours. These may include:</p>
+          <ul>
+            <li>Replies to your quote request or enquiry</li>
+            <li>Booking confirmations and travel documents</li>
+            <li>Travel updates, including schedule and transfer changes</li>
+            <li>Itinerary support from your trip advisor</li>
+            <li>General assistance related to your trip</li>
+          </ul>
+          <div class="lcall"><b>Marketing and promotional messages are not included</b> in this messaging service.</div>
+        </div>
+
+        <div class="lsec rv">
+          <div class="lsec__head"><span class="lsec__n">02</span><h2>Message frequency</h2></div>
+          <p>Message frequency varies. While you are actively planning or travelling you may receive several messages a week; outside of that, expect roughly <strong>1&ndash;2 customer care messages per month</strong>. Holidays by MPS Tours reserves the right to adjust this frequency as needed for customer support purposes.</p>
+          <p>We and the mobile carriers are not liable for any delayed or undelivered messages.</p>
+        </div>
+
+        <div class="lsec rv">
+          <div class="lsec__head"><span class="lsec__n">03</span><h2>Message and data rates</h2></div>
+          <p>Standard message and data rates may apply according to your wireless carrier&rsquo;s plan.</p>
+        </div>
+
+        <div class="lsec rv">
+          <div class="lsec__head"><span class="lsec__n">04</span><h2>Privacy</h2></div>
+          <p>Your information is handled according to our Privacy Policy, which explains what we collect and how we protect it.</p>
+          <p>Read it here: <a href="#/privacy">Privacy Policy</a></p>
+        </div>
+
+        <div class="lsec rv">
+          <div class="lsec__head"><span class="lsec__n">05</span><h2>Opt-out instructions</h2></div>
+          <p>You can opt out of SMS messages at any time by replying <strong>STOP</strong> to any message. You will receive one final message confirming your opt-out request, and no further texts after that.</p>
+          <span class="lchip lchip--stop"><i class="ph-bold ph-hand-palm"></i>Reply STOP to opt out</span>
+        </div>
+
+        <div class="lsec rv">
+          <div class="lsec__head"><span class="lsec__n">06</span><h2>Help and customer support</h2></div>
+          <p>To request help, reply <strong>HELP</strong> to any message.</p>
+          <span class="lchip lchip--help"><i class="ph-bold ph-lifebuoy"></i>Reply HELP for support</span>
+          <p>You can also contact us at:</p>
+          <ul>
+            <li>Email: <a href="mailto:holidays@mpstours.com">holidays@mpstours.com</a></li>
+            <li>Phone: <a href="tel:+15172344046">(517) 234-4046</a></li>
+            <li>WhatsApp: <a href="https://wa.me/17342095812" target="_blank" rel="noopener">+1 (734) 209-5812</a></li>
+          </ul>
+        </div>
+
+        <div class="lsec rv">
+          <div class="lsec__head"><span class="lsec__n">07</span><h2>Liability disclaimer</h2></div>
+          <p>Holidays by MPS Tours is not responsible for:</p>
+          <ul>
+            <li>Any charges incurred from message delivery</li>
+            <li>Delays or failures in SMS transmission</li>
+            <li>Carrier or third-party service interruptions</li>
+          </ul>
+          <p>Use of the SMS service is at your own risk, and subject to your carrier&rsquo;s terms and limitations.</p>
+        </div>
+
+        <div class="lsec rv">
+          <div class="lsec__head"><span class="lsec__n">08</span><h2>Changes to these terms</h2></div>
+          <p>We may update these Terms from time to time. The effective date at the top of the page always shows the current version. Continuing to use the SMS service after a change means you accept the updated Terms.</p>
+        </div>
+
+        <div class="help-card rv rv--scale">
+          <span class="help-card__eyebrow">Questions about this policy?</span>
+          <h2 class="h-2">We&rsquo;re here to <em>help</em></h2>
+          <div class="help-card__rows">
+            <a href="mailto:holidays@mpstours.com"><b>Email</b>holidays@mpstours.com</a>
+            <a href="tel:+15172344046"><b>Phone</b>(517) 234-4046</a>
+            <a href="https://wa.me/17342095812" target="_blank" rel="noopener"><b>WhatsApp</b>+1 (734) 209-5812</a>
+            <!-- TODO: replace with the full street address -->
+            <span><b>Office</b>MPS Tours LLC, Michigan, United States</span>
+          </div>
+        </div>
+        <p class="legal__updated">Last updated: September 2026</p>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= FOOTER ======================= -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <a class="logo" href="#/" aria-label="Holidays by MPS Tours">
+          <img class="logo__mark" src="assets/img/logo.png" width="722" height="214" alt="Holidays by MPS Tours" decoding="async"><img class="logo__mark logo__mark--knockout" src="assets/img/logo-white.png" width="722" height="214" alt="" aria-hidden="true" decoding="async">
+        </a>
+        <p class="footer__about">Signature holiday packages with flights, hotels, transfers and guided days included, planned by one advisor from first quote to flight home.</p>
+        <div class="footer__social">
+          <a href="#" aria-label="Instagram"><i class="ph ph-instagram-logo"></i></a>
+          <a href="#" aria-label="Facebook"><i class="ph ph-facebook-logo"></i></a>
+          <a class="is-wa" href="https://wa.me/17342095812" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp"><i class="ph-fill ph-whatsapp-logo"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4>Packages</h4>
+        <ul id="footer-packages"></ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#/" data-to="about">About</a></li>
+          <li><a href="#/" data-to="steps">How it works</a></li>
+          <li><a href="#/" data-to="reviews">Reviews</a></li>
+          <li><a href="#/" data-to="faq">FAQ</a></li>
+          <li><a href="#/" data-to="contact">Contact</a></li>
+          <li><a href="#/privacy">Privacy Policy</a></li>
+          <li><a href="#/sms-terms">SMS Terms &amp; Conditions</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Reach us</h4>
+        <ul>
+          <li><a href="tel:+15172344046">(517) 234-4046</a></li>
+          <li><a href="https://wa.me/17342095812" target="_blank" rel="noopener">WhatsApp +1 (734) 209-5812</a></li>
+          <li><a href="mailto:holidays@mpstours.com">holidays@mpstours.com</a></li>
+          <li>Michigan, United States</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 Holidays by MPS Tours, a venture of MPS Tours LLC.</span>
+      <span><a href="#/privacy">Privacy Policy</a> &nbsp;&nbsp; <a href="#/sms-terms">SMS Terms</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- Quote modal -->
+<div class="modal" id="quote-modal" role="dialog" aria-modal="true" aria-label="Request a free quote">
+  <div class="modal__bd" data-close></div>
+  <div class="modal__panel">
+    <button class="modal__close" data-close aria-label="Close"><i class="ph-bold ph-x"></i></button>
+    <div class="form-card" id="modal-form-card"></div>
+  </div>
+</div>
+
+<a class="fab" href="https://wa.me/17342095812" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><i class="ph-fill ph-whatsapp-logo"></i></a>
+<div class="toast" id="toast"><i class="ph-fill ph-check-circle"></i><span></span></div>
+<script>
+/* ==========================================================================
+   DATA
+   Package text ported from the HolidaysByMPS package files. Photography lives in
+   assets/img: `img` is the 900x700 card crop, `hero` the 1920x1080 banner and
+   `portrait` the 900x1100 crop used by the featured rail. See assets/img/CREDITS.md.
+   ========================================================================== */
+const CONTACT = {
+  phone:'(517) 234-4046', tel:'tel:+15172344046',
+  wa:'https://wa.me/17342095812', waDisplay:'+1 (734) 209-5812',
+  email:'holidays@mpstours.com'
+};
+const PACKAGES = [
+  {
+    slug:'greece-signature-escape', name:'Greece Signature Escape', tagline:'History meets paradise',
+    region:'Europe', days:9, nights:8, price:2990, priceNote:'Based on 2 adults sharing. Flexible dates.',
+    route:['Athens','Mykonos','Santorini'], tags:['islands','beach','history','ferry'],
+    summary:'Nine days across Athens, Mykonos and Santorini with flights, boutique hotels, private transfers and three signature experiences included. Every ferry and flight is pre-arranged, so you just show up and go.',
+    img:'assets/img/greece-card.jpg', hero:'assets/img/greece-hero.jpg', portrait:'assets/img/greece-portrait.jpg',
+    facts:[['Duration','9 days / 8 nights'],['Destinations','Athens, Mykonos, Santorini'],['Hotels','4 hotels, 8 nights'],['Meal plan','Daily breakfast'],['Departures','Flexible dates']],
+    highlights:[
+      ['Acropolis and ancient Athens','A private, guided half-day through the landmarks that shaped Western history.','ph-columns'],
+      ['Mykonos farm wine tasting','Four local wines and a sommelier\'s welcome at a traditional countryside farm.','ph-wine'],
+      ['Santorini sunset catamaran','Red Beach, volcanic hot springs, a Greek BBQ and the island\'s legendary sunset.','ph-sailboat'],
+      ['Three islands, zero logistics','Every flight, ferry and transfer pre-arranged. You just show up and go.','ph-path']
+    ],
+    stays:[
+      {city:'Athens', nights:'2 nights', intro:'The cradle of Western civilization opens your journey. Two nights to settle in, get your bearings and take in 5,000 years of history before the island-hopping begins.', facts:['St George Lycabettus Hotel, Kolonaki district','Double room, daily breakfast'],
+        days:[
+          {n:'1',label:'Arrival',title:'Fly into Athens',text:'Land at Athens International Airport, where a private driver is waiting to take you straight to St George Lycabettus Hotel. The rest of the evening is yours: settle in, or take a first stroll through Kolonaki.'},
+          {n:'2',label:'Private tour, 4 to 6 hours',title:'Best of Athens',text:'Your driver-guide leads a private half-day through the Ancient and Roman Agora, the Temple of Olympian Zeus, the Panathenaic Stadium and Mount Lycabettus for panoramic city views, continuing on to the Changing of the Guard, Plaka and the Acropolis itself. Entrance tickets to archaeological sites are not included unless otherwise specified.'}
+        ]},
+      {city:'Mykonos', nights:'2 nights', intro:'Whitewashed lanes, windmills and turquoise water. Two nights on one of the Aegean\'s most beloved islands, reached by high-speed ferry from Athens.', facts:['Nimbus Mykonos, boutique hotel','Double room, daily breakfast'],
+        days:[
+          {n:'3',label:'Ferry transfer',title:'Athens (Piraeus) to Mykonos',text:'A private driver takes you from your Athens hotel to Piraeus Port for a high-speed ferry to Mykonos. On arrival, you are met at the terminal and driven straight to Nimbus Mykonos.'},
+          {n:'4',label:'Experience, afternoon or evening',title:'Traditional farm wine tasting',text:'Head inland to the village of Ano Mera for a guided tasting of four local Greek wines, hosted by a sommelier and paired with traditional Mykonian snacks. The rest of the day is free for the beach or Mykonos Town.'}
+        ]},
+      {city:'Santorini', nights:'3 nights', intro:'The longest stay of the trip. Three nights for caldera views, whitewashed villages and the volcanic landscape Santorini is famous for.', facts:['Nimbus Santorini','Double room, daily breakfast'],
+        days:[
+          {n:'5',label:'Ferry transfer',title:'Mykonos to Santorini',text:'Collected from your hotel and driven to Mykonos Port for the ferry to Santorini. On arrival at Athinios Port, a private driver takes you directly to Nimbus Santorini.'},
+          {n:'6',label:'Free day',title:'Explore at your own pace',text:'A day left open on purpose. Wander Fira or Oia, find your own caldera-view lunch spot, or simply enjoy the hotel. Ask your trip advisor for suggestions any time.'},
+          {n:'7',label:'Experience, half-day',title:'Sunset catamaran cruise',text:'Board at Vlychada Marina and sail past the volcanic Red Beach and White Beach, with swim stops at Mesa Pigadia and the mineral-rich hot springs of Palea Kameni. A traditional Greek BBQ and local drinks are served on board as the island\'s legendary sunset unfolds.'}
+        ]},
+      {city:'Departure', nights:'1 night', intro:'A final overnight back in Athens keeps your departure morning unhurried, with the airport close by.', facts:['Wyndham Athens Residence (Zeus Hotel)','Double room, daily breakfast'],
+        days:[
+          {n:'8',label:'Domestic flight',title:'Santorini to Athens',text:'A private driver collects you from Nimbus Santorini and transfers you to Santorini Airport for your short domestic flight back to Athens, where you are met and driven to Wyndham Athens Residence for the night.'},
+          {n:'9',label:'Departure',title:'Fly home',text:'A final private transfer takes you to Athens International Airport in time for your international flight back to the United States.'}
+        ]}
+    ],
+    included:['Round-trip international flights, USA to Athens','4 hotels, 8 nights total, across 3 destinations','Daily breakfast at every hotel','Private airport transfers, arrival and departure','Private ferry and domestic flight transfers between islands','3 signature experiences (Athens, Mykonos and Santorini)','Support from your trip advisor throughout'],
+    notIncluded:['Entrance tickets to archaeological sites','Travel insurance','Meals beyond daily breakfast','Personal spending and optional extra excursions'],
+    tip:'Want to add extra excursions, upgrade a hotel category, or extend a stay? Tell your trip advisor when you request your quote. This itinerary is a starting point, not a fixed script.'
+  },
+  {
+    slug:'greece-turkey-signature-escape', name:'Greece + Turkey: Two Shores, One Journey', short:'Greece + Turkey Signature Escape', tagline:'The Greek islands, plus two nights in Istanbul on us',
+    region:'Europe', days:11, nights:10, price:2990, priceNote:'Same price as Greece alone. Based on 2 adults sharing.',
+    route:['Athens','Mykonos','Santorini','Istanbul'], tags:['islands','beach','history','istanbul','cruise'],
+    summary:'Everything in the Greece Signature Escape, plus two complimentary nights in a 5-star Istanbul hotel and a private-table Bosphorus dinner cruise, at the same price as Greece alone.',
+    img:'assets/img/turkey-card.jpg', hero:'assets/img/turkey-hero.jpg', portrait:'assets/img/turkey-portrait.jpg',
+    facts:[['Duration','11 days / 10 nights'],['Destinations','Athens, Mykonos, Santorini, Istanbul'],['Hotels','5 hotels, 10 nights'],['Meal plan','Daily breakfast'],['Istanbul','2 nights, complimentary']],
+    highlights:[
+      ['Acropolis and ancient Athens','A private, guided half-day through the landmarks that shaped Western history.','ph-columns'],
+      ['Mykonos farm wine tasting','Four local wines and a sommelier\'s welcome at a traditional countryside farm.','ph-wine'],
+      ['Santorini sunset catamaran','Red Beach, volcanic hot springs, a Greek BBQ and the island\'s legendary sunset.','ph-sailboat'],
+      ['Bosphorus dinner cruise','A private table on the water in Istanbul. Dinner included, on us, on your final nights.','ph-fork-knife']
+    ],
+    stays:[
+      {city:'Athens', nights:'2 nights', intro:'The cradle of Western civilization opens your journey. Two nights to settle in, get your bearings and take in 5,000 years of history before the island-hopping begins.', facts:['St George Lycabettus Hotel, Kolonaki district','Double room, daily breakfast'],
+        days:[
+          {n:'1',label:'Arrival',title:'Fly into Athens',text:'Land at Athens International Airport, where a private driver is waiting to take you straight to St George Lycabettus Hotel. The rest of the evening is yours: settle in, or take a first stroll through Kolonaki.'},
+          {n:'2',label:'Private tour, 4 to 6 hours',title:'Best of Athens',text:'Your driver-guide leads a private half-day through the Ancient and Roman Agora, the Temple of Olympian Zeus, the Panathenaic Stadium and Mount Lycabettus, continuing on to the Changing of the Guard, Plaka and the Acropolis itself. Entrance tickets to archaeological sites are not included unless otherwise specified.'}
+        ]},
+      {city:'Mykonos', nights:'2 nights', intro:'Whitewashed lanes, windmills and turquoise water. Two nights on one of the Aegean\'s most beloved islands, reached by high-speed ferry from Athens.', facts:['Nimbus Mykonos, boutique hotel','Double room, daily breakfast'],
+        days:[
+          {n:'3',label:'Ferry transfer',title:'Athens (Piraeus) to Mykonos',text:'A private driver takes you from your Athens hotel to Piraeus Port for a high-speed ferry to Mykonos. On arrival, you are met at the terminal and driven straight to Nimbus Mykonos.'},
+          {n:'4',label:'Experience, afternoon or evening',title:'Traditional farm wine tasting',text:'Head inland to the village of Ano Mera for a guided tasting of four local Greek wines, hosted by a sommelier and paired with traditional Mykonian snacks. The rest of the day is free for the beach or Mykonos Town.'}
+        ]},
+      {city:'Santorini', nights:'3 nights', intro:'The longest stay of the trip. Three nights for caldera views, whitewashed villages and the volcanic landscape Santorini is famous for.', facts:['Nimbus Santorini','Double room, daily breakfast'],
+        days:[
+          {n:'5',label:'Ferry transfer',title:'Mykonos to Santorini',text:'Collected from your hotel and driven to Mykonos Port for the ferry to Santorini. On arrival at Athinios Port, a private driver takes you directly to Nimbus Santorini.'},
+          {n:'6',label:'Free day',title:'Explore at your own pace',text:'A day left open on purpose. Wander Fira or Oia, find your own caldera-view lunch spot, or simply enjoy the hotel.'},
+          {n:'7',label:'Experience, half-day',title:'Sunset catamaran cruise',text:'Board at Vlychada Marina and sail past the volcanic Red Beach and White Beach, with swim stops at Mesa Pigadia and the hot springs of Palea Kameni. A traditional Greek BBQ and local drinks are served on board as the sunset unfolds.'}
+        ]},
+      {city:'Athens (return)', nights:'1 night', intro:'A final overnight back in Athens before the flight to Istanbul.', facts:['Wyndham Athens Residence (Zeus Hotel)','Double room, daily breakfast'],
+        days:[
+          {n:'8',label:'Domestic flight',title:'Santorini to Athens',text:'A private driver collects you from Nimbus Santorini and transfers you to Santorini Airport for your short domestic flight back to Athens, where you are met and driven to Wyndham Athens Residence for the night.'}
+        ]},
+      {city:'Istanbul', nights:'2 nights', intro:'Two complimentary nights bridging two continents. Our gift to you on this package, at no extra cost over the Greece-only price.', facts:['5-star hotel, complimentary','Double room, daily breakfast'],
+        days:[
+          {n:'9',label:'Flight, complimentary stopover begins',title:'Athens to Istanbul',text:'A flight to Istanbul, where a private driver meets you at the airport and transfers you to your 5-star hotel, the first of two complimentary nights included on this package.'},
+          {n:'10',label:'Experience, evening, complimentary',title:'Bosphorus dinner cruise',text:'A free day to explore Istanbul at your own pace. The Blue Mosque, Hagia Sophia and the Grand Bazaar are all within reach. In the evening, enjoy a private-table dinner cruise along the Bosphorus, sailing between Europe and Asia as the city lights come on.'},
+          {n:'11',label:'Departure',title:'Fly home',text:'A final private transfer takes you to Istanbul Airport in time for your international flight back to the United States.'}
+        ]}
+    ],
+    included:['Round-trip international flights, USA to Athens and Istanbul','5 hotels, 10 nights total, across 4 destinations','Daily breakfast at every hotel','Private airport transfers throughout, including Istanbul','Private ferry and domestic flight transfers between islands','3 signature experiences (Athens, Mykonos and Santorini)','2 complimentary nights in a 5-star Istanbul hotel, with breakfast','Complimentary Bosphorus dinner cruise with a private table','Support from your trip advisor throughout'],
+    notIncluded:['Entrance tickets to archaeological sites','Travel insurance','Meals beyond daily breakfast','Personal spending and optional extra excursions'],
+    tip:'The Istanbul stopover is a complimentary addition. Tell your trip advisor when you request your quote if you would like more nights in Istanbul, extra excursions, or a hotel upgrade anywhere on the trip.'
+  },
+  {
+    slug:'italian-train-journey', name:'The Italian Train Journey', tagline:'Rome, Florence, Venice and Milan',
+    region:'Europe', days:9, nights:8, price:2490, priceNote:'Based on double occupancy. Final quote confirmed for your departure city.',
+    route:['Rome','Florence','Venice','Milan'], tags:['train','art','history','city','lakes'],
+    summary:'Eight nights in four cities, connected by high-speed train. Superior category hotels, round-trip flights (into Rome, home from Milan) and five guided tours with skip-the-line access included.',
+    img:'assets/img/italy-card.jpg', hero:'assets/img/italy-hero.jpg', portrait:'assets/img/italy-portrait.jpg',
+    facts:[['Duration','8 nights / 9 days'],['Cities','Rome, Florence, Venice, Milan'],['Flights','US to Rome, Milan to US'],['Train','High-speed, standard class'],['Hotels','Superior category, 8 nights'],['Tours','5 guided tours included']],
+    highlights:[
+      ['Ancient Rome and the Vatican','Skip-the-line access to the Colosseum, Roman Forum, Vatican Museums and the Sistine Chapel.','ph-columns'],
+      ['Michelangelo\'s David','A face-to-face visit with the Renaissance masterpiece at Florence\'s Accademia Gallery.','ph-palette'],
+      ['Venice by water','St. Mark\'s Basilica, the Doge\'s Palace and the Bridge of Sighs, all skip-the-line.','ph-boat'],
+      ['Lake Como and Switzerland','A private boat cruise to Bellagio, plus a border crossing into Lugano. Two countries, one day.','ph-mountains']
+    ],
+    stays:[
+      {city:'Rome', nights:'2 nights', intro:'Your journey opens in the Eternal City. Two millennia of history within walking distance of your hotel.', facts:['Superior category hotel','Daily breakfast included','Day 3: high-speed train to Florence (approx. 1h 30m)'],
+        days:[{label:'Included tour, full day',title:'Rome guided tour',text:'The Colosseum, Roman Forum, Vatican Museums, Sistine Chapel and St. Peter\'s Basilica, with skip-the-line access and an expert guide.'}]},
+      {city:'Florence', nights:'2 nights', intro:'The birthplace of the Renaissance, reached from Rome in under two hours. Enough time to see its icons without rushing.', facts:['Superior category hotel','Daily breakfast included','Day 5: high-speed train to Venice (approx. 2 hours)'],
+        days:[{label:'Included tour',title:'David, the Cathedral and city highlights',text:'Michelangelo\'s David at the Accademia Gallery, the Duomo complex (Cathedral, Baptistery, Opera del Duomo Museum and the Crypt of Santa Reparata), and a walking tour ending at the Ponte Vecchio.'}]},
+      {city:'Venice', nights:'2 nights', intro:'A city built on water, with two nights to explore its canals, bridges and quieter corners beyond St. Mark\'s Square.', facts:['Superior category hotel','Daily breakfast included','Day 7: high-speed train to Milan (approx. 2h 30m)'],
+        days:[{label:'Included tour',title:'St. Mark\'s Basilica, Doge\'s Palace and Bridge of Sighs',text:'Skip-the-line entry to St. Mark\'s Basilica, the Doge\'s Palace, the Bridge of Sighs, the New Prisons, the Correr Museum, the Marciana Library and the National Archaeological Museum.'}]},
+      {city:'Milan', nights:'2 nights', intro:'Your journey closes in Italy\'s fashion and design capital. One day for the city\'s icons, one for a full-day escape to the lakes.', facts:['Superior category hotel','Daily breakfast included','Carry your passport on the Lake Como day for the Switzerland border crossing'],
+        days:[
+          {label:'Included tour',title:'Duomo Cathedral and rooftop terraces',text:'The cathedral interior, the famous rooftop terraces with views to the Alps, the Duomo Museum and the Church of St. Gottardo in Corte.'},
+          {label:'Included tour, full day',title:'Lake Como, Bellagio and Lugano with private boat cruise',text:'The lakeside town of Como, a private cruise across Lake Como, Bellagio, and a crossing into Switzerland to visit Lugano. Your international flight home departs the following day.'}
+        ]}
+    ],
+    included:['Round-trip international flights: US to Rome, Milan to US','Domestic high-speed train, standard class: Rome, Florence, Venice, Milan','8 nights in Superior category hotels','8 breakfasts','All airport transfers','All train station transfers','5 guided tours (Rome, Florence, Venice and 2 in Milan)'],
+    notIncluded:['Meals beyond daily breakfast','Travel insurance','Personal spending money','A valid passport (required for the Switzerland border crossing on the Lake Como day)'],
+    tip:'Departing from a smaller airport, or traveling with a larger group? Tell your trip advisor when you request your quote. Flight routing and pricing are confirmed to your specific departure city.'
+  },
+  {
+    slug:'imperial-europe-escape', name:'Imperial Europe Escape', tagline:'Czech Republic, Austria and Hungary',
+    region:'Europe', days:9, nights:7, price:2290, priceNote:'Based on 2 adults sharing. Charm category hotels.',
+    route:['Prague','Vienna','Budapest'], tags:['train','city','history','self-guided'],
+    summary:'Prague, Vienna and Budapest, self-guided and train by train. Flights, Charm category hotels, airport transfers and a guided city tour in each capital, with free time in between to explore on your own.',
+    img:'assets/img/imperial-card.jpg', hero:'assets/img/imperial-hero.jpg', portrait:'assets/img/imperial-portrait.jpg',
+    facts:[['Duration','9 days / 7 nights'],['Destinations','Prague, Vienna, Budapest'],['Style','Self-guided, train by train'],['Hotels','Charm category, 7 nights'],['Meal plan','7 breakfasts']],
+    highlights:[
+      ['Prague\'s Old Town','The Astronomical Clock, Old Town Square and the legendary Charles Bridge.','ph-clock'],
+      ['Vienna\'s Ringstrasse','Imperial palaces, grand museums and the storied State Opera House.','ph-music-notes'],
+      ['Budapest\'s Chain Bridge','Views across the Danube to Buda Castle and the Fisherman\'s Bastion.','ph-bridge'],
+      ['Travel at your own pace','Guided city tours in each capital, with free time in between to explore independently.','ph-footprints']
+    ],
+    stays:[
+      {city:'Prague', nights:'3 nights', intro:'Your journey opens in the City of a Hundred Spires. Three nights to wander fairytale cobblestone streets before the trains begin.', facts:['Charm category hotel','Double room, daily breakfast'],
+        days:[
+          {n:'1',label:'Departure',title:'Overnight flight to Prague',text:'Head to your departure airport for an overnight flight to the Czech capital. If either your outbound or inbound flight departs before 4:00 a.m., plan to arrive at the airport the night before.'},
+          {n:'2',label:'Arrival',title:'Welcome to Prague',text:'Land in Prague, nicknamed the Golden City for its fairytale old town and lively nightlife. Transfer to your hotel and spend the rest of the day exploring at your own pace.'},
+          {n:'3',label:'Included tour, 2h 30m',title:'Prague city tour',text:'A guided walk past the Powder Tower and through the Old Town to Old Town Square, home to the famous Astronomical Clock and the Church of Our Lady before Tyn, finishing at the iconic Charles Bridge. Optional: a folklore-themed dinner with live music and dance at a traditional Czech restaurant.'},
+          {n:'4',label:'Free day',title:'Explore at your own pace',text:'Wander the atmospheric Old Town, people-watch from a cafe terrace, or browse Prague\'s museums and galleries. Optional: a visit to Prague Castle (St. Vitus Cathedral, St. George\'s Basilica, the Old Royal Palace and the Golden Lane), or a boat ride along Prague\'s canals through the historic Mala Strana district.'}
+        ]},
+      {city:'Vienna', nights:'2 nights', intro:'An imperial city of grand boulevards and coffeehouses, and the hometown of Mozart and Beethoven. Two nights to take it all in.', facts:['Charm category hotel','Double room, daily breakfast'],
+        days:[
+          {n:'5',label:'Train transfer, approx. 5h 30m',title:'Prague to Vienna',text:'After breakfast, self-transfer to the train station for a 2nd class journey through the landscapes of Bohemia and Moravia into Austria. Self-transfer to your Vienna hotel, then spend the evening exploring the historic centre. The riverbanks come alive with bars and restaurants when the weather is warm.'},
+          {n:'6',label:'Included tour, 3h',title:'Vienna city tour',text:'Discover the City of Dreams on a guided tour along the Ringstrasse, taking in the State Opera House, the Museums of Art History and Natural History, the Museumsquartier, the Imperial Palace, the Parliament, City Hall and the Burgtheater. Optional: an evening classical music concert, a Vienna tradition not to be missed.'}
+        ]},
+      {city:'Budapest', nights:'2 nights', intro:'The Pearl of the Danube, split in two by the river into Buda and Pest, each with its own distinct character.', facts:['Charm category hotel','Double room, daily breakfast'],
+        days:[
+          {n:'7',label:'Train transfer, approx. 2h 50m',title:'Vienna to Budapest',text:'After breakfast, catch a morning train through the changing landscapes into Hungary. Self-transfer to your Budapest hotel and spend the afternoon at leisure. Optional: an evening Danube river cruise with a glass of champagne.'},
+          {n:'8',label:'Included tour, 2h',title:'Panoramic Budapest tour',text:'Starting at Heroes\' Square, pass the neo-Renaissance National Opera and the imposing Hungarian Parliament, then reach the banks of the Danube for views across to Castle Hill, Buda Castle and the Fisherman\'s Bastion, finishing at the glorious Chain Bridge. Optional: a two-hour Buda City Tour through the Castle District, Matthias Church and Gellert Hill.'},
+          {n:'9',label:'Departure',title:'Fly home',text:'Breakfast at the hotel, then transfer to Budapest Airport in time for your flight back to the United States.'}
+        ]}
+    ],
+    included:['Round-trip international flights, USA to Prague and from Budapest','2nd class train journeys, Prague to Vienna and Vienna to Budapest','7 nights in Charm category hotels, across 3 cities','7 breakfasts','Airport-hotel-airport transfers','Panoramic guided tours of Prague, Vienna and Budapest','All air taxes and fuel surcharges'],
+    notIncluded:['Transfers to and from train stations (self-transfer)','Drinks, tips and gratuities','Optional excursions (folklore dinner, Prague Castle, concerts, Danube cruise)','Travel insurance'],
+    tip:'This is a self-guided, independent journey: you travel between cities on your own, with a guided tour included in each capital. Want a fully escorted version instead, or a Superior or Luxury hotel upgrade? Ask your trip advisor when you request your quote.'
+  },
+  {
+    slug:'japan-grand-tour', name:'Japan Grand Tour', tagline:'Temples, trains and neon lights',
+    region:'Asia', days:15, nights:14, price:null, priceLabel:'Personalized quote', priceNote:'Based on your departure city and selected excursions.',
+    route:['Tokyo','Kanazawa','Takayama','Kyoto','Hiroshima','Osaka'], tags:['train','culture','city','temples','food'],
+    summary:'Fourteen nights across six cities by bullet train, with round-trip economy flights, every hotel and every transfer fixed. Excursions are optional: choose the ones that fit your pace and skip the rest.',
+    img:'assets/img/japan-card.jpg', hero:'assets/img/japan-hero.jpg', portrait:'assets/img/japan-portrait.jpg',
+    facts:[['Duration','14 nights / 15 days'],['Cities','6 cities, 7 stays'],['Flights','Economy, all major US gateways'],['Hotels','6 fixed hotels, 14 nights'],['Meal plan','Breakfast included'],['Excursions','Choose your own']],
+    highlights:[
+      ['Fushimi Inari and Kyoto\'s icons','Thousands of vermillion torii gates, centuries-old temples and the geisha streets of Gion.','ph-flower-lotus'],
+      ['UNESCO villages and snow country','Shirakawa-go\'s thatched-roof mountain hamlets, reached from historic Takayama.','ph-house-line'],
+      ['Hiroshima and Miyajima','The Peace Memorial Park and Museum, paired with Itsukushima\'s floating torii gate.','ph-anchor-simple'],
+      ['Neon Tokyo and Dotonbori Osaka','Two of Asia\'s most electric nightscapes bookend your journey through the countryside.','ph-city']
+    ],
+    stays:[
+      {city:'Tokyo', nights:'3 nights', intro:'Your journey opens in a city of temples and neon in equal measure. With three nights here, plan on two full free days after your arrival: enough time for two of the excursions below, not all three.', facts:['Hotel fixed for all 14 nights','Daily breakfast included','Suggested excursions: pick 2'],
+        days:[
+          {label:'Optional, full day',title:'Mt. Fuji and Hakone',text:'Mt. Fuji 5th Station, the Hakone Ropeway and a Lake Ashi cruise.'},
+          {label:'Optional, full day',title:'Tokyo city tour',text:'Meiji Jingu, the Imperial Palace, Asakusa, Tokyo Skytree and a Tokyo Bay cruise.'},
+          {label:'Optional, full day',title:'Disneyland or DisneySea',text:'A 1-day passport with private morning transfer.'},
+          {label:'Optional, evening',title:'Samurai Theater experience',text:'A 1-hour costume and swordsmanship experience, easy to add on any evening. We recommend two of the three full-day options, plus Samurai Theater if there is an evening free.'}
+        ]},
+      {city:'Kanazawa', nights:'2 nights', intro:'Reached from Tokyo by Hokuriku Shinkansen, Kanazawa trades neon for lacquerware, samurai districts and one of Japan\'s three great gardens.', facts:['Hotel fixed for all 14 nights','Daily breakfast included'],
+        days:[{label:'This stay',title:'Kenrokuen Garden and Higashi Chaya',text:'No packaged excursion is available for Kanazawa. Kenrokuen Garden and the Higashi Chaya geisha district are both an easy walk or short taxi from the hotel. Ask your advisor if you would like a guided option added.'}]},
+      {city:'Takayama', nights:'2 nights', intro:'A mountain town of preserved Edo-era streets, reached via Toyama and the scenic Limited Express Hida, and the gateway to the UNESCO-listed villages of the Japanese Alps.', facts:['Hotel fixed for all 14 nights','Daily breakfast included','Suggested excursions: both fit comfortably'],
+        days:[
+          {label:'Optional, 2 hours',title:'Takayama Old Town, Jinya and sake tasting',text:'A 2-hour private walk, easy on your arrival afternoon.'},
+          {label:'Optional, 7.5 hours',title:'Shirakawa-go and Gokayama Ainokura UNESCO villages',text:'A 7.5-hour day trip, perfect for your one full free day.'}
+        ]},
+      {city:'Kyoto', nights:'2 nights', intro:'Japan\'s ancient capital, reached via Nagoya on the Limited Express Hida and Tokaido Shinkansen. With 2 nights, plan on roughly one full free day here.', facts:['Hotel fixed for all 14 nights','Daily breakfast included','Suggested excursions: pick 1 full-day tour'],
+        days:[
+          {label:'Optional, full day',title:'Kyoto and Nara highlights',text:'Nara\'s deer park, Fushimi Inari and the Arashiyama Bamboo Forest.'},
+          {label:'Optional, full day',title:'Golden Pavilion and Nijo Castle',text:'Kinkaku-ji, Nijo Castle, Fushimi Inari and Arashiyama. The two full-day tours overlap heavily, so with one free day we recommend just one.'},
+          {label:'Optional, 2-hour evening walk',title:'Gion hidden gems and geisha culture walk',text:'Easy to pair with either tour above if there is evening energy left.'}
+        ]},
+      {city:'Hiroshima', nights:'2 nights', intro:'A direct Shinkansen ride from Kyoto brings you to a city balancing important history with the quiet beauty of the Seto Inland Sea.', facts:['Hotel fixed for all 14 nights','Daily breakfast included'],
+        days:[{label:'Optional, full day',title:'Hiroshima and Miyajima UNESCO day tour',text:'The Peace Memorial Park and Museum, paired with Miyajima Island and Itsukushima Shrine\'s floating torii gate. Fits comfortably in your 2 nights.'}]},
+      {city:'Osaka', nights:'2 nights', intro:'A short Shinkansen ride from Hiroshima delivers you to Japan\'s food and nightlife capital, canals and neon included.', facts:['Hotel fixed for all 14 nights','Daily breakfast included'],
+        days:[{label:'Optional, 3 to 7 hours',title:'Osaka kickstart: hotspots and hidden gems',text:'A flexible guided walk through Dotonbori, Namba and Osaka Castle. With the short transfer in from Hiroshima, we recommend the shorter 3 to 4 hour version, leaving the rest of the day open for independent wandering.'}]},
+      {city:'Tokyo (departure)', nights:'1 night', intro:'One last night back in Tokyo before your international flight home. A transit night more than a touring one.', facts:['Hotel fixed for all 14 nights','Daily breakfast included'],
+        days:[{label:'Our recommendation',title:'Leave this night unscheduled',text:'It is tight against your international departure, and a delayed tour is the last thing you want before a long flight. If you missed a Tokyo excursion earlier in the trip, ask your advisor about swapping the order instead.'}]}
+    ],
+    included:['Round-trip economy flights from all major US gateways','6 hotels, 14 nights total, across 6 cities','Daily breakfast at every hotel','All inter-city train travel (Shinkansen and limited express connections)','Private transfers, every hotel to station and station to hotel','Private airport transfers on arrival and departure in Tokyo','Support from your trip advisor throughout'],
+    notIncluded:['Optional excursions (priced separately, choose your own)','Meals beyond daily breakfast','Travel insurance','Personal spending money'],
+    tip:'Excursions are entirely up to you. Tell your trip advisor which ones you would like when you request your quote. Every suggestion above is a starting point, not a fixed script.'
+  },
+  {
+    slug:'malaysia-singapore-package', name:'From Nature to Future: Malaysia and Singapore', short:'Malaysia and Singapore', tagline:'Modern cities, Borneo culture, island beaches',
+    region:'Asia', days:12, nights:11, price:2690, priceNote:'Based on double occupancy. Final quote confirmed by your trip advisor.',
+    route:['Kuala Lumpur','Kuching','Damai Beach','Singapore'], tags:['city','beach','culture','nature','borneo'],
+    summary:'Twelve days across five destinations, from the Petronas Towers to Borneo\'s Sarawak villages, a beach stay on the Damai coast, and Singapore\'s skyline to finish. Flights, hotels, transfers and five guided experiences included.',
+    img:'assets/img/sea-card.jpg', hero:'assets/img/sea-hero.jpg', portrait:'assets/img/sea-portrait.jpg',
+    facts:[['Duration','12 days / 11 nights'],['Destinations','5, across Malaysia and Singapore'],['Flights','International + 3 regional flights'],['Hotels','11 nights, breakfast included'],['Guided experiences','5 included']],
+    highlights:[
+      ['Petronas Twin Towers','Skip-the-line entry to one of the world\'s most iconic skyscraper landmarks.','ph-buildings'],
+      ['Borneo culture','Traditional Sarawak villages, colonial Kuching and the Sarawak Cultural Village.','ph-tree-palm'],
+      ['Damai Beach','Two nights of tropical resort leisure on Sarawak\'s coastline.','ph-umbrella'],
+      ['Singapore\'s skyline','Marina Bay, Gardens by the Bay and the city\'s futuristic architecture.','ph-city']
+    ],
+    stays:[
+      {city:'Kuala Lumpur', nights:'3 nights', intro:'Your journey opens in Malaysia\'s vibrant capital, blending a modern skyline with cultural landmarks.', facts:['Hotel accommodation with breakfast','Private airport transfer on arrival'],
+        days:[
+          {label:'Included experience',title:'Kuala Lumpur city tour',text:'Petronas Twin Towers, King\'s Palace, National Monument, National Mosque, Merdeka Square and the Railway Station.'},
+          {label:'Included experience',title:'Countryside and Batu Caves tour',text:'The Malaysian countryside, Batu Caves, and local handicraft, pewter and batik experiences.'}
+        ]},
+      {city:'Kuching, Borneo', nights:'2 nights', intro:'A short flight from Kuala Lumpur brings you to the cultural heart of Sarawak.', facts:['Hotel accommodation with breakfast','Domestic flight, Kuala Lumpur to Kuching'],
+        days:[{label:'Included experience',title:'Kuching city tour',text:'Kuching Waterfront, Fort Margherita, City Hall, the Colonial Courthouse, Tua Pek Kong Temple and India Street.'}]},
+      {city:'Damai Beach', nights:'2 nights', intro:'A private transfer from Kuching delivers you to the tropical beauty of Sarawak\'s coastline.', facts:['Hotel accommodation with breakfast','Private transfer, Kuching to Damai Beach'],
+        days:[{label:'Included experience',title:'Sarawak Cultural Village',text:'Traditional Sarawak homes, indigenous cultures, handicrafts, music and dance, with beach leisure time.'}]},
+      {city:'Kuala Lumpur (return)', nights:'1 night', intro:'A brief return to the capital before continuing on to Singapore.', facts:['Hotel accommodation with breakfast','Domestic flight, Kuching to Kuala Lumpur'],
+        days:[{label:'This stay',title:'Free time',text:'Free time for shopping and exploring before your onward flight to Singapore.'}]},
+      {city:'Singapore', nights:'3 nights', intro:'Your journey closes in one of Asia\'s most iconic and futuristic cities.', facts:['Hotel accommodation with breakfast','Flight, Kuala Lumpur to Singapore'],
+        days:[
+          {label:'Included experience',title:'Singapore city sightseeing',text:'Merlion Park, the Singapore River, Marina Bay, Chinatown, Little India, the Financial District and a Hindu temple.'},
+          {label:'Free day',title:'Your own pace',text:'Use it for shopping, leisure, or optional experiences such as Universal Studios, Gardens by the Bay or Sentosa Island.'}
+        ]}
+    ],
+    included:['International airfare','Kuala Lumpur to Kuching, Kuching to Kuala Lumpur and Kuala Lumpur to Singapore flights','11 nights hotel accommodation with daily breakfast','Airport transfers and intercity transfers','Entrance fees for all included sightseeing','Professional local guides and 5 guided experiences','Hotel taxes and applicable service charges'],
+    notIncluded:['Visa fees, if applicable','Travel insurance','Meals other than breakfast, and personal expenses','Optional excursions (Orangutan Centre, Universal Studios, Sentosa and more)'],
+    tip:'Want to add Semenggoh Orangutan Rehabilitation Centre, Bako National Park, Gardens by the Bay or Universal Studios Singapore? Tell your trip advisor when you request your quote.'
+  },
+  {
+    slug:'maldives-package', name:'Maldives: An Escape to Serenity', short:'Maldives All-Inclusive Escape', tagline:'All-inclusive, seaplane included',
+    region:'Asia', days:7, nights:6, price:3499, priceNote:'Based on double occupancy. Final quote confirmed by your trip advisor.',
+    route:['South Ari Atoll'], tags:['beach','island','honeymoon','all-inclusive','diving'],
+    summary:'Six nights at the 5-star Machchafushi Island Resort and Spa in the South Ari Atoll, with round-trip flights, seaplane transfers and an all-inclusive stay across six restaurants and bars. Built for honeymoons, anniversaries and couples.',
+    img:'assets/img/maldives-card.jpg', hero:'assets/img/maldives-hero.jpg', portrait:'assets/img/maldives-portrait.jpg',
+    facts:[['Duration','7 days / 6 nights'],['Resort','5-star, all-inclusive'],['Flights','International + seaplane'],['Perfect for','Honeymoons and couples'],['Villas','Beachfront and overwater']],
+    highlights:[
+      ['Overwater and beachfront villas','112 villas set over a turquoise lagoon, some with private sundecks or plunge pools.','ph-house'],
+      ['A marine protected house reef','Whale sharks, manta rays and sea turtles glide past a reef that starts right off the beach.','ph-fish'],
+      ['Six dining and bar venues','From Italian at Azzuri Mare to Thai at Suan Bua, all included in your all-inclusive stay.','ph-fork-knife'],
+      ['Spa Cenvaree','Thai massage, Vichy hydrotherapy and hot-and-cold plunge pools overlooking the lagoon.','ph-flower']
+    ],
+    stays:[
+      {city:'The resort', nights:'6 nights', intro:'5-star Machchafushi Island Resort and Spa, The Centara Collection. A barefoot-luxury island in the South Ari Atoll Marine Protected Area, one of the best corners of the Maldives for spotting whale sharks and manta rays.', facts:['112 beachfront and overwater villas','Shaded by tropical vegetation and a 200-year-old Banyan tree'],
+        days:[
+          {label:'Your villa',title:'Beachfront or overwater',text:'Choose from spacious beachfront villas or overwater villas with direct lagoon access, some featuring private sundecks or plunge pools. Every villa is air-conditioned with a private balcony, minibar and complimentary Wi-Fi.'},
+          {label:'Dining, drinks and wellness',title:'Six venues, all included',text:'Reef (Western and Asian), Azzuri Mare (Italian), Suan Bua (Thai), the overwater Aqua Bar, Coral Bar and Lounge, and The Club with its own pool and relaxation deck. Unwind at Spa Cenvaree, or swim laps in the infinity pool overlooking the lagoon.'}
+        ]},
+      {city:'Activities', nights:'', intro:'Snorkel the resort\'s award-winning house reef, home to parrotfish, reef sharks, sea turtles and seasonal whale sharks and manta rays.', facts:['PADI dive centre on site','Overwater fitness centre and multi-purpose court'],
+        days:[
+          {label:'Diving',title:'The Kudhi Maa shipwreck',text:'Dive the wreck with the resort\'s PADI dive centre. Certification and equipment rental available.'},
+          {label:'Water sports',title:'Sailing, windsurfing and kayaking',text:'Non-motorized water sports are included, plus tennis, badminton and volleyball on the multi-purpose court.'}
+        ]},
+      {city:'Getting there', nights:'', intro:'Round-trip international flights from major US airports into Male (Velana International Airport).', facts:['Round-trip seaplane transfer, approximately 25 to 30 minutes each way'],
+        days:[{label:'Seaplane',title:'Male to the resort',text:'One of the most scenic parts of the journey: a 25 to 30 minute seaplane hop over the atolls to the resort jetty.'}]}
+    ],
+    included:['Round-trip international airfare from major US airports','Round-trip seaplane transfers, Male to resort','6 nights in a villa at Machchafushi Island Resort and Spa','All-inclusive dining across 6 on-site restaurants and bars','Non-motorized water sports (snorkeling gear, kayaking, sailing, windsurfing)','Support from your Holidays by MPS Tours advisor'],
+    notIncluded:['Spa Cenvaree treatments and PADI diving courses and equipment','Travel insurance','Personal expenses and gratuities','Villa upgrades (for example, private plunge pool categories)'],
+    tip:'Celebrating a honeymoon or anniversary? Let your trip advisor know when you request your quote. Romantic turndowns, room decoration and villa upgrades can often be arranged.'
+  },
+  {
+    slug:'heart-of-the-inca-peru', name:'Heart of the Inca', tagline:'Lima, Cusco and Machu Picchu',
+    region:'Americas', days:6, nights:5, price:1459, priceNote:'Double or triple occupancy, Budget category. 2026 rates.',
+    route:['Lima','Cusco','Sacred Valley','Machu Picchu'], tags:['mountains','history','small-group','adventure'],
+    summary:'Six days through Lima, Cusco, the Sacred Valley and Machu Picchu with small groups, expert local guides and 24/7 in-trip assistance. Fully customizable, with four hotel categories to choose from.',
+    img:'assets/img/peru-card.jpg', hero:'assets/img/peru-hero.jpg', portrait:'assets/img/peru-portrait.jpg',
+    facts:[['Duration','6 days / 5 nights'],['Route','Lima, Cusco, Sacred Valley, Machu Picchu'],['Group size','Small group or private'],['Departures','Daily, year-round'],['Deposit','10% to secure your trip']],
+    highlights:[
+      ['The citadel of Machu Picchu','A guided tour through the legendary Inca citadel, one of the New Seven Wonders of the World.','ph-mountains'],
+      ['The Sacred Valley','Inca terraces, fortresses and market towns strung along the Urubamba River.','ph-map-trifold'],
+      ['Historic Cusco','Cobblestone streets, colonial architecture and Inca stonework in the former imperial capital.','ph-church'],
+      ['Small-group travel','Expert local guides and 24/7 in-trip assistance, with every itinerary fully customizable.','ph-users-three']
+    ],
+    stays:[
+      {city:'Lima', nights:'Day 1', intro:'Your journey opens in Peru\'s coastal capital, a city of Pacific views, colonial architecture and world-class gastronomy.', facts:['Hotel in Miraflores','Private airport pickup'],
+        days:[{n:'1',label:'Arrival',title:'Arrival in Lima',text:'Private pickup at Lima airport and transfer to your hotel in Miraflores for a good night\'s rest. Want more of Lima? Add an extra day with a city tour, museum tour or culinary tour.'}]},
+      {city:'Cusco', nights:'Days 2, 3 and 6', intro:'The historic capital of the Inca Empire, where Spanish colonial churches were built directly atop Inca stonework.', facts:['Domestic flight, Lima to Cusco','Hotel in Cusco\'s historic center'],
+        days:[
+          {n:'2',label:'City tour and flight',title:'Lima city tour, fly to Cusco',text:'Morning city tour, then a flight to Cusco with an evening at leisure to acclimatize to the altitude.'},
+          {n:'3',label:'Guided tour',title:'Cusco city tour',text:'Guided tour of the Plaza de Armas and Cusco Cathedral, the Qorikancha (Temple of the Sun) and the Sacsayhuaman fortress overlooking the city. Continue to the nearby Inca sites of Q\'enqo, Puka Pukara and Tambomachay.'},
+          {n:'6',label:'Departure',title:'Fly home',text:'A free morning before your private transfer to Cusco airport for your departure flight.'}
+        ]},
+      {city:'Sacred Valley', nights:'Day 4', intro:'The Urubamba Valley was the breadbasket of the Inca Empire: a string of terraced farmland, market towns and fortress ruins beneath the Andes.', facts:['Full-day guided tour, private transport'],
+        days:[{n:'4',label:'Full-day guided tour',title:'Sacred Valley tour',text:'Visit the Pisac ruins and terraces, with time to browse the town\'s famous artisan market. Lunch in the valley, then continue to Ollantaytambo to explore its Inca fortress and Temple of the Sun. Overnight positioned for an early train to Machu Picchu the next morning.'}]},
+      {city:'Machu Picchu', nights:'Day 5', intro:'The day the whole trip builds toward: the legendary citadel high above the Urubamba River, reached by train through the cloud forest.', facts:['Round-trip train, Sacred Valley to Aguas Calientes'],
+        days:[{n:'5',label:'Guided tour',title:'Machu Picchu tour',text:'Morning train to Aguas Calientes, then a short bus ride up to the citadel. Guided tour of Machu Picchu with an expert local guide. Return by train and road transfer back to Cusco in the evening.'}]}
+    ],
+    priceTable:{cols:['Budget','3 Star','4 Star','5 Star'],rows:[['Double / Triple','$1,459','$1,589','$1,929','$2,489'],['Single','$2,159','$2,409','$2,949','$4,129']],note:'Prices per person, 2026 rates. Rates vary by departure date; contact your trip advisor for a free personalized quotation. Zero postponement fees up to 20 days before arrival, with a 10% deposit to secure your trip.'},
+    included:['Hotels throughout, at your chosen category','Domestic flight, Lima to Cusco','Round-trip train tickets to Machu Picchu','All private transfers and entrance tickets for included tours','Expert local guides throughout','24/7 in-trip assistance'],
+    notIncluded:['International airfare','Lunches or dinners, unless otherwise specified','Airport taxes','Tips and gratuities'],
+    tip:'Want to add an adventure activity in the Sacred Valley, such as mountain biking, river rafting, ziplining or a ceramic class? Ask your trip advisor when you request your quote.'
+  }
+];
+
+const FEATURED = ['maldives-package','japan-grand-tour','heart-of-the-inca-peru'];
+
+const MARQUEE = ['Santorini','Kyoto','Machu Picchu','Istanbul','Venice','Prague','Maldives','Singapore','Mykonos','Tokyo','Budapest','Borneo','Rome','Cusco','Athens','Hiroshima'];
+
+/* Sample testimonials. Replace with verified reviews before launch. */
+const REVIEWS = [
+  {name:'Renata and Luis Okafor', where:'Grand Rapids, MI', trip:'Greece Signature Escape', q:'Every ferry, every driver, every hotel was exactly where the itinerary said it would be. We never once opened a maps app in a panic.'},
+  {name:'Tamsin Ferreira', where:'Chicago, IL', trip:'Japan Grand Tour', q:'Fourteen nights and not one train we had to figure out ourselves. The excursion advice was honest, including which ones to skip.'},
+  {name:'The Adebayo family', where:'Ann Arbor, MI', trip:'Italian Train Journey', q:'Skip-the-line at the Vatican with two kids in July. That alone was worth the whole package.'},
+  {name:'Marcus and Ji-woo Hale', where:'Columbus, OH', trip:'Maldives Escape', q:'The seaplane was the best 25 minutes of the year. Our advisor arranged the anniversary turndown without us asking twice.'},
+  {name:'Priyanka Raval', where:'Detroit, MI', trip:'Heart of the Inca', q:'Small group, brilliant guide, and they moved our Machu Picchu day when the weather turned. Zero fuss.'},
+  {name:'Owen Castellanos', where:'Lansing, MI', trip:'Imperial Europe Escape', q:'Self-guided but never alone. Train tickets appeared on WhatsApp the night before each leg, every time.'}
+];
+
+const FAQS = [
+  {q:'Is the price I see the price I pay?', a:'Prices are per person, based on two adults sharing, and quoted from major US gateways. Your advisor confirms the final figure for your departure city, dates and hotel category before anything is booked. There are no booking fees.'},
+  {q:'Do I pay anything to get a quote?', a:'No. A quote is free and there is no obligation. You only pay a deposit once the itinerary reads exactly the way you want it.'},
+  {q:'Can I change the itinerary?', a:'Yes. Every package is a starting point. Add nights, swap hotel categories, add excursions, or extend a stay. Your advisor re-prices it and sends back a clean version.'},
+  {q:'What is usually included, and what is not?', a:'Most packages include international flights, hotels with daily breakfast, airport and intercity transfers, and the guided tours listed. Travel insurance, most lunches and dinners, personal spending and some entrance tickets are not. Each package page lists exactly what is in and out.'},
+  {q:'How do deposits and cancellations work?', a:'Most trips are secured with a deposit, with the balance due closer to departure. Terms vary by package and supplier. For example, Heart of the Inca has zero postponement fees up to 20 days before arrival with a 10% deposit. Your advisor puts the exact terms in writing before you pay.'},
+  {q:'How do I reach my advisor during the trip?', a:'On WhatsApp, at any hour. The same person who quoted your trip stays with you from the first message to your flight home.'}
+];
+</script>
+<script>
+/* ==========================================================================
+   HELPERS
+   ========================================================================== */
+const $ = (s, r=document) => r.querySelector(s);
+const $$ = (s, r=document) => [...r.querySelectorAll(s)];
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const money = n => n == null ? null : '$' + n.toLocaleString('en-US');
+const byS = slug => PACKAGES.find(p => p.slug === slug);
+const shortName = p => p.short || p.name;
+const priceHTML = p => p.price ? `${money(p.price)}<small>per person</small>` : `Custom<small>quote on request</small>`;
+const initials = n => n.replace(/^The /,'').split(/\s+/).filter(w => /^[A-Z]/.test(w)).slice(0,2).map(w=>w[0]).join('');
+
+/* Image fallback hook, kept for any image that declares data-fallback */
+document.addEventListener('error', e => {
+  const t = e.target;
+  if (t.tagName === 'IMG' && t.dataset.fallback && t.src !== t.dataset.fallback) t.src = t.dataset.fallback;
+}, true);
+
+/* ==========================================================================
+   SCROLL REVEAL  (IntersectionObserver; one observer for the whole app)
+   ========================================================================== */
+const revealIO = new IntersectionObserver(entries => {
+  entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); revealIO.unobserve(en.target); } });
+}, {threshold:.12, rootMargin:'0px 0px -6% 0px'});
+function bindReveal(root=document){ $$('.rv:not(.in)', root).forEach(el => revealIO.observe(el)); }
+
+/* Count-up for stats */
+const countIO = new IntersectionObserver(entries => {
+  entries.forEach(en => {
+    if (!en.isIntersecting) return;
+    const el = en.target; countIO.unobserve(el);
+    const target = parseFloat(el.dataset.count), div = parseFloat(el.dataset.div||1), dec = parseInt(el.dataset.dec||0), suf = el.dataset.suffix||'';
+    const t0 = performance.now(), dur = 1600;
+    const step = now => {
+      const k = Math.min(1,(now-t0)/dur), e = 1 - Math.pow(1-k, 4);
+      el.textContent = (target*e/div).toFixed(dec) + suf;
+      if (k < 1) requestAnimationFrame(step); else el.textContent = (target/div).toFixed(dec) + suf;
+    };
+    requestAnimationFrame(step);
+  });
+}, {threshold:.6});
+
+/* ==========================================================================
+   NAV: transparent over hero, glass once scrolled (sentinel-based)
+   ========================================================================== */
+const nav = $('#nav');
+const navIO = new IntersectionObserver(entries => {
+  entries.forEach(en => { if (en.target.closest('.view').classList.contains('active')) nav.classList.toggle('scrolled', !en.isIntersecting); });
+}, {threshold:0});
+$$('[data-sentinel]').forEach(s => navIO.observe(s));
+
+/* Mobile menu */
+const burger = $('#burger'), menu = $('#menu');
+function setMenu(open){
+  burger.classList.toggle('open', open); menu.classList.toggle('open', open); nav.classList.toggle('menu-open', open);
+  burger.setAttribute('aria-expanded', open); menu.setAttribute('aria-hidden', !open);
+  document.body.classList.toggle('no-scroll', open);
+}
+burger.addEventListener('click', () => setMenu(!burger.classList.contains('open')));
+menu.addEventListener('click', e => { if (e.target.closest('a')) setMenu(false); });
+
+/* ==========================================================================
+   ROUTER  (hash based: #/, #/packages, #/package/<slug>, #/privacy, #/sms-terms)
+   ========================================================================== */
+let pendingScroll = null;
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[data-to]');
+  if (a) pendingScroll = a.dataset.to;
+});
+const STATIC_VIEWS = {
+  '#/packages':  {id:'view-packages',   title:'All packages'},
+  '#/privacy':   {id:'view-privacy',    title:'Privacy Policy'},
+  '#/sms-terms': {id:'view-sms-terms',  title:'SMS Terms & Conditions'}
+};
+function route(){
+  const h = location.hash || '#/';
+  const m = h.match(/^#\/package\/([\w-]+)/);
+  const stat = Object.keys(STATIC_VIEWS).find(k => h.startsWith(k));
+  let id = 'view-home';
+  if (stat) id = STATIC_VIEWS[stat].id;
+  else if (m) { id = 'view-detail'; renderDetail(m[1]); }
+  $$('.view').forEach(v => v.classList.toggle('active', v.id === id));
+  window.scrollTo({top:0, behavior:'instant'});
+  nav.classList.remove('scrolled');
+  setMenu(false);
+  bindReveal($('#'+id));
+  if (id === 'view-home') $$('[data-count]').forEach(el => countIO.observe(el));
+  if (pendingScroll){
+    const target = $('#'+pendingScroll); pendingScroll = null;
+    if (target) requestAnimationFrame(() => setTimeout(() => {
+      const y = target.getBoundingClientRect().top + window.scrollY - 40;
+      window.scrollTo({top:y, behavior:'smooth'});
+    }, 80));
+  }
+  document.title = id === 'view-home' ? 'Holidays by MPS Tours | Signature holiday packages'
+                 : stat ? `${STATIC_VIEWS[stat].title} | Holidays by MPS Tours`
+                 : `${byS(m[1])?.name || 'Package'} | Holidays by MPS Tours`;
+}
+window.addEventListener('hashchange', route);
+
+/* ==========================================================================
+   RENDER: package cards
+   ========================================================================== */
+function cardHTML(p, i=0){
+  return `<a class="pk rv" style="--d:${(i%4)*.07}s" href="#/package/${p.slug}" aria-label="${esc(shortName(p))}">
+    <div class="pk__media"><img src="${p.img}" alt="${esc(shortName(p))}" width="900" height="700" loading="lazy" decoding="async"><span class="pk__go"><i class="ph-bold ph-arrow-up-right"></i></span></div>
+    <div class="pk__body">
+      <div class="pk__route"><i class="ph ph-map-pin"></i>${esc(p.route.slice(0,3).join(', '))}${p.route.length>3?' +'+(p.route.length-3):''}</div>
+      <h3 class="pk__title">${esc(shortName(p))}</h3>
+      <div class="pk__meta"><span class="nights"><i class="ph ph-moon-stars"></i>${p.nights} nights</span><span class="pk__price">${p.price?'From ':''}${priceHTML(p)}</span></div>
+    </div></a>`;
+}
+$('#home-packages').innerHTML = PACKAGES.map(cardHTML).join('');
+$('#footer-packages').innerHTML = PACKAGES.map(p => `<li><a href="#/package/${p.slug}">${esc(shortName(p))}</a></li>`).join('');
+
+/* Featured */
+$('#featured-grid').innerHTML = FEATURED.map((s,i) => { const p = byS(s); return `
+  <a class="fcard rv" style="--d:${i*.1}s" href="#/package/${p.slug}">
+    <img src="${p.portrait}" alt="${esc(shortName(p))}" width="900" height="1100" loading="lazy" decoding="async">
+    <span class="fcard__go"><i class="ph-bold ph-arrow-up-right"></i></span>
+    <div class="fcard__body"><h3>${esc(shortName(p))}</h3><div class="fcard__meta"><span>${p.nights} nights</span><b>${p.price?'From '+money(p.price):'Custom quote'}</b></div></div>
+  </a>`;}).join('');
+
+/* Marquee (duplicated for a seamless loop) */
+const mItems = MARQUEE.map(d => `<span class="marquee__item">${esc(d)}<i class="ph-fill ph-airplane-tilt"></i></span>`).join('');
+$('#marquee').innerHTML = mItems + mItems;
+
+/* Reviews */
+$('#rev-track').innerHTML = REVIEWS.map(r => `
+  <article class="rcard">
+    <div class="rcard__top"><div class="rev__stars"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div><span class="rcard__trip">${esc(r.trip)}</span></div>
+    <q>${esc(r.q)}</q>
+    <div class="rcard__who"><span class="avatar">${esc(initials(r.name))}</span><div><b>${esc(r.name)}</b><small>${esc(r.where)}</small></div></div>
+  </article>`).join('');
+const revTrack = $('#rev-track');
+const revStep = () => (revTrack.firstElementChild?.getBoundingClientRect().width || 380) + 18;
+$('#rev-prev').addEventListener('click', () => revTrack.scrollBy({left:-revStep(), behavior:'smooth'}));
+$('#rev-next').addEventListener('click', () => revTrack.scrollBy({left:revStep(), behavior:'smooth'}));
+
+/* FAQ */
+$('#faq-list').innerHTML = FAQS.map((f,i) => `
+  <div class="faq rv" style="--d:${i*.06}s">
+    <button class="faq__q" aria-expanded="false">${esc(f.q)}<i class="ph-bold ph-plus"></i></button>
+    <div class="faq__a"><div><p>${esc(f.a)}</p></div></div>
+  </div>`).join('');
+$('#faq-list').addEventListener('click', e => {
+  const q = e.target.closest('.faq__q'); if (!q) return;
+  const item = q.parentElement, open = item.classList.contains('open');
+  $$('.faq.open', $('#faq-list')).forEach(f => { f.classList.remove('open'); $('.faq__q', f).setAttribute('aria-expanded','false'); });
+  if (!open){ item.classList.add('open'); q.setAttribute('aria-expanded','true'); }
+});
+
+/* ==========================================================================
+   CUSTOM CONTROLS: select, date range picker
+   ========================================================================== */
+function closeAllPopovers(except){
+  $$('.sel.open, .dp.open').forEach(el => { if (el !== except) el.classList.remove('open'); });
+}
+document.addEventListener('click', e => { const inside = e.composedPath().some(el => el.classList && (el.classList.contains('sel') || el.classList.contains('dp'))); if (!inside) closeAllPopovers(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape'){ closeAllPopovers(); closeModal(); } });
+
+function makeSelect(host, {options, placeholder='Select', value=null, onChange}){
+  host.classList.add('sel');
+  host.innerHTML = `<button type="button" class="sel__btn placeholder" aria-haspopup="listbox" aria-expanded="false"><span></span><i class="ph-bold ph-caret-down"></i></button>
+    <div class="sel__menu" role="listbox">${options.map(o => `<button type="button" class="sel__opt" role="option" data-v="${esc(o.v)}">${esc(o.l)}<i class="ph-bold ph-check"></i></button>`).join('')}</div>`;
+  const btn = $('.sel__btn', host), span = $('span', btn);
+  const api = { value:null, set(v, silent){
+      api.value = v; const o = options.find(x => x.v === v);
+      span.textContent = o ? o.l : placeholder; btn.classList.toggle('placeholder', !o);
+      $$('.sel__opt', host).forEach(b => b.classList.toggle('selected', b.dataset.v === String(v)));
+      if (!silent && onChange) onChange(v);
+    }};
+  btn.addEventListener('click', () => { const o = host.classList.contains('open'); closeAllPopovers(host); host.classList.toggle('open', !o); btn.setAttribute('aria-expanded', !o); });
+  $$('.sel__opt', host).forEach(b => b.addEventListener('click', () => { api.set(b.dataset.v); host.classList.remove('open'); btn.setAttribute('aria-expanded','false'); }));
+  api.set(value, true);
+  return api;
+}
+
+function makeDatePicker(host, {placeholder='Pick your dates', onChange}){
+  host.classList.add('dp');
+  host.innerHTML = `<button type="button" class="dp__btn"><span>${esc(placeholder)}</span><i class="ph ph-calendar-blank"></i></button><div class="cal"></div>`;
+  const btn = $('.dp__btn', host), label = $('span', btn), cal = $('.cal', host);
+  const today = new Date(); today.setHours(0,0,0,0);
+  let view = new Date(today.getFullYear(), today.getMonth(), 1), start = null, end = null;
+  const fmt = d => d.toLocaleDateString('en-US', {month:'short', day:'numeric', year: d.getFullYear()!==today.getFullYear()?'numeric':undefined});
+  const iso = d => d.toISOString().slice(0,10);
+  function draw(dir){
+    const y = view.getFullYear(), m = view.getMonth();
+    const first = new Date(y,m,1), offset = first.getDay(), dim = new Date(y,m+1,0).getDate();
+    let cells = '';
+    for (let i=0;i<offset;i++) cells += '<span></span>';
+    for (let d=1; d<=dim; d++){
+      const dt = new Date(y,m,d); const past = dt < today;
+      const cls = ['cal__d']; if (+dt === +today) cls.push('today');
+      if (start && +dt === +start) cls.push('start'); if (end && +dt === +end) cls.push('end');
+      if (start && end && dt > start && dt < end) cls.push('in');
+      cells += `<button type="button" class="${cls.join(' ')}" data-d="${iso(dt)}" ${past?'disabled':''}>${d}</button>`;
+    }
+    cal.innerHTML = `<div class="cal__head"><button type="button" class="cal__nav" data-nav="-1" aria-label="Previous month"><i class="ph-bold ph-caret-left"></i></button><b>${first.toLocaleDateString('en-US',{month:'long',year:'numeric'})}</b><button type="button" class="cal__nav" data-nav="1" aria-label="Next month"><i class="ph-bold ph-caret-right"></i></button></div>
+      <div class="cal__body ${dir||''}"><div class="cal__grid">${['S','M','T','W','T','F','S'].map(d=>`<span class="cal__dow">${d}</span>`).join('')}${cells}</div></div>
+      <div class="cal__foot"><span>${start && !end ? 'Now pick a return date' : 'Pick a departure date'}</span><button type="button" data-clear>Clear</button></div>`;
+    if (dir) requestAnimationFrame(() => $('.cal__body', cal).classList.remove(dir));
+  }
+  cal.addEventListener('click', e => {
+    const nv = e.target.closest('[data-nav]'); if (nv){ view = new Date(view.getFullYear(), view.getMonth()+ +nv.dataset.nav, 1); draw(+nv.dataset.nav>0?'slide-r':'slide-l'); return; }
+    if (e.target.closest('[data-clear]')){ start = end = null; update(); draw(); return; }
+    const d = e.target.closest('.cal__d'); if (!d || d.disabled) return;
+    const dt = new Date(d.dataset.d + 'T00:00:00');
+    if (!start || end){ start = dt; end = null; } else if (dt < start){ end = start; start = dt; } else { end = dt; }
+    update(); draw();
+    if (start && end){ setTimeout(() => host.classList.remove('open'), 220); }
+  });
+  function update(){
+    const has = !!start; btn.classList.toggle('has', has);
+    label.textContent = !start ? placeholder : end ? `${fmt(start)} to ${fmt(end)}` : `${fmt(start)} to ...`;
+    if (onChange) onChange(api.value);
+  }
+  btn.addEventListener('click', () => { const o = host.classList.contains('open'); closeAllPopovers(host); host.classList.toggle('open', !o); if (!o) draw(); });
+  const api = { get value(){ return start ? (end ? `${fmt(start)} to ${fmt(end)}` : fmt(start)) : ''; }, reset(){ start=end=null; update(); } };
+  return api;
+}
+
+/* ==========================================================================
+   QUOTE FORM  (used inline in Contact and inside the modal)
+   ========================================================================== */
+function buildForm(host, {pkg=null, compact=false}={}){
+  const uid = 'f' + Math.random().toString(36).slice(2,7);
+  host.innerHTML = `<div class="form-card__head">
+      <h3 class="h-3">${pkg ? 'Get a free quote for this trip' : 'Get your free holiday quote'}</h3>
+      <p>Free, no obligation. A trip advisor replies within one business day.</p>
+    </div>
+    <div class="form-card__in">
+    <form novalidate>
+      <div class="form-grid">
+        <div class="field"><label for="${uid}-name">Full name</label><input class="input" id="${uid}-name" name="name" type="text" autocomplete="name" placeholder="Your name"><span class="err">Please add your name.</span></div>
+        <div class="field"><label for="${uid}-phone">Phone number</label><input class="input" id="${uid}-phone" name="phone" type="tel" autocomplete="tel" placeholder="(517) 000-0000"><span class="err">Please add a phone number.</span></div>
+        <div class="field"><label for="${uid}-email">Email address</label><input class="input" id="${uid}-email" name="email" type="email" autocomplete="email" placeholder="you@example.com"><span class="err">Please add a valid email.</span></div>
+        <div class="field"><label>Number of travelers</label><div data-sel="travelers"></div><span class="err">Please choose a group size.</span></div>
+        <div class="field"><label>Package</label><div data-sel="package"></div></div>
+        <div class="field"><label>Travel dates</label><div data-dp></div><span class="hint">Rough dates are fine.</span></div>
+        <div class="field full"><label>What matters most?</label>
+          <div class="chk-row">
+            ${['Beaches','Culture and history','Food and wine','Adventure','Honeymoon'].map(v => `<label class="chk"><input type="checkbox" name="interest" value="${esc(v)}"><span class="chk__box"><i class="ph-bold ph-check"></i></span>${esc(v)}</label>`).join('')}
+          </div></div>
+        <div class="field full"><label for="${uid}-msg">Your message</label><textarea class="input" id="${uid}-msg" name="message" placeholder="Departure city, anything you want added or changed, questions..."></textarea></div>
+      </div>
+      <div class="form-actions">
+        <span class="fine">By submitting, you agree to be contacted by phone, SMS or email about your trip.</span>
+        <button class="btn btn--amber btn--lg" type="submit">Get a free quote</button>
+      </div>
+    </form>
+    <div class="form-success">
+      <i class="ph-fill ph-check-circle"></i>
+      <h3 class="h-3">Request received</h3>
+      <p>A trip advisor will call you within one business day. Want to speed it up? Send the same details straight to us.</p>
+      <div class="row">
+        <a class="btn btn--wa" data-send-wa href="#" target="_blank" rel="noopener">Send on WhatsApp</a>
+        <a class="btn btn--ghost" data-send-mail href="#">Send by email</a>
+      </div>
+    </div>
+  </div>`;
+
+  const travelers = makeSelect($('[data-sel="travelers"]', host), {placeholder:'Select', options:[
+    {v:'1',l:'1 traveler'},{v:'2',l:'2 travelers'},{v:'3-4',l:'3 to 4 travelers'},{v:'5+',l:'5+ travelers (family or group)'}]});
+  const pkgSel = makeSelect($('[data-sel="package"]', host), {placeholder:'Not sure yet', value: pkg?.slug || 'custom', options:[
+    {v:'custom', l:'Not sure yet / custom trip'}, ...PACKAGES.map(p => ({v:p.slug, l:shortName(p)}))]});
+  const dates = makeDatePicker($('[data-dp]', host), {});
+
+  const form = $('form', host);
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    let ok = true;
+    const need = (sel, test) => { const f = $(sel, form).closest('.field'); const bad = !test(); f.classList.toggle('invalid', bad); if (bad) ok = false; };
+    need('[name=name]', () => form.name.value.trim().length > 1);
+    need('[name=phone]', () => form.phone.value.trim().length > 6);
+    need('[name=email]', () => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.value.trim()));
+    const tf = $('[data-sel="travelers"]', host).closest('.field'); tf.classList.toggle('invalid', !travelers.value); if (!travelers.value) ok = false;
+    if (!ok){ $('.field.invalid .input, .field.invalid .sel__btn', form)?.focus(); return; }
+
+    const p = byS(pkgSel.value);
+    const interests = $$('[name=interest]:checked', form).map(c => c.value).join(', ');
+    const lines = [
+      `Quote request from ${form.name.value.trim()}`,
+      `Package: ${p ? p.name : 'Custom trip / not sure yet'}`,
+      `Travelers: ${$('.sel__opt.selected', $('[data-sel="travelers"]', host))?.textContent.trim()}`,
+      dates.value ? `Dates: ${dates.value}` : null,
+      interests ? `Interests: ${interests}` : null,
+      `Phone: ${form.phone.value.trim()}`, `Email: ${form.email.value.trim()}`,
+      form.message.value.trim() ? `Message: ${form.message.value.trim()}` : null
+    ].filter(Boolean).join('\n');
+    $('[data-send-wa]', host).href = `${CONTACT.wa}?text=${encodeURIComponent(lines)}`;
+    $('[data-send-mail]', host).href = `mailto:${CONTACT.email}?subject=${encodeURIComponent('Quote request: ' + (p ? p.name : 'Custom trip'))}&body=${encodeURIComponent(lines)}`;
+    host.classList.add('done');
+    toast('Request sent. We will be in touch within one business day.');
+  });
+  form.addEventListener('input', e => e.target.closest('.field')?.classList.remove('invalid'));
+  return { setPackage(slug){ pkgSel.set(slug || 'custom', true); } };
+}
+buildForm($('#contact-form-card'));
+
+/* Modal */
+const modal = $('#quote-modal');
+const modalForm = buildForm($('#modal-form-card'));
+function openModal(slug){
+  $('#modal-form-card').classList.remove('done');
+  modalForm.setPackage(slug);
+  modal.classList.add('open'); document.body.classList.add('no-scroll');
+  setTimeout(() => $('#modal-form-card input')?.focus(), 400);
+}
+function closeModal(){ if (!modal.classList.contains('open')) return; modal.classList.remove('open'); document.body.classList.remove('no-scroll'); }
+document.addEventListener('click', e => {
+  const q = e.target.closest('[data-quote]'); if (q){ e.preventDefault(); openModal(q.dataset.quote || null); }
+  if (e.target.closest('[data-close]')) closeModal();
+});
+
+/* Toast */
+let toastT;
+function toast(msg){ const t = $('#toast'); $('span', t).textContent = msg; t.classList.add('show'); clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('show'), 3200); }
+
+/* ==========================================================================
+   ALL PACKAGES: filters
+   ========================================================================== */
+const F = { q:'', region:'all', sort:'featured', dur:new Set() };
+makeSelect($('#f-region'), {value:'all', options:[{v:'all',l:'All regions'},{v:'Europe',l:'Europe'},{v:'Asia',l:'Asia'},{v:'Americas',l:'Americas'}], onChange:v => { F.region = v; applyFilters(); }});
+makeSelect($('#f-sort'), {value:'featured', options:[{v:'featured',l:'Featured'},{v:'price-asc',l:'Price, low to high'},{v:'price-desc',l:'Price, high to low'},{v:'nights',l:'Longest first'}], onChange:v => { F.sort = v; applyFilters(); }});
+$('#f-search').addEventListener('input', e => { F.q = e.target.value.trim().toLowerCase(); applyFilters(); });
+$('#f-duration').addEventListener('change', e => { const v = e.target.value; e.target.checked ? F.dur.add(v) : F.dur.delete(v); applyFilters(); });
+function applyFilters(){
+  let list = PACKAGES.filter(p => {
+    if (F.region !== 'all' && p.region !== F.region) return false;
+    if (F.dur.size){ const b = p.nights <= 7 ? 'short' : p.nights <= 10 ? 'mid' : 'long'; if (!F.dur.has(b)) return false; }
+    if (F.q){ const hay = [p.name, p.tagline, p.region, ...p.route, ...p.tags].join(' ').toLowerCase(); if (!hay.includes(F.q)) return false; }
+    return true;
+  });
+  const P = p => p.price ?? Infinity;
+  if (F.sort === 'price-asc') list.sort((a,b) => P(a)-P(b));
+  if (F.sort === 'price-desc') list.sort((a,b) => (b.price??0)-(a.price??0));
+  if (F.sort === 'nights') list.sort((a,b) => b.nights-a.nights);
+  const grid = $('#all-packages');
+  grid.innerHTML = list.map(cardHTML).join('');
+  $('#all-empty').style.display = list.length ? 'none' : 'block';
+  $('#f-count').textContent = `${list.length} of ${PACKAGES.length} packages`;
+  bindReveal(grid);
+}
+applyFilters();
+
+/* ==========================================================================
+   PACKAGE DETAIL
+   ========================================================================== */
+function renderDetail(slug){
+  const p = byS(slug);
+  const view = $('#view-detail');
+  if (!p){ view.innerHTML = `<div class="section" style="padding-top:160px"><div class="container empty"><i class="ph ph-compass"></i><h3 class="h-3">We could not find that package</h3><div style="margin-top:20px"><a class="btn" href="#/packages">See all packages</a></div></div></div>`; return; }
+  const suggested = PACKAGES.filter(x => x.slug !== p.slug).sort((a,b) => (a.region===p.region?-1:0) - (b.region===p.region?-1:0)).slice(0,3);
+  view.innerHTML = `
+  <div class="nav-sentinel" data-sentinel></div>
+  <div class="phero tall">
+    <div class="phero__bg"><img src="${p.hero}" alt="${esc(p.name)}" width="1920" height="1080" fetchpriority="high" decoding="async"></div>
+    <div class="phero__scrim"></div>
+    <div class="container">
+      <div class="crumb"><a href="#/">Home</a><i class="ph-bold ph-caret-right"></i><a href="#/packages">Packages</a><i class="ph-bold ph-caret-right"></i><span>${esc(shortName(p))}</span></div>
+      <h1 class="h-1">${esc(p.name)}</h1>
+      <p class="lead">${esc(p.tagline)}</p>
+      <div class="chips">
+        <span class="chip"><i class="ph-fill ph-moon-stars"></i>${p.days} days / ${p.nights} nights</span>
+        ${p.route.map(r => `<span class="chip"><i class="ph-fill ph-map-pin"></i>${esc(r)}</span>`).join('')}
+        <span class="chip"><i class="ph-fill ph-tag"></i>${p.price ? 'From ' + money(p.price) + ' per person' : 'Personalized quote'}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="container detail__grid">
+      <div class="detail__main">
+        <div>
+          <p class="lead rv" style="max-width:66ch">${esc(p.summary)}</p>
+          <div class="rv" style="--d:.1s;margin-top:22px;display:flex;flex-wrap:wrap;gap:10px">
+            <button class="btn btn--amber" data-quote="${p.slug}">Get a free quote</button>
+            <a class="btn btn--ghost" href="${CONTACT.wa}?text=${encodeURIComponent('Hi, I am interested in the ' + p.name + ' package.')}" target="_blank" rel="noopener">WhatsApp us</a>
+          </div>
+        </div>
+        <div>
+          <h2 class="h-3 rv">Four moments you will remember</h2>
+          <div class="hl-grid">${p.highlights.map((h,i) => `<div class="hl rv" style="--d:${i*.07}s"><i class="ph ${h[2]}"></i><div><b>${esc(h[0])}</b><p>${esc(h[1])}</p></div></div>`).join('')}</div>
+        </div>
+        <div>
+          <h2 class="h-3 rv">Your full itinerary</h2>
+          <div class="tabs rv" role="tablist" id="stay-tabs">${p.stays.map((s,i) => `<button class="tab ${i?'':'active'}" role="tab" aria-selected="${!i}" data-i="${i}">${esc(s.city)}</button>`).join('')}</div>
+          <div id="stay-panel"></div>
+        </div>
+        ${p.priceTable ? `<div><h2 class="h-3 rv">Choose your hotel category</h2><div class="rv" style="overflow:auto"><table class="price-table"><thead><tr><th>Occupancy</th>${p.priceTable.cols.map(c=>`<th>${esc(c)}</th>`).join('')}</tr></thead><tbody>${p.priceTable.rows.map(r=>`<tr>${r.map((c,i)=>`<td>${i?'<b>'+esc(c)+'</b>':esc(c)}</td>`).join('')}</tr>`).join('')}</tbody></table></div><p class="muted rv" style="font-size:.85rem;margin-top:10px">${esc(p.priceTable.note)}</p></div>` : ''}
+        <div>
+          <h2 class="h-3 rv">What is included</h2>
+          <div class="inc-grid">
+            <div class="inc rv"><h4><i class="ph-fill ph-check-circle"></i>Included</h4><ul>${p.included.map(i=>`<li><i class="ph-bold ph-check"></i>${esc(i)}</li>`).join('')}</ul></div>
+            <div class="inc no rv" style="--d:.08s"><h4><i class="ph-fill ph-x-circle"></i>Not included</h4><ul>${p.notIncluded.map(i=>`<li><i class="ph-bold ph-minus"></i>${esc(i)}</li>`).join('')}</ul></div>
+          </div>
+          <div class="tip rv"><i class="ph-fill ph-lightbulb"></i><div><b>Make it yours.</b> ${esc(p.tip)}</div></div>
+        </div>
+      </div>
+      <aside class="side">
+        <div class="side-card rv rv--scale">
+          <div class="side-card__in">
+            <div class="from">${p.price ? 'From' : 'Pricing'}</div>
+            <div class="big">${p.price ? money(p.price) + '<small>per person</small>' : esc(p.priceLabel)}</div>
+            <div class="note">${esc(p.priceNote)}</div>
+            <div class="facts">${p.facts.map(f => `<div><span><i class="ph-bold ph-check"></i>${esc(f[0])}</span><b>${esc(f[1])}</b></div>`).join('')}</div>
+            <div class="stack">
+              <button class="btn btn--amber btn--block" data-quote="${p.slug}">Get a free quote</button>
+              <a class="btn btn--wa btn--block" href="${CONTACT.wa}?text=${encodeURIComponent('Hi, I am interested in the ' + p.name + ' package.')}" target="_blank" rel="noopener">WhatsApp us</a>
+              <a class="btn btn--ghost btn--block" href="${CONTACT.tel}">Call ${CONTACT.phone}</a>
+            </div>
+            <p class="fine">No payment today. A trip advisor will follow up to confirm your dates.</p>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <div class="section" style="padding-top:0">
+    <div class="container">
+      <div class="feat__head">
+        <div><h2 class="h-2 rv">You might also like</h2><p class="lead rv" style="--d:.06s;margin-top:10px">Three more itineraries in the same spirit.</p></div>
+        <a class="link-arrow rv" href="#/packages">See all packages <i class="ph-bold ph-arrow-right"></i></a>
+      </div>
+      <div class="sugg__track">${suggested.map(cardHTML).join('')}</div>
+    </div>
+  </div>
+
+  <div class="section--tight contact-strip section" style="padding-block:clamp(40px,5vw,64px)">
+    <div class="container">
+      <div class="contact-strip__in rv">
+        <div class="contact-strip__txt"><h3 class="h-3">Questions about this trip?</h3><p class="muted" style="margin-top:4px">Talk to the advisor who will actually book it.</p></div>
+        <div class="contact-strip__btns">
+          <a class="btn" href="${CONTACT.tel}">Call</a>
+          <a class="btn btn--wa" href="${CONTACT.wa}" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn btn--ghost" href="mailto:${CONTACT.email}">Email</a>
+        </div>
+      </div>
+    </div>
+  </div>`;
+
+  /* itinerary tabs */
+  const panel = $('#stay-panel', view);
+  const showStay = i => {
+    const s = p.stays[i];
+    panel.innerHTML = `<div class="stay">
+      <div class="stay__intro"><div><h3>${esc(s.city)}${s.nights?` <span class="muted" style="font-family:var(--font-body);font-weight:400;font-size:.95rem">${esc(s.nights)}</span>`:''}</h3><p>${esc(s.intro)}</p></div>
+        <div class="stay__facts">${s.facts.map(f=>`<span><i class="ph-bold ph-check"></i>${esc(f)}</span>`).join('')}</div></div>
+      <div class="days">${s.days.map(d => `<div class="day">
+        <div class="day__n">${d.n ? `Day<b>${d.n}</b>` : `<i class="ph ph-compass" style="font-size:1.4rem;color:var(--sea-deep)"></i>`}</div>
+        <div><div class="day__lbl">${esc(d.label)}</div><h4>${esc(d.title)}</h4><p>${esc(d.text)}</p></div></div>`).join('')}</div>
+    </div>`;
+  };
+  showStay(0);
+  $('#stay-tabs', view).addEventListener('click', e => {
+    const t = e.target.closest('.tab'); if (!t) return;
+    $$('.tab', view).forEach(x => { x.classList.toggle('active', x === t); x.setAttribute('aria-selected', x === t); });
+    showStay(+t.dataset.i);
+    t.scrollIntoView({block:'nearest', inline:'center', behavior:'smooth'});
+  });
+  navIO.observe($('[data-sentinel]', view));
+}
+
+/* ==========================================================================
+   BOOT
+   ========================================================================== */
+route();
+requestAnimationFrame(() => setTimeout(() => $('#hero').classList.add('ready'), 120));
+</script>
+</body>
+</html>
