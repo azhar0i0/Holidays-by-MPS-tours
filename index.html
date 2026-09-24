@@ -1033,7 +1033,7 @@ textarea.input{height:auto;min-height:120px;padding:14px 16px;resize:vertical}
     <div class="container">
       <div class="section-head">
         <h2 class="h-2 rv">Signature packages</h2>
-        <p class="lead rv" style="--d:.08s">Eight itineraries we have priced, tested and refined. Each one is a starting point your advisor adjusts to your dates, group and departure city.</p>
+        <p class="lead rv" style="--d:.08s">Nineteen itineraries we have priced, tested and refined. Each one is a starting point your advisor adjusts to your dates, group and departure city.</p>
       </div>
       <div class="pk-grid" id="home-packages"></div>
       <div class="pk-more rv"><a class="btn btn--lg" href="#/packages">See all packages</a></div>
@@ -1807,12 +1807,684 @@ const PACKAGES = [
     included:['Hotels throughout, at your chosen category','Domestic flight, Lima to Cusco','Round-trip train tickets to Machu Picchu','All private transfers and entrance tickets for included tours','Expert local guides throughout','24/7 in-trip assistance'],
     notIncluded:['International airfare','Lunches or dinners, unless otherwise specified','Airport taxes','Tips and gratuities'],
     tip:'Want to add an adventure activity in the Sacred Valley, such as mountain biking, river rafting, ziplining or a ceramic class? Ask your trip advisor when you request your quote.'
+  },
+  {
+    slug:'london-to-paris-european-escape', name:'London to Paris: The European Escape', short:'London to Paris', tagline:'Two capitals, one tunnel',
+    region:'Europe', tier:'UK & France', days:8, nights:6, price:1999, priceNote:'Based on double occupancy.',
+    points:['High-speed Eurostar included',
+            'Thames & Seine river cruises',
+            'Guided Paris city tour'],
+    route:['London',
+           'Paris'], tags:['city',
+          'train',
+          'river cruise',
+          'culture'],
+    summary:'Three nights in London, three nights in Paris, connected by the Eurostar beneath the English Channel.',
+    img:'assets/img/londonparis-card.jpg', hero:'assets/img/londonparis-hero.jpg', portrait:'assets/img/londonparis-portrait.jpg',
+    facts:[['Duration','8 Days / 6 Nights'],['Destinations','London · Paris'],['London','3 Nights'],['Paris','3 Nights'],['Meal Plan','Breakfast Included']],
+    highlights:[
+      ['Thames River Cruise','Big Ben, the London Eye, and Tower Bridge, all from the water.','ph-boat'],
+      ['The Eurostar','A high-speed train beneath the English Channel — London to Paris in under 2.5 hours.','ph-train'],
+      ['Paris by Bus & Boat','A guided city tour plus a Seine River cruise past the Louvre and Notre-Dame.','ph-boat'],
+      ['Two Capitals, Your Way','Free days built in to shop, explore, or add optional excursions in either city.','ph-sun-horizon']
+    ],
+    stays:[
+      {city:'London', nights:'3 nights', intro:'Your journey opens in the UK\'s regal capital — iconic sights, world-class museums, and centuries of royal history along the banks of the Thames.', facts:['Hampton by Hilton London City',
+                'Double Room · Daily Breakfast'],
+        days:[
+          {n:'1',label:'Departure',title:'Fly to London',text:'Depart your US gateway for an overnight flight to London. If either your outbound or inbound flight departs before 4:00 a.m., plan to arrive at the airport the night before.'},
+          {n:'2',label:'Arrival',title:'Welcome to London',text:'Land in London and make your own way to the hotel (an airport transfer can be added). Once you\'ve checked in, the rest of the day is yours — hop on the Underground and start exploring at your own pace.'},
+          {n:'3',label:'Included Tour · 30m',title:'Thames River Cruise',text:'A sightseeing cruise from the London Eye to the Tower of London, taking in riverside landmarks with live onboard commentary. Spend the afternoon shopping on Oxford Street, strolling the South Bank, or watching the Changing of the Guard at Buckingham Palace. Optional: a traditional English Afternoon Tea at The Rubens at the Palace, or an evening at a West End musical — choose between The Devil Wears Prada or The Lion King.'},
+          {n:'4',label:'Free Day',title:'Explore at Your Own Pace',text:'A free day to browse London\'s pubs, shops, and neighborhoods. Optional: a full-day tour to Windsor Castle, Stonehenge, and the Georgian city of Bath, or a shorter tour focused on Stonehenge alone.'}
+        ]},
+      {city:'Paris', nights:'3 nights', intro:'The City of Light — stylish boulevards, romantic architecture, and some of the world\'s most famous sights along the Seine.', facts:['Mercure Paris Porte de Versailles Expo',
+                'Double Room · Daily Breakfast'],
+        days:[
+          {n:'5',label:'Eurostar · Under 2.5 Hours',title:'London → Paris',text:'After breakfast, make your own way to the train station for a high-speed Eurostar journey beneath the English Channel to Paris. Self-transfer to your hotel and spend the rest of the day exploring the City of Light\'s atmospheric avenues at your leisure.'},
+          {n:'6',label:'Included Tours · 2h 30m',title:'Paris City Tour & Seine River Cruise',text:'An audio-guided bus tour past the Opéra Garnier, the Louvre, Notre-Dame Cathedral, the Panthéon, the Orsay Museum, the Champs-Élysées, the Arc de Triomphe, and the Eiffel Tower. Afterward, board an all-glass boat for a one-hour cruise along the Seine with panoramic views. The rest of the day is free — stroll through Montmartre or Le Marais, as the locals do.'},
+          {n:'7',label:'Free Day',title:'Explore at Your Own Pace',text:'A leisurely day in Paris, exactly as you like it. Optional: a guided visit to the Palace of Versailles, from the Coronation Room to the Hall of Mirrors, or a wine and cheese tasting with an expert in a charming Parisian wine bar.'},
+          {n:'8',label:'Departure',title:'Fly Home',text:'Breakfast at the hotel, then make your own way to the airport for your return flight to the United States.'}
+        ]}
+    ],
+    included:['Round-trip international flights: USA → London, Paris → USA',
+              'High-speed Eurostar train, London to Paris',
+              '6 nights accommodation, across London & Paris',
+              '6 breakfasts',
+              'Thames River Cruise & Seine River Cruise',
+              'Guided Paris city tour',
+              'All air taxes and fuel surcharges'],
+    notIncluded:['Airport transfers in both London and Paris (can be added)',
+                 'Transfers between hotels and the Eurostar stations',
+                 'Meals beyond breakfast, drinks, and tips',
+                 'Optional excursions and shows'],
+    tip:'US citizens need a UK Electronic Travel Authorisation (ETA) before traveling to the United Kingdom — apply online in advance. Your trip advisor can walk you through this and any transfer add-ons when you request your quote.'
+  },
+  {
+    slug:'romance-city-of-light-paris', name:'Romance in the City of Light', short:'Romance in the City of Light', tagline:'Paris, castles and the Normandy coast',
+    region:'Europe', tier:'France', days:9, nights:7, price:2949, priceNote:'Based on double occupancy.',
+    points:['Châteaux of the Loire Valley',
+            'Mont Saint-Michel & D-Day beaches',
+            'English-speaking tour leader, Days 4-8'],
+    route:['Paris',
+           'Loire Valley',
+           'Normandy'], tags:['romance',
+          'castles',
+          'history',
+          'guided',
+          'honeymoon'],
+    summary:'From the streets of Paris to Renaissance castles, a tidal island abbey, and the Normandy coast.',
+    img:'assets/img/france-card.jpg', hero:'assets/img/france-hero.jpg', portrait:'assets/img/france-portrait.jpg',
+    facts:[['Duration','9 Days / 7 Nights'],['Destinations','Paris · Loire Valley · Normandy'],['Paris','3 Nights total'],['Loire Valley','2 Nights'],['Normandy','2 Nights'],['Meal Plan','Breakfast Included']],
+    highlights:[
+      ['Iconic Paris','The Eiffel Tower, the Champs-Élysées, and the Arc de Triomphe on a guided city tour.','ph-map-trifold'],
+      ['The Châteaux of the Loire','Chambord, Chenonceau, and Amboise — the Renaissance castles of French royalty.','ph-bank'],
+      ['Mont Saint-Michel','The tidal island abbey, one of France\'s most breathtaking UNESCO World Heritage sites.','ph-umbrella'],
+      ['Normandy\'s D-Day Beaches','Pointe du Hoc, Omaha Beach, and the Colleville-sur-Mer American Cemetery.','ph-umbrella']
+    ],
+    stays:[
+      {city:'Paris', nights:'3 nights', intro:'Your journey opens and closes in the City of Light — famous sights, café culture, and, if you like, a legendary cabaret evening.', facts:['Mercure Paris Porte de Versailles Expo',
+                'Double Room · Daily Breakfast'],
+        days:[
+          {n:'1',label:'Departure',title:'Fly to Paris',text:'Depart your US gateway for an overnight flight to Paris. If either your outbound or inbound flight departs before 4:00 a.m., plan to arrive at the airport the night before.'},
+          {n:'2',label:'Arrival',title:'Welcome to Paris',text:'Land in Paris and make your own way to the hotel (airport transfers aren\'t included on this package, but can be added). The rest of the day is yours to discover the city\'s cafés and neighborhoods.'},
+          {n:'3',label:'Included Tour · 2h',title:'Paris Sightseeing Tour',text:'A guided half-day tour past Place Vendôme, the Paris Opera, the Panthéon, Place de la Concorde, the Champs-Élysées, the Arc de Triomphe, Les Invalides, and the Eiffel Tower — plus a visit to the Fragonard Perfume Museum. The rest of the day is free for shopping or a café break. Optional (choose one): a dinner in Montmartre followed by a show at the Moulin Rouge, or an evening at the legendary Crazy Horse cabaret.'}
+        ]},
+      {city:'the Loire Valley', nights:'', intro:'The Renaissance playground of French kings — a region of fairytale châteaux, manicured gardens, and centuries-old vineyards, based in the historic city of Tours.', facts:['Hilton Garden Inn Tours Centre',
+                'Double Room · Daily Breakfast'],
+        days:[
+          {n:'4',label:'Included Tour · 2h',title:'Paris → Chambord → Tours',text:'Meet your English-speaking tour leader and depart Paris by coach for the Loire Valley. First stop: the Château de Chambord, one of the most emblematic examples of French Renaissance architecture, with free time to explore its grounds. Continue to the historic city of Tours, check in, and enjoy a free evening.'},
+          {n:'5',label:'Included Tours · 4h 30m',title:'Chenonceau, Amboise & Wine Tasting',text:'Explore the Château de Chenonceau — nicknamed "the Ladies\' Castle" — whose two-story gallery bridges the Cher River. In the afternoon, visit the Royal Château of Amboise, perched above the river with panoramic views over the Loire. After lunch, join a guided wine tasting through a selection of local Loire Valley wines.'}
+        ]},
+      {city:'Normandy', nights:'2 nights', intro:'A historic coastal region of medieval architecture, tidal islands, and the Allied beaches where D-Day changed the course of history.', facts:['Novotel Caen Côte de Nacre',
+                'Double Room · Daily Breakfast'],
+        days:[
+          {n:'6',label:'Included Tour · 5h',title:'Tours → Mont Saint-Michel → Caen',text:'Depart Tours for the world-renowned Mont Saint-Michel, a UNESCO World Heritage site consecrated to St. Michael since the year 708. Shuttle buses carry you onto the island itself, where the Benedictine Abbey presents a grand panorama of medieval architecture. Explore the village built into the fortifications before continuing to Caen, your base on the Normandy coast.'},
+          {n:'7',label:'Included Tour · 3h',title:'Normandy\'s D-Day Landing Beaches',text:'A guided tour of WWII\'s major sights — Pointe du Hoc, Omaha Beach, and the Colleville-sur-Mer Cemetery of the Allied Forces. After this solemn, educational morning, spend a quiet afternoon exploring Caen itself, a historic city with medieval architecture and the tomb of William the Conqueror.'},
+          {n:'8',label:'Included Tour · 1h 30m',title:'Caen → Honfleur → Paris',text:'Visit the Village du Fromager to see the stages of French cheese production, with tastings included. Continue to Honfleur, a small harbor city dating to the 11th century, for a couple of hours exploring before the drive back to Paris — overnighting again at your original Paris hotel.'},
+          {n:'9',label:'Departure',title:'Fly Home',text:'Breakfast at the hotel, then make your own way to the airport for your return flight to the United States.'}
+        ]}
+    ],
+    included:['Round-trip international flights, USA ⇄ Paris',
+              '7 nights accommodation, across Paris, Tours & Caen',
+              '7 breakfasts',
+              'Entrance to Chambord, Chenonceau, Amboise & Mont-Saint-Michel Abbey',
+              'Wine tasting and a cheese-making experience with tasting',
+              'Paris sightseeing tour & guided Normandy D-Day beaches tour',
+              'English-speaking tour leader, Days 4–8',
+              'All air taxes and fuel surcharges'],
+    notIncluded:['Airport-hotel-airport transfers in Paris (can be added)',
+                 'Meals beyond breakfast, and drinks',
+                 'Tips and gratuities',
+                 'France accommodation tax (paid directly to hotels, approx. €5–11/person/night)',
+                 'Optional evening (Moulin Rouge dinner show or Crazy Horse cabaret)'],
+    tip:'Airport transfers in Paris aren\'t included by default on this package, but can be added for a small additional cost — ask your trip advisor when you request your quote.'
+  },
+  {
+    slug:'turkey-cappadocia-istanbul', name:'Turkey: From Cappadocia\'s Skies to Istanbul\'s Soul', short:'Turkey: Cappadocia & Istanbul', tagline:'Fairy chimneys and the Bosphorus',
+    region:'Europe', tier:'Turkey', days:9, nights:7, price:1990, priceNote:'Based on double occupancy.',
+    points:['Bosphorus Cruise included',
+            '7 breakfasts + 3 dinners',
+            'Fairy chimneys of Cappadocia'],
+    route:['Istanbul',
+           'Ankara',
+           'Cappadocia'], tags:['history',
+          'culture',
+          'guided',
+          'balloon'],
+    summary:'A fast-paced tour of Turkey\'s highlights — early starts and full days, from Istanbul to Ankara to Cappadocia and back.',
+    img:'assets/img/cappadocia-card.jpg', hero:'assets/img/cappadocia-hero.jpg', portrait:'assets/img/cappadocia-portrait.jpg',
+    facts:[['Duration','9 Days / 7 Nights'],['Destinations','Istanbul · Ankara · Cappadocia'],['Istanbul','4 Nights total'],['Ankara','1 Night'],['Cappadocia','2 Nights'],['Meal Plan','7 Breakfasts + 3 Dinners']],
+    highlights:[
+      ['The Bosphorus Strait','A cruise along the waterway dividing Europe and Asia, past palaces and traditional houses.','ph-boat'],
+      ['Cappadocia\'s Fairy Chimneys','Surreal volcanic rock formations across the Göreme Valley, a UNESCO World Heritage Site.','ph-map-pin'],
+      ['The Mausoleum of Atatürk','Anıtkabir, Ankara\'s most powerful monument to the founder of modern Turkey.','ph-bank'],
+      ['Istanbul\'s Grand Bazaars','The Spice Bazaar and the labyrinthine streets around Suleymaniye Mosque.','ph-bank']
+    ],
+    stays:[
+      {city:'Istanbul', nights:'4 nights', intro:'Once the capital of Turkey, a city brimming with history, culture, and delicious cuisine, straddling the border between Europe and Asia.', facts:['Grand Yavuz Hotel Istanbul',
+                'Double Room · Daily Breakfast'],
+        days:[
+          {n:'1',label:'Departure',title:'Fly to Istanbul',text:'Depart your US gateway for an overnight flight to Istanbul. If either your outbound or inbound flight departs before 4:00 a.m., plan to arrive at the airport the night before.'},
+          {n:'2',label:'Arrival',title:'Welcome to Istanbul',text:'Arrive in bustling Istanbul, transfer to your hotel, and if time allows, spend the remainder of the day exploring at your leisure.'},
+          {n:'3',label:'Included Tour · 1h',title:'Suleymaniye Mosque',text:'Visit the grandiose Suleymaniye Mosque on the third hill of Istanbul, home to one of the city\'s most incredible panoramic views. Afterward, explore the labyrinthine bazaars and eclectic architecture at your own pace (no included transfer back to the hotel). Optional: a full-day Istanbul city tour — Topkapi Palace, a photo stop at Hagia Sophia, lunch, the exterior of the Blue Mosque, and the 4,000-shop Grand Bazaar.'},
+          {n:'4',label:'Included Tour · 4h',title:'Bosphorus Cruise & Spice Bazaar',text:'Start at the aromatic, Ottoman-era Spice Bazaar, then board a boat for a cruise along the Bosphorus — past old palaces and traditional houses, along the border between Europe and Asia. Afterward, explore the city at your own pace (no included transfer back to the hotel). Optional: a half-day Anatolian Istanbul excursion with lunch, or an evening dinner show on the Bosphorus with belly dance and dervish performances.'},
+          {n:'8',label:'Domestic Flight',title:'Cappadocia → Istanbul',text:'Fly back to Istanbul, transfer to the hotel, and spend your final evening exploring the city at your leisure.'},
+          {n:'9',label:'Departure',title:'Fly Home',text:'Transfer to the airport for your flight back to the United States. Depending on your flight, you may arrive back in the US the following day.'}
+        ]},
+      {city:'Ankara', nights:'1 night', intro:'The Turkish capital — a modern, cosmopolitan city steeped in history and ancient culture, reached by crossing the spectacular Bolu mountains.', facts:['Radisson Blu Hotel, Ankara',
+                'Double Room · Breakfast & Dinner Included'],
+        days:[
+          {n:'5',label:'Included Tour · 1h 30m',title:'Istanbul → Ankara',text:'Cross the spectacular Bolu mountains en route to Ankara (approx. 280 miles / 6 hours by coach). Arrive and enjoy a panoramic tour of the Turkish capital, then visit Anıtkabir, the Mausoleum of Atatürk, dedicated to the founder of modern Turkey since its inauguration in 1953. Dinner and overnight stay in Ankara.'}
+        ]},
+      {city:'Cappadocia', nights:'2 nights', intro:'A UNESCO World Heritage Site famed for its surreal geological formations — the result of ancient volcanic eruptions over 3 million years ago.', facts:['Ramada by Wyndham Cappadocia',
+                'Double Room · Breakfast & Dinner Included'],
+        days:[
+          {n:'6',label:'Included Tour · 45m',title:'Ankara → Cappadocia',text:'Journey to Cappadocia (approx. 190 miles / 5 hours), passing the spectacular Salt Lake along the way. Arrive and visit a traditional ceramic workshop, followed by a precious stone shop to see raw material transformed into jewelry. Dinner and overnight stay in Cappadocia. Optional: a jeep safari and sunset tour through the valleys.'},
+          {n:'7',label:'Included Tour · 6h',title:'Highlights of Cappadocia',text:'Discover the fascinating landscapes of Cappadocia: the Göreme Valley Open Air Museum, a Byzantine monastic complex with beautiful frescoes, and the Avcilar and Güvercinlik Valleys, home to the captivating "Fairy Chimneys," followed by a visit to a local carpet workshop. Dinner and overnight stay in Cappadocia. Optional: a sunrise hot air balloon flight, a visit to the Saratlı Underground City, or a Turkish Night with traditional dance and unlimited drinks.'}
+        ]}
+    ],
+    included:['Round-trip international flights, USA ⇄ Istanbul',
+              'Domestic flight, Cappadocia to Istanbul',
+              '7 nights hotel accommodation',
+              '7 breakfasts and 3 dinners',
+              'Transfers as indicated in the itinerary',
+              'Bosphorus Cruise in Istanbul',
+              'English-speaking guides during all included visits',
+              'All air taxes and fuel surcharges'],
+    notIncluded:['Drinks, entrance fees, and tips',
+                 'Mandatory tips of $30/person for guides, drivers & staff (paid at destination)',
+                 'Turkey tourism tax, $15/person (collected by your guide)',
+                 'Optional excursions (Istanbul city tour, balloon flight, Turkish Night & more)'],
+    tip:'This is a fast-paced itinerary with early starts most days. Exact night distribution in Istanbul (nights at the start vs. the end of the trip) depends on your arrival day of the week. Your trip advisor can confirm the exact breakdown and walk you through the mandatory tips and tourism tax when you request your quote.'
+  },
+  {
+    slug:'thailand-city-lights-beach-nights', name:'Thailand: City Lights to Beach Nights', short:'Thailand: City Lights to Beach Nights', tagline:'Bangkok markets, then Phuket sand',
+    region:'Asia', tier:'Thailand', days:9, nights:7, price:2249, priceNote:'Based on double occupancy. Luxury category hotels.',
+    points:['Luxury category hotels',
+            'Floating markets, temples & Phi Phi Islands',
+            'Internal flight Bangkok to Phuket included'],
+    route:['Bangkok',
+           'Phuket'], tags:['city',
+          'beach',
+          'temples',
+          'islands'],
+    summary:'Bustling markets and temples in Bangkok, then island time in Phuket.',
+    img:'assets/img/thailand-card.jpg', hero:'assets/img/thailand-hero.jpg', portrait:'assets/img/thailand-portrait.jpg',
+    facts:[['Duration','9 Days / 7 Nights'],['Destinations','Bangkok · Phuket'],['Bangkok','4 Nights'],['Phuket','3 Nights'],['Meal Plan','Breakfast Included']],
+    highlights:[
+      ['Bangkok\'s Grand Temples','The Grand Palace, Wat Pho\'s Reclining Buddha, and the riverside spires of Wat Arun.','ph-boat'],
+      ['Floating & Railway Markets','Maeklong\'s market on the train tracks, and the colorful canals of Damnoen Saduak.','ph-train'],
+      ['Maya Bay & the Phi Phi Islands','Turquoise lagoons, limestone cliffs, and the beach made famous on film.','ph-umbrella'],
+      ['Phuket Island Life','Rainforest, mountains, and the ultimate island escape on Thailand\'s largest island.','ph-umbrella']
+    ],
+    stays:[
+      {city:'Bangkok', nights:'4 nights', intro:'A vibrant, cosmopolitan capital — impressive temples, lively street culture, and some of the world\'s most renowned cuisine.', facts:['Mövenpick Wellness Resort Bangkok',
+                'Double Room · Daily Breakfast'],
+        days:[
+          {n:'1',label:'Departure',title:'Fly to Bangkok',text:'Depart your US gateway for an overnight flight to Bangkok. If either your outbound or inbound flight departs before 4:00 a.m., plan to arrive at the airport the night before.'},
+          {n:'2',label:'Arrival',title:'Welcome to Bangkok',text:'Touch down in Thailand\'s buzzing capital, where an airport representative welcomes you and transfers you to your hotel. Enjoy the rest of the day at your leisure and begin discovering this fascinating city.'},
+          {n:'3',label:'Included Tour · 7h',title:'Maeklong Railway & Floating Markets',text:'Take a train to Maeklong, where a 100-metre-long market operates directly on active railway tracks — watching vendors retract their awnings as a train passes is unforgettable. Continue to the Damnoen Saduak Floating Market, known for its colorful canal-boat stalls and fresh local dishes. The rest of the day is free to explore Bangkok at your own pace.'},
+          {n:'4',label:'Included Tour · 7h',title:'Temple Walking Tour',text:'Discover Bangkok\'s most sacred sites on a guided tour: Wat Phra Kaew, Thailand\'s most revered Buddhist temple; the Grand Palace, the former royal residence; Wat Pho, home to the enormous Reclining Buddha; and Wat Arun, the riverside Temple of Dawn. Optional: a Michelin Guide street food tour by tuk-tuk through Bangkok\'s most iconic stalls.'},
+          {n:'5',label:'Free Day',title:'Explore at Your Own Pace',text:'A free day to continue exploring the capital. Optional: a full-day tour to Ayutthaya, the former capital of the Kingdom of Siam, visiting its ancient temple ruins with lunch at a local Thai restaurant included.'}
+        ]},
+      {city:'Phuket', nights:'3 nights', intro:'A paradise island of rainforests and mountains — Thailand\'s ultimate escape, and your gateway to the Phi Phi Islands.', facts:['Paradox Resort Phuket',
+                'Double Room · Daily Breakfast'],
+        days:[
+          {n:'6',label:'Domestic Flight',title:'Bangkok → Phuket',text:'Transfer to the airport for a flight to Phuket. Arrive on this paradise island of rainforests and mountains, transfer to your hotel, and spend the rest of the day lounging by the pool or searching for the most idyllic coves.'},
+          {n:'7',label:'Included Tour · 9h 30m',title:'Phi Phi & Bamboo Island by Speedboat',text:'A full day of island-hopping by speedboat: swim in the turquoise waters of Pileh Lagoon, surrounded by dramatic limestone cliffs; enjoy lunch on Phi Phi Don Island; visit Monkey Beach to swim, snorkel, and spot the local macaques; cruise past Viking Cave; and finish at the iconic Maya Bay, made famous by the film The Beach, before a final stop at Khai Nai Island.'},
+          {n:'8',label:'Free Day',title:'Relax or Explore',text:'Another free day to relax and enjoy Phuket. Optional: an excursion to James Bond Island in Phang Nga Bay — walk-in cave exploration at Panak Island, a visit to the iconic island itself, canoeing through mangroves, and lunch at the stilted fishing village of Koh Panyee.'},
+          {n:'9',label:'Departure',title:'Fly Home',text:'Breakfast at the hotel, then transfer to the airport for your flight back to the United States. Depending on your flight, you may arrive back in the US the following day.'}
+        ]}
+    ],
+    included:['Round-trip international flights, USA ⇄ Thailand',
+              'Internal flight, Bangkok to Phuket',
+              '7 nights in Luxury category hotels',
+              '7 breakfasts',
+              'All transfers as indicated in the itinerary',
+              'Maeklong & Floating Market Tour, Temple Walking Tour, and Phi Phi Island Speedboat Tour',
+              'English-speaking guides during all included excursions',
+              'All air taxes and fuel surcharges'],
+    notIncluded:['Drinks, tips, and other services not mentioned',
+                 'Optional excursions (street food tour, Ayutthaya, James Bond Island)',
+                 'Travel insurance'],
+    tip:'All travelers must complete Thailand\'s Digital Arrival Card (TDAC) online at least 3 days before arrival. Note too that airport transfers in Bangkok and Phuket are unescorted (without a guide), and children under 3 or adults over 70 cannot join the Phi Phi Island excursion. Your trip advisor can walk you through all of this when you request your quote.'
+  },
+  {
+    slug:'sacred-shores-of-bali', name:'Sacred Shores of Bali', short:'Sacred Shores of Bali', tagline:'Temples, rice terraces and tropical coast',
+    region:'Asia', tier:'Bali', days:11, nights:7, price:2399, priceNote:'Based on double occupancy. Superior category hotels.',
+    points:['Superior category hotels',
+            '3 guided tours, incl. Uluwatu & Kecak Dance',
+            '7 breakfasts + 1 included dinner'],
+    route:['Ubud',
+           'Benoa'], tags:['temples',
+          'beach',
+          'culture',
+          'honeymoon'],
+    summary:'From the artistic hill town of Ubud to the beaches of Benoa, with temples, waterfalls, and rice terraces along the way.',
+    img:'assets/img/bali-card.jpg', hero:'assets/img/bali-hero.jpg', portrait:'assets/img/bali-portrait.jpg',
+    facts:[['Duration','11 Days / 7 Nights'],['Destinations','Ubud · Benoa'],['Ubud','3 Nights'],['Benoa','4 Nights'],['Meal Plan','7 Breakfasts + 1 Dinner']],
+    highlights:[
+      ['Tegalalang Rice Terraces','Bali\'s most iconic emerald-green stepped paddies, just outside Ubud.','ph-tree'],
+      ['Sacred Water Temple','Tirta Empul\'s purifying springs, one of Bali\'s most revered Hindu sites.','ph-bank'],
+      ['Uluwatu & the Kecak Dance','A clifftop sea temple, sunset views, and Bali\'s mesmerizing fire trance dance.','ph-bank'],
+      ['Tanah Lot at Sunset','An offshore temple silhouetted against the sea as the sun goes down.','ph-umbrella']
+    ],
+    stays:[
+      {city:'Ubud', nights:'3 nights', intro:'Surrounded by rainforest and rice paddies in Bali\'s central foothills, Ubud is the island\'s centre of traditional dance, craft, and sacred sites — and the ideal base to explore all that Bali has to offer.', facts:['Ubud Green Resort Villas, Powered by Archipelago',
+                'Double Room · Daily Breakfast'],
+        days:[
+          {n:'1–2',label:'Departure',title:'Fly to Bali',text:'Depart your US gateway for the long journey to Bali. If your outbound flight leaves before 4:00 a.m., plan to arrive at the airport the night before.'},
+          {n:'3',label:'Arrival',title:'Welcome to Ubud',text:'Land at Denpasar and transfer by car to the artistic village of Ubud. After checking in, the rest of the day is yours — stroll the main boulevard, try some local cuisine, or simply relax by the pool.'},
+          {n:'4',label:'Included Tour · 8h',title:'Ubud & Kintamani Tour',text:'Visit Bali\'s most famous rice paddies at Tegalalang, then continue to Kintamani, a mountain town known for panoramic views over a lake and an active volcano, and refreshingly cool air. On the way back, visit Tirta Empul, a Hindu water temple where the Balinese bathe in purifying mineral springs, before a final stop at the 15-metre Tegenungan Waterfall.'},
+          {n:'5',label:'Free Day',title:'Relax or Explore',text:'A free day to unwind or wander Ubud at your own pace. Optional: an excursion to Besakih, Bali\'s oldest temple, and Penglipuran, a village famed for its beautifully preserved traditional architecture — passing rice paddies and the Goa Lawah Cave along the way (lunch included).'}
+        ]},
+      {city:'Benoa', nights:'4 nights', intro:'A luxurious stretch of Bali\'s coastline, known for calm waters — the perfect base for temples, sunsets, and time by the sea.', facts:['Nikko Bali Benoa Beach',
+                'Double Room · Daily Breakfast'],
+        days:[
+          {n:'6',label:'Included Tour · 8h',title:'Ubud to Benoa: Temples & Monkey Forest',text:'Visit Mengwi\'s Taman Ayun Temple, a UNESCO World Heritage site built in the 17th century for a local prince, with gardens and water features to explore. Then meet the wild residents of Alas Kedaton, the holy monkey forest, home to fruit bats and large primates among fragrant nutmeg trees. End the day watching the sun set over Tanah Lot Temple, built on a cliff overlooking the sea, before a short drive to your hotel in Benoa.'},
+          {n:'7',label:'Included Tour · 5h + Dinner',title:'Uluwatu & the Kecak Dance',text:'A free morning to relax, exercise, or shop, before an afternoon drive to the Bukit Peninsula. Discover Uluwatu Temple, one of Bali\'s most spiritually significant sites, and watch sunset views over the temple as locals perform the traditional Kecak Dance. On the way back, stop for an included dinner in Jimbaran. Optional: a Balinese cooking class.'},
+          {n:'8',label:'Free Day',title:'Another Day by the Sea',text:'Bask in a free day in Benoa, known for its calm waters ideal for swimming. Optional: a full-day snorkeling excursion to Nusa Lembongan, a stunning islet off Bali\'s south coast, with lunch included.'},
+          {n:'9',label:'Free Day',title:'Your Final Full Day',text:'Take in any last-minute sightseeing, relax by the pool, or shop for souvenirs. Optional: a Balinese cooking class in the morning, or a sunset dinner cruise in the evening — cocktails, an international buffet, and a live cabaret show as the sun sets over Bali.'},
+          {n:'10–11',label:'Departure',title:'Fly Home',text:'Breakfast at the hotel, then transfer to the airport for your flight back to the United States.'}
+        ]}
+    ],
+    included:['Round-trip international flights, USA ⇄ Bali',
+              '7 nights in Superior category hotels, across Ubud & Benoa',
+              '7 breakfasts and 1 dinner (Jimbaran, on the Uluwatu tour)',
+              'All transfers in air-conditioned vehicles',
+              '3 guided tours: Ubud & Kintamani, Temples & Monkey Forest, Uluwatu & Kecak Dance',
+              'Entrance fees for all included visits',
+              'All air taxes and fuel surcharges'],
+    notIncluded:['Indonesia visa (e-visa or on arrival)',
+                 'Bali entry fee (IDR 150,000 per person)',
+                 'Drinks, tips, and gratuities',
+                 'Optional excursions (Besakih & Penglipuran, snorkeling, cooking class, sunset cruise)'],
+    tip:'All international travelers must complete Indonesia\'s free "All-Indonesia Arrival Card" online within 72 hours of arrival. Your trip advisor can walk you through this and the Bali entry fee when you request your quote.'
+  },
+  {
+    slug:'costa-rica-natures-paradise', name:'Costa Rica: Nature\'s Paradise', short:'Costa Rica: Nature\'s Paradise', tagline:'Volcanoes, rainforest and the Pacific',
+    region:'Americas', tier:'Costa Rica', days:10, nights:8, price:1599, priceNote:'Based on double occupancy. Charm category.',
+    points:['Guided hike at Arenal Volcano',
+            'Rainforest river safari & mangrove tour',
+            '3 nights on the beach in Tamarindo'],
+    route:['San José',
+           'Arenal',
+           'Tamarindo'], tags:['nature',
+          'volcano',
+          'beach',
+          'wildlife',
+          'rainforest'],
+    summary:'From the colonial capital to the Arenal Volcano and the beaches of Tamarindo — a complete cross-section of Costa Rica\'s Pura Vida in 10 days.',
+    img:'assets/img/costarica-card.jpg', hero:'assets/img/costarica-hero.jpg', portrait:'assets/img/costarica-portrait.jpg',
+    facts:[['Duration','10 Days / 8 Nights'],['Destinations','San José · Arenal · Tamarindo'],['San José','2 Nights total'],['Arenal','3 Nights'],['Tamarindo','3 Nights'],['Meal Plan','8 Breakfasts']],
+    highlights:[
+      ['Arenal Volcano Hike','A guided hike at the base of Costa Rica\'s most iconic volcano, with optional hot springs to follow.','ph-mountains'],
+      ['Rio Peñas Blancas Safari','A river safari through the rainforest, keeping an eye out for sloths on an optional night walk.','ph-paw-print'],
+      ['Las Baulas Mangrove Safari','A boat safari through the mangroves of Las Baulas National Park near Tamarindo.','ph-paw-print'],
+      ['Pacific Beach Time in Tamarindo','Three nights to unwind on Costa Rica\'s Gold Coast, with optional catamaran or ATV excursions.','ph-umbrella']
+    ],
+    stays:[
+      {city:'San José', nights:'2 nights', intro:'Costa Rica\'s capital, where your trip begins and ends — a city of colonial plazas, leafy neighborhoods, and easy access to the rest of the country.', facts:['Barceló San José',
+                'Double Room · Daily Breakfast'],
+        days:[
+          {n:'1',label:'Arrival',title:'Fly to San José',text:'Depart the US for San José. On arrival, transfer to your hotel and, if time allows, explore the colonial plazas and neighborhoods of the capital at your own pace.'},
+          {n:'8',label:'Return Transfer',title:'Tamarindo → San José',text:'Transfer back to the capital and settle into your hotel for the final nights of the trip. Optional: a VIP city bus tour of San José\'s landmarks.'},
+          {n:'9',label:'Departure',title:'Fly Home',text:'Enjoy a final hotel breakfast, then transfer to the airport for your evening flight back to the United States.'},
+          {n:'10',label:'Arrival',title:'Arrive in the United States',text:'Land back home, wrapping up 10 unforgettable days across Costa Rica\'s volcanoes, rainforest, and Pacific coast.'}
+        ]},
+      {city:'Arenal', nights:'3 nights', intro:'Home to Costa Rica\'s most famous volcano, rising over a landscape of rainforest, rivers, and hot springs.', facts:['Arenal Country Inn',
+                'Double Room · Daily Breakfast'],
+        days:[
+          {n:'2',label:'Included Hike',title:'San José → Arenal',text:'Transfer to Arenal and join a guided hike at the base of the Arenal Volcano. Optional: an evening visit to one of the area\'s natural hot springs.'},
+          {n:'3',label:'Included Excursion',title:'Rio Peñas Blancas River Safari',text:'A guided river safari along the Rio Peñas Blancas, spotting birds and wildlife along the banks. Optional: a sloth observation tour or a guided night walk through the rainforest.'},
+          {n:'4',label:'Free Day',title:'Free Day in Arenal',text:'A free day to explore at your own pace. Optional: a hanging bridges excursion through the cloud forest canopy.'}
+        ]},
+      {city:'Tamarindo', nights:'3 nights', intro:'Costa Rica\'s Gold Coast — a laid-back beach town on the Pacific, framed by mangroves, surf breaks, and golden sand.', facts:['Wyndham Tamarindo',
+                'Double Room · Daily Breakfast'],
+        days:[
+          {n:'5',label:'Transfer',title:'Arenal → Tamarindo',text:'Transfer across the country to the beach town of Tamarindo on Costa Rica\'s Pacific coast, with the rest of the day free to settle in.'},
+          {n:'6',label:'Included Excursion',title:'Las Baulas Mangrove Boat Safari',text:'A guided boat safari through the mangroves of Las Baulas National Park, home to herons, monkeys, and other coastal wildlife. Optional: a canopy zipline tour.'},
+          {n:'7',label:'Free Day',title:'Beach Day in Tamarindo',text:'A free day to relax on the beach. Optional: a sunset catamaran cruise or an ATV excursion along the coast.'}
+        ]}
+    ],
+    included:['Round-trip international flights, USA ⇄ San José',
+              '8 nights hotel accommodation',
+              '8 breakfasts',
+              'Air-conditioned transfers between San José, Arenal & Tamarindo',
+              'Guided Arenal Volcano hike',
+              'Rio Peñas Blancas river safari',
+              'Las Baulas mangrove boat safari',
+              'Entrance fees for all included excursions',
+              'Bilingual English/Spanish guide for included activities',
+              'All air taxes and fuel surcharges'],
+    notIncluded:['Drinks, tips, and services not explicitly listed as included',
+                 'Lunches and dinners',
+                 'Optional excursions (hot springs, sloth/night walk, hanging bridges, canopy tour, catamaran & ATV tours, VIP city bus tour)',
+                 'Travel insurance',
+                 'Personal expenses'],
+    tip:'This is an independent tour with shared guided excursions rather than a fully escorted group trip, and hotel standards reflect Costa Rica\'s traditional, nature-focused style rather than US/European chain norms. Travelers with reduced mobility should contact the operator at +1-888-488-0592 before booking. Your trip advisor can confirm exact pickup times and walk you through optional excursions when you request your quote.'
+  },
+  {
+    slug:'ecuador-galapagos-beyond', name:'Ecuador: Galápagos and Beyond', short:'Galápagos and Beyond', tagline:'Two islands, one rainforest',
+    region:'Americas', tier:'Ecuador', days:13, nights:11, price:2449, priceNote:'Based on double occupancy. Charm category.',
+    points:['Snorkel with sea lions at Loberia Beach',
+            'Island-hop San Cristóbal to Santa Cruz',
+            'A night in the Amazon rainforest'],
+    route:['Quito',
+           'San Cristóbal',
+           'Santa Cruz',
+           'Amazon'], tags:['islands',
+          'wildlife',
+          'nature',
+          'snorkelling',
+          'amazon'],
+    summary:'From the Andean capital to two Galápagos islands and the Amazon rainforest — a complete cross-section of Ecuador in 13 days.',
+    img:'assets/img/galapagos-card.jpg', hero:'assets/img/galapagos-hero.jpg', portrait:'assets/img/galapagos-portrait.jpg',
+    facts:[['Duration','13 Days / 11 Nights'],['Destinations','Quito · Galápagos · Amazon'],['Quito','4 Nights total'],['San Cristóbal','3 Nights'],['Santa Cruz','2 Nights'],['Amazon (Tena)','2 Nights'],['Meal Plan','11 Breakfasts']],
+    highlights:[
+      ['Snorkeling at Loberia Beach','Swim alongside curious Galápagos sea lions on San Cristóbal\'s most famous shoreline.','ph-paw-print'],
+      ['Giant Tortoises in the Wild','Optional highlands excursion on Santa Cruz to see wild giant tortoises roaming free.','ph-paw-print'],
+      ['Island-Hopping by Speedboat','Cross open Pacific waters between San Cristóbal and Santa Cruz on a scenic transfer.','ph-boat'],
+      ['A Night in the Amazon','Trade islands for jungle with a night walk and a stay at an Amazon rainforest lodge near Tena.','ph-umbrella']
+    ],
+    stays:[
+      {city:'Quito', nights:'4 nights', intro:'Ecuador\'s high-altitude capital and your gateway both into and out of the Galápagos and the Amazon — you\'ll pass through three separate times over the trip.', facts:['Holiday Inn Quito Airport',
+                'Double Room · Daily Breakfast'],
+        days:[
+          {n:'1',label:'Arrival',title:'Fly to Quito',text:'Depart the US for Quito. On arrival, a private transfer takes you to your hotel near the airport to rest and acclimatize to the altitude.'},
+          {n:'2',label:'Orientation',title:'Quito Orientation & Free Time',text:'Join a trip orientation briefing to prepare for the Galápagos leg ahead, then enjoy free time in the city. Optional: a half-day excursion to the Middle of the World monument, marking the equatorial line.'},
+          {n:'8',label:'Return Flight',title:'Santa Cruz → Quito',text:'Fly back from the Galápagos to Quito and transfer to your hotel for the night ahead of tomorrow\'s Amazon departure.'},
+          {n:'11',label:'Included Stop',title:'Amazon → Papallacta → Quito',text:'Depart the Amazon lodge and travel back toward Quito, stopping at the Papallacta thermal springs along the way (optional soak, approx. $10). Arrive in Quito for your final overnight.'},
+          {n:'12',label:'Departure',title:'Fly Home',text:'Transfer to Quito\'s airport for your overnight flight back to the United States.'},
+          {n:'13',label:'Arrival',title:'Arrive in the United States',text:'Land back home, wrapping up 13 unforgettable days across the Andes, the Galápagos, and the Amazon.'}
+        ]},
+      {city:'San Cristóbal', nights:'3 nights', intro:'Your first Galápagos island — home to Loberia Beach, one of the archipelago\'s best spots to snorkel alongside playful sea lions.', facts:['Albatross',
+                'Double Room · Daily Breakfast'],
+        days:[
+          {n:'3',label:'Flight to Galápagos',title:'Quito → San Cristóbal',text:'Fly to the Galápagos Islands. At the airport, present your Transit Control Card (TCC) and pay the Galápagos National Park entrance fee before continuing to your hotel for a welcome orientation.'},
+          {n:'4',label:'Included Excursion',title:'Loberia Beach',text:'Visit Loberia Beach for included snorkeling among sea lions, marine iguanas, and reef fish in the shallow, sheltered bay. Optional: a boat excursion to Isla Lobos, another sea lion colony a short ride away.'},
+          {n:'5',label:'Free Day',title:'Free Day in San Cristóbal',text:'A free day to explore at your own pace. Optional: snorkeling at Kicker Rock (León Dormido), a dramatic split volcanic rock formation, or a highlands tour of the island\'s interior.'}
+        ]},
+      {city:'Santa Cruz', nights:'2 nights', intro:'The most populated island in the Galápagos, and home to the highland reserves where giant tortoises roam wild.', facts:['Hotel Miconia',
+                'Double Room · Daily Breakfast'],
+        days:[
+          {n:'6',label:'Inter-Island Transfer',title:'San Cristóbal → Santa Cruz',text:'Board a speedboat for the approximately 2.5-hour crossing to Santa Cruz Island. Ferry conditions can be choppy — motion sickness precautions are recommended. Optional: a bay tour on arrival.'},
+          {n:'7',label:'Free Day',title:'Free Day in Santa Cruz',text:'A free day to explore Puerto Ayora at your own pace. Optional: a highlands excursion to see giant tortoises roaming wild in their natural habitat.'}
+        ]},
+      {city:'the Amazon', nights:'', intro:'Trade the islands for the rainforest with a stay near Tena, on the edge of Ecuador\'s Amazon basin.', facts:['Huasquila Amazon Lodge',
+                'Double Room · Daily Breakfast'],
+        days:[
+          {n:'9',label:'Included Tour + Drive',title:'Quito → Tena, Amazon',text:'A short Quito city tour before driving down into the Amazon basin to reach your rainforest lodge near Tena. After settling in, join an included night walk through the jungle to spot nocturnal wildlife.'},
+          {n:'10',label:'Free Day',title:'Free Day in the Rainforest',text:'A free day at the lodge to relax or add on activities. Optional: a jungle waterfall walk, a canoe tour along the river, or a traditional chocolate-making workshop.'}
+        ]}
+    ],
+    included:['Round-trip international flights, USA ⇄ Quito',
+              'Domestic flights: Quito ⇄ San Cristóbal / Santa Cruz',
+              '11 nights hotel accommodation',
+              '11 breakfasts',
+              'Airport and activity transfers as indicated in the itinerary',
+              'Loberia Beach snorkeling excursion',
+              'Amazon night jungle walk',
+              'English-speaking guides for included visits'],
+    notIncluded:['Galápagos Transit Control Card, $20/person (cash)',
+                 'Galápagos National Park entrance, $200 adults / $100 children',
+                 'Meals beyond breakfast, drinks, and tips',
+                 'Papallacta hot springs entry, optional (~$10)',
+                 'Optional excursions (Isla Lobos, Kicker Rock, highlands tortoise tours, canoe & chocolate tours)',
+                 'Tourist visa, if required for your passport'],
+    tip:'A doctor\'s consultation about altitude sickness is recommended before travel given Quito\'s elevation, and the inter-island ferries can be choppy — motion sickness precautions are advised. Travelers from certain countries (including Afghanistan, Angola, Bangladesh, China, India, Nigeria, Philippines, Venezuela, and Vietnam) require a tourist visa obtained before departure. Your trip advisor can confirm visa requirements and walk you through the Galápagos entry fees when you request your quote.'
+  },
+  {
+    slug:'egypt-sands-of-time', name:'Egypt: Sands of Time, Shores of Wonder', short:'Egypt: Sands of Time', tagline:'The pyramids, then the Nile',
+    region:'Africa', tier:'Egypt', days:9, nights:7, price:2149, priceNote:'Based on double occupancy. Luxury Cruise category.',
+    points:['Great Pyramids & Sphinx of Giza',
+            'Full-board Nile cruise, Aswan to Luxor',
+            'Valley of the Kings & Karnak Temple'],
+    route:['Cairo',
+           'Nile Cruise'], tags:['history',
+          'cruise',
+          'ancient',
+          'guided'],
+    summary:'From the pyramids and museums of Cairo to a full-board Nile cruise from Aswan to Luxor — a complete cross-section of ancient Egypt in 9 days.',
+    img:'assets/img/egypt-card.jpg', hero:'assets/img/egypt-hero.jpg', portrait:'assets/img/egypt-portrait.jpg',
+    facts:[['Duration','9 Days / 7 Nights'],['Destinations','Cairo · Aswan · Luxor'],['Cairo','4 Nights'],['Nile Cruise','3 Nights'],['Meal Plan','4 Breakfasts + Full Board']],
+    highlights:[
+      ['Great Pyramids & Sphinx of Giza','A guided tour of Egypt\'s most iconic monuments, plus the Egyptian Museum and Khan el-Khalili bazaar.','ph-bank'],
+      ['Felucca Sailing on the Nile','A traditional felucca sail as you board your Nile cruise ship in Aswan.','ph-boat'],
+      ['Valley of the Kings & Luxor Temple','Explore royal tombs, the Temple of Hatshepsut, and the Colossi of Memnon on Luxor\'s West Bank.','ph-bank'],
+      ['Full-Board Nile Cruise','Three nights sailing from Aswan to Luxor, with all meals aboard and temple stops along the way.','ph-boat']
+    ],
+    stays:[
+      {city:'Cairo', nights:'4 nights', intro:'Egypt\'s sprawling capital on the banks of the Nile, home to the Great Pyramids, the Egyptian Museum, and the bustling lanes of Khan el-Khalili.', facts:['Sofitel Cairo Nile El Gezirah',
+                'Double Room · Daily Breakfast'],
+        days:[
+          {n:'1',label:'Departure',title:'Overnight Flight to Cairo',text:'Depart the US on an overnight flight bound for Cairo — the start of your journey along the Nile.'},
+          {n:'2',label:'Arrival',title:'Welcome to Cairo',text:'Arrive in Cairo and transfer to your hotel on the Nile, with the rest of the day free to settle in at your own pace.'},
+          {n:'3',label:'Included Tour',title:'Pyramids of Giza & Ancient Cairo',text:'A full day exploring the Great Pyramids and Sphinx of Giza and the Valley Temple, followed by the treasures of the Egyptian Museum and the stalls of the Khan el-Khalili bazaar. Optional: a Cairo by Night excursion.'},
+          {n:'9',label:'Departure',title:'Fly Home',text:'Transfer to the airport for your return flight to the United States, landing back home and wrapping up 9 unforgettable days across Cairo and the Nile.'}
+        ]},
+      {city:'Welcome Aboard', nights:'', intro:'A full-board journey down the Nile from Aswan to Luxor, sailing past temples, granite quarries, and riverside villages between stops in the Valley of the Kings.', facts:['Nile Capital Cruise or Sonesta St. George',
+                'Cabin Room · Full Board (All Meals Included)'],
+        days:[
+          {n:'4',label:'Flight + Boarding',title:'Cairo → Aswan → Nile Cruise',text:'Fly from Cairo to Aswan, visiting the Aswan High Dam, the Unfinished Obelisk, and the granite quarries before boarding your Nile cruise ship. In the evening, sail the Nile aboard a traditional felucca.'},
+          {n:'5',label:'Included Cruising',title:'Kom Ombo & Optional Abu Simbel',text:'A full day aboard ship with all meals included, visiting the Temple of Kom Ombo and its Crocodile Mummy Museum. Optional: a full-day excursion to the twin temples of Abu Simbel or a visit to the Island of Philae.'},
+          {n:'6',label:'Included Tour',title:'Edfu to Luxor',text:'Visit the Temple of Edfu before continuing to Luxor, where you\'ll tour the Temple of Luxor at the heart of the city.'},
+          {n:'7',label:'Included Tour',title:'Valley of the Kings & West Bank',text:'Explore the Valley of the Kings (three tombs), the Temple of Hatshepsut, and the Colossi of Memnon on Luxor\'s West Bank. Optional: the Karnak Sound and Light Show in the evening.'},
+          {n:'8',label:'Tour + Flight',title:'Karnak Temple & Flight to Cairo',text:'Visit the Karnak Temple Complex before disembarking and flying back to Cairo. Optional: the Saladin Citadel or the Grand Egyptian Museum.'}
+        ]}
+    ],
+    included:['Round-trip international flights, USA ⇄ Cairo',
+              'Internal flights: Cairo ⇄ Aswan & Luxor ⇄ Cairo',
+              '4 nights hotel accommodation in Cairo',
+              '3 nights full-board Nile cruise, Aswan to Luxor',
+              '4 breakfasts in Cairo + all meals aboard the Nile cruise',
+              'Air-conditioned transfers throughout',
+              'Entrance fees for all included sites and temples',
+              'Traditional felucca sailing on the Nile',
+              'English-speaking guide throughout',
+              'All air taxes and fuel surcharges'],
+    notIncluded:['Egypt visa (~$36, paid on arrival)',
+                 'Drinks and tips',
+                 'Mandatory Nile cruise gratuities ($55/person — see Good to Know)',
+                 'Optional excursions (Abu Simbel, Island of Philae, Cairo by Night, Karnak Sound & Light Show, Saladin Citadel, Grand Egyptian Museum)',
+                 'Onboard Wi-Fi ($8/day, in port only)',
+                 'Travel insurance'],
+    tip:'This is a fast-paced itinerary with a full schedule of sights each day, and is not recommended for travelers with reduced mobility due to the nature of the excursions and terrain (private alternatives available with advance notice). Itinerary order may shift depending on your arrival day. Your trip advisor can confirm your Nile cruise ship assignment and the exact night distribution between Cairo and the Nile when you request your quote.'
+  },
+  {
+    slug:'morocco-art-of-living-beautifully', name:'Morocco: The Art of Living Beautifully', short:'Morocco: The Art of Living', tagline:'Casablanca to Marrakech, the long way',
+    region:'Africa', tier:'Morocco', days:11, nights:9, price:2890, priceNote:'Based on double occupancy.',
+    points:['Chefchaouen, the Blue City, & Fez medina',
+            'UNESCO-listed kasbah of Aït Ben Haddou',
+            'Three nights in Marrakech\'s medina'],
+    route:['Casablanca',
+           'Tangier',
+           'Fez',
+           'Sahara',
+           'Ouarzazate',
+           'Marrakech'], tags:['culture',
+          'desert',
+          'history',
+          'guided',
+          'kasbah'],
+    summary:'From the Atlantic coast to the Sahara\'s edge and the Kasbah Route to Marrakech — Morocco\'s Grand Tour in 11 days.',
+    img:'assets/img/morocco-card.jpg', hero:'assets/img/morocco-hero.jpg', portrait:'assets/img/morocco-portrait.jpg',
+    facts:[['Duration','11 Days / 9 Nights'],['Destinations','Casablanca · Tangier · Fez · Sahara · Ouarzazate · Marrakech'],['Casablanca','1 Night'],['Tangier','1 Night'],['Fez','2 Nights'],['Sahara (Erfoud)','1 Night'],['Ouarzazate','1 Night'],['Marrakech','3 Nights'],['Meal Plan','9 Breakfasts + 6 Dinners']],
+    highlights:[
+      ['Chefchaouen, the Blue City','A scenic drive through the Rif Mountains to Morocco\'s famous blue-washed hillside town.','ph-map-trifold'],
+      ['Fez Medina & Artisan Workshops','A full day in the world\'s largest car-free urban zone, from the Royal Palace to centuries-old medersas.','ph-bank'],
+      ['Sahara Edge & Kasbah Route','The Gorges of Todgha, the Dades Valley, and the UNESCO-listed kasbah of Ait Ben Haddou.','ph-bank'],
+      ['Three Nights in Marrakech','The Koutoubia Mosque, Bahia Palace, and the storytellers and spice stalls of Jemaa el Fna.','ph-bank']
+    ],
+    stays:[
+      {city:'Casablanca', nights:'1 night', intro:'Morocco\'s largest city and economic capital, home to the towering Hassan II Mosque on the Atlantic coast.', facts:['Gray Boutique Hotel Casablanca',
+                'Double Room · Daily Breakfast'],
+        days:[
+          {n:'1',label:'Departure',title:'Overnight Flight to Casablanca',text:'Depart the US on an overnight flight bound for Casablanca — the start of Morocco\'s Grand Tour and Kasbah Route.'},
+          {n:'2',label:'Arrival',title:'Welcome to Casablanca',text:'Arrive in Casablanca and transfer to your hotel, with time to explore before a welcome dinner this evening.'},
+          {n:'11',label:'Departure',title:'Fly Home',text:'After breakfast, transfer to the Casablanca airport for your return flight to the United States, landing back home and wrapping up 11 unforgettable days across Morocco.'}
+        ]},
+      {city:'Tangier', nights:'1 night', intro:'A historic port city where the Mediterranean meets the Atlantic, gateway to the Rif Mountains and the blue-washed streets of Chefchaouen.', facts:['Hotel to be confirmed',
+                'Double Room · Daily Breakfast'],
+        days:[
+          {n:'3',label:'Included Tour · 12h',title:'Casablanca → Rabat → Asilah → Tangier',text:'A full day on the road: Rabat\'s Kasbah of the Oudayas, Hassan Tower, and the Mohammed V Mausoleum, then the coastal town of Asilah before arriving in Tangier.'}
+        ]},
+      {city:'Fez', nights:'2 nights', intro:'Morocco\'s spiritual and cultural heart, home to the world\'s largest car-free urban area and a medina that has barely changed in a thousand years.', facts:['Les Merinides Fès',
+                'Double Room · Daily Breakfast'],
+        days:[
+          {n:'4',label:'Included Tour',title:'Tangier → Chefchaouen → Fez',text:'A panoramic tour of Tangier, then across the Rif Mountains to Chefchaouen — Morocco\'s famous Blue City — and on through Ouazzane before arriving in Fez.'},
+          {n:'5',label:'Included Tour · 8h',title:'Full-Day Fez City Tour',text:'Visit the Royal Palace, wander the ancient medina and its medersas, watch artisans at work in traditional workshops, and stroll Boulevard Mohamed V.'}
+        ]},
+      {city:'the Sahara\'s Edge', nights:'', intro:'The gateway to the Sahara Desert, where the Middle Atlas gives way to golden dunes and Berber camps near Erfoud.', facts:['Palais Du Desert',
+                'Double Room · Daily Breakfast'],
+        days:[
+          {n:'6',label:'Transfer',title:'Fez → Midelt → Erfoud',text:'Cross the Middle Atlas via Midelt to Erfoud, on the edge of the Sahara. Optional: an overnight in a Berber Jaima camp among the dunes with a 4x4 desert excursion (must be reserved 30 days in advance; replaces hotel accommodation if booked).'}
+        ]},
+      {city:'Ouarzazate', nights:'1 night', intro:'Morocco\'s "Hollywood of Africa" and gateway to the Kasbah Route, framed by the High Atlas Mountains.', facts:['Temple des Arts',
+                'Double Room · Daily Breakfast'],
+        days:[
+          {n:'7',label:'Included Tour · 10h',title:'Todgha Gorges & Dades Valley',text:'Visit the dramatic Gorges of Todgha, the Dades Valley, and Kalaat M\'Gouna — the "town of roses" — before arriving in Ouarzazate.'}
+        ]},
+      {city:'Marrakech', nights:'3 nights', intro:'The Red City, where snake charmers, spice stalls, and centuries-old palaces meet the foothills of the High Atlas.', facts:['Hivernage Hotel',
+                'Double Room · Daily Breakfast'],
+        days:[
+          {n:'8',label:'Included Tour · 11.5h',title:'Ouarzazate → Ait Ben Haddou → Marrakech',text:'Visit the Kasbah of Taourirt and the UNESCO-listed kasbah of Ait Ben Haddou, then cross the High Atlas Mountains to Marrakech.'},
+          {n:'9',label:'Included Tour · 4h',title:'Tour of Marrakech\'s Wonders',text:'Visit the Koutoubia Mosque, Menara Gardens, and Bahia Palace, with a spice and argan oil demonstration, finishing at the storytellers and stalls of Jemaa el Fna. Optional: dinner with a live show in the medina.'},
+          {n:'10',label:'Free Day',title:'Free Day in Marrakech',text:'A day to explore at your own pace — the souks, a hammam, or a day trip to the Atlas foothills. Optional: the Chez Ali dinner and fantasy show.'}
+        ]}
+    ],
+    included:['Round-trip international flights, USA ⇄ Casablanca',
+              '9 nights hotel accommodation',
+              '9 breakfasts + 6 dinners',
+              'Air-conditioned transfers throughout',
+              'Casablanca, Rabat & Asilah highlights tour',
+              'Full-day Fez city tour',
+              'Todgha Gorges & Dades Valley excursion',
+              'Kasbahs of Ouarzazate & Ait Ben Haddou',
+              'Tour of Marrakech\'s wonders',
+              'Entrance fees for all included sites',
+              'English-speaking guide throughout',
+              'All air taxes and fuel surcharges'],
+    notIncluded:['Drinks and lunches',
+                 'Guide gratuities (~$10/person/day, recommended)',
+                 'Optional excursions (Berber Jaima desert camp, Magical Dinner with Live Show, Chez Ali Dinner & Fantasy Show)',
+                 'Travel insurance',
+                 'Personal expenses'],
+    tip:'This itinerary is not recommended for children under 8 or travelers with reduced mobility, given the length of daily transfers (private tours available on request). The optional Berber Jaima desert camp on Day 6 must be reserved at least 30 days in advance and replaces hotel accommodation for that night if booked. Your trip advisor can confirm your Tangier hotel and walk you through optional excursions when you request your quote.'
+  },
+  {
+    slug:'south-africa-scenic-wild', name:'South Africa: Scenic and Wild', short:'South Africa: Scenic and Wild', tagline:'A safari and a coastline',
+    region:'Africa', tier:'South Africa', days:11, nights:8, price:2990, priceNote:'Based on double occupancy.',
+    points:['Full-day Kruger National Park game drive',
+            'Table Mountain cable car in Cape Town',
+            'Free days to explore Cape Town at your pace'],
+    route:['Johannesburg',
+           'Kruger',
+           'Cape Town'], tags:['safari',
+          'wildlife',
+          'city',
+          'coast'],
+    summary:'From the streets of Johannesburg to a Kruger safari and the coast of Cape Town — a complete cross-section of South Africa in 11 days.',
+    img:'assets/img/safrica-card.jpg', hero:'assets/img/safrica-hero.jpg', portrait:'assets/img/safrica-portrait.jpg',
+    facts:[['Duration','11 Days / 8 Nights'],['Destinations','Johannesburg · Kruger · Cape Town'],['Johannesburg','1 Night'],['Kruger','3 Nights'],['Cape Town','3 Nights'],['Meal Plan','8 Breakfasts + 3 Dinners']],
+    highlights:[
+      ['Full-Day Kruger Game Drive','A sunrise-to-sunset 4x4 game drive through Kruger National Park, one of Africa\'s great wildlife reserves.','ph-paw-print'],
+      ['Table Mountain Cable Car','Ride the cable car above Cape Town for panoramic views, included on your hop-on hop-off city tour.','ph-map-trifold'],
+      ['Pretoria\'s Union Buildings','A stop at the iconic seat of the South African government en route from Johannesburg to Kruger.','ph-map-pin'],
+      ['Free Days in Cape Town','Two open days to add on wine tasting, shark cage diving, or a full-day Cape Peninsula tour.','ph-sun-horizon']
+    ],
+    stays:[
+      {city:'Johannesburg', nights:'1 night', intro:'South Africa\'s largest city and your arrival point — a modern base in the Sandton district before heading out to the bush.', facts:['Hampton by Hilton Sandton Grayston',
+                'Double Room · Daily Breakfast'],
+        days:[
+          {n:'1',label:'Departure',title:'Overnight Flight to Johannesburg',text:'Depart the US on an overnight flight bound for Johannesburg — the start of your South Africa journey.'},
+          {n:'2',label:'Arrival',title:'Welcome to Johannesburg',text:'Arrive in Johannesburg and transfer to your hotel in Sandton, with the rest of the day free to explore at your own pace.'},
+          {n:'10',label:'Departure',title:'Cape Town → US',text:'Morning departure flight from Cape Town back to the United States.'},
+          {n:'11',label:'Arrival',title:'Arrive in the United States',text:'Land back home, wrapping up 11 unforgettable days across Johannesburg, Kruger National Park, and Cape Town.'}
+        ]},
+      {city:'Kruger', nights:'3 nights', intro:'One of Africa\'s largest and oldest game reserves, home to the Big Five and endless bushveld.', facts:['Stille Woning',
+                'Double Room · Breakfast & Dinner Included'],
+        days:[
+          {n:'3',label:'Included Stop · 5–6h',title:'Johannesburg → Pretoria → Kruger',text:'Depart Johannesburg for Kruger, stopping in Pretoria for a photo stop at the exterior of the Union Buildings, the seat of the South African government. Continue on to your lodge near the park.'},
+          {n:'4',label:'Included Game Drive',title:'Full-Day Kruger Game Drive',text:'A full-day 4x4 game drive through Kruger National Park, from sunrise to sunset, tracking the park\'s wildlife with your safari guide. Lunch is not included on this excursion.'},
+          {n:'5',label:'Free Day',title:'Leisure Day in Kruger',text:'A free day at your lodge to relax. Optional: a second full-day safari with a packed lunch included.'}
+        ]},
+      {city:'Cape Town', nights:'3 nights', intro:'A dramatic coastal city framed by Table Mountain, with three days to explore its landmarks, beaches, and winelands.', facts:['SunSquare Cape Town City Bowl',
+                'Double Room · Daily Breakfast'],
+        days:[
+          {n:'6',label:'Transfer + Flight · 7–8h',title:'Kruger → Johannesburg → Cape Town',text:'A return drive to Johannesburg, then a flight on to Cape Town. Lunch is not included on this transfer day.'},
+          {n:'7',label:'Included Tour',title:'Cape Town City Tour & Table Mountain',text:'A hop-on hop-off bus tour of Cape Town\'s landmarks, plus the cable car ride up Table Mountain for panoramic views over the city and coastline.'},
+          {n:'8',label:'Free Day',title:'Free Day in Cape Town',text:'A free day to explore. Optional: a Winelands tour and tasting in Stellenbosch, or a shark cage diving excursion (not available for children; cannot be combined with the wine tasting).'},
+          {n:'9',label:'Free Day',title:'Free Day in Cape Town',text:'Another free day. Optional: a full-day Cape Peninsula tour visiting Clifton, Cape Point, and the penguin colonies.'}
+        ]}
+    ],
+    included:['Round-trip international flights, USA ⇄ Johannesburg',
+              'Domestic flight, Johannesburg ⇄ Cape Town',
+              '8 nights hotel accommodation',
+              '8 breakfasts and 3 dinners',
+              'All ground transfers with English-speaking drivers',
+              'Entrance fees for included activities',
+              'Full-day Kruger National Park game drive with safari guide',
+              'Cape Town hop-on hop-off bus tour & Table Mountain cable car',
+              'All air taxes and fuel surcharges'],
+    notIncluded:['Drinks and tips',
+                 'Lunch on Day 4 (Kruger game drive) and Day 6 (transfer day)',
+                 'Arrival airport transfer',
+                 'Optional excursions (2nd Kruger safari, Winelands tasting, shark cage diving, Cape Peninsula tour)',
+                 'Visas and vaccinations, if required'],
+    tip:'Shark cage diving is not available for children, and it cannot be combined with the Winelands wine-tasting add-on or the Cape Peninsula tour with the optional Gastronomic Package. Booster seats are not guaranteed on transfers — bring your own if needed. Your trip advisor can confirm exact night distribution across Johannesburg, Kruger, and Cape Town, and walk you through visa requirements when you request your quote.'
+  },
+  {
+    slug:'tanzania-storyteller', name:'Tanzania: The World\'s Greatest Storyteller', short:'Tanzania: The Greatest Storyteller', tagline:'The Serengeti, then the Indian Ocean',
+    region:'Africa', tier:'Tanzania', days:11, nights:8, price:4990, priceNote:'Based on double occupancy. Charm category.',
+    points:['Serengeti & Ngorongoro Crater safaris',
+            'Guided game drives with safari lodges',
+            'Beach time on Zanzibar to finish'],
+    route:['Arusha',
+           'Serengeti',
+           'Ngorongoro',
+           'Zanzibar'], tags:['safari',
+          'wildlife',
+          'beach',
+          'all-inclusive'],
+    summary:'From the gateway city of Arusha to the Serengeti, the Ngorongoro Crater, and the beaches of Zanzibar — a complete cross-section of Tanzania in 11 days.',
+    img:'assets/img/tanzania-card.jpg', hero:'assets/img/tanzania-hero.jpg', portrait:'assets/img/tanzania-portrait.jpg',
+    facts:[['Duration','11 Days / 8 Nights'],['Destinations','Arusha · Serengeti · Ngorongoro · Zanzibar'],['Arusha','1 Night'],['Serengeti','2 Nights'],['Ngorongoro (Karatu)','1 Night'],['Zanzibar','3 Nights, All-Inclusive'],['Meal Plan','4 Breakfasts, 3 Lunches, 4 Dinners + All-Inclusive']],
+    highlights:[
+      ['Serengeti Game Drives','A full day tracking wildlife across the endless plains of the Serengeti, with an optional sunrise balloon flight.','ph-paw-print'],
+      ['Ngorongoro Crater','A full-day tour into the world\'s largest inactive volcanic caldera, dense with wildlife.','ph-mountains'],
+      ['A Maasai Village Visit','An optional cultural experience with the Maasai near Arusha before heading into the parks.','ph-map-pin'],
+      ['All-Inclusive Zanzibar','Three all-inclusive nights on the beach in Zanzibar to unwind after the safari.','ph-paw-print']
+    ],
+    stays:[
+      {city:'Arusha', nights:'1 night', intro:'Tanzania\'s northern safari capital, set at the foot of Mount Meru — your gateway into the Serengeti and Ngorongoro Crater.', facts:['Kerama Silent Lodge',
+                'Double Room · Breakfast Included'],
+        days:[
+          {n:'1',label:'Departure',title:'Overnight Flight to Tanzania',text:'Depart the US on an overnight flight bound for Arusha, Tanzania — the start of your safari adventure.'},
+          {n:'2',label:'Arrival',title:'Welcome to Arusha',text:'Arrive in Arusha and transfer to your lodge. Optional: a Maasai village experience to learn about the culture and traditions of the Maasai people.'},
+          {n:'10',label:'Departure',title:'Zanzibar → US',text:'Fly from Zanzibar back to the United States, connecting through your gateway city.'},
+          {n:'11',label:'Arrival',title:'Arrive in the United States',text:'Land back home, wrapping up 11 unforgettable days across the Serengeti, Ngorongoro Crater, and Zanzibar.'}
+        ]},
+      {city:'the Serengeti', nights:'', intro:'Endless golden plains and some of the greatest wildlife density on Earth — the heart of your safari.', facts:['Osero Serengeti Tented Camp',
+                'Tented Room · Breakfast, Lunch & Dinner'],
+        days:[
+          {n:'3',label:'Game Drive Transfer · ~13h',title:'Arusha → Serengeti National Park',text:'Depart Arusha for the Serengeti, with a game drive en route as you enter the park. A full day of travel and wildlife spotting, arriving at your tented camp in the late afternoon.'},
+          {n:'4',label:'Included Game Drive',title:'Full Day in the Serengeti',text:'A full day of game drives across the Serengeti\'s plains, tracking lions, elephants, giraffes, and — depending on the season — the great wildebeest migration. Optional: a sunrise hot air balloon flight over the park.'}
+        ]},
+      {city:'Ngorongoro', nights:'1 night', intro:'The world\'s largest inactive, intact volcanic caldera — a natural enclosure packed with wildlife, near the town of Karatu.', facts:['Kudu Lodge & Camp',
+                'Double Room · Breakfast & Dinner Included'],
+        days:[
+          {n:'5',label:'Included Tour · ~12h',title:'Ngorongoro Crater → Karatu',text:'A full-day tour into the Ngorongoro Crater, descending into the caldera for game viewing among its dense concentration of wildlife, including the "Big Five." Continue to Karatu for the night.'},
+          {n:'6',label:'Village Visit + Flight · ~5h',title:'Karatu → Zanzibar',text:'Visit Mto Wa Mbu, a culturally diverse village at the base of the Rift Valley escarpment, before transferring for your flight to Zanzibar.'}
+        ]},
+      {city:'Zanzibar', nights:'3 nights', intro:'Trade the savanna for the Indian Ocean with three all-inclusive nights on Zanzibar\'s beaches.', facts:['Kiwengwa Beach Resort',
+                'Double Room · All-Inclusive'],
+        days:[
+          {n:'7',label:'All-Inclusive',title:'Beach Day in Zanzibar',text:'The first of three all-inclusive days at your beach resort on Kiwengwa Beach — free time to relax by the Indian Ocean.'},
+          {n:'8',label:'All-Inclusive',title:'Beach Day in Zanzibar',text:'A full free day at the resort. Optional: a Stone Town tour, a spice plantation visit, or a sunset dhow cruise.'},
+          {n:'9',label:'All-Inclusive',title:'Beach Day in Zanzibar',text:'Your final full day in Zanzibar — relax before beginning the journey home tomorrow.'}
+        ]}
+    ],
+    included:['Round-trip international flights, USA ⇄ Arusha',
+              'Domestic flight, Arusha ⇄ Zanzibar',
+              '8 nights accommodation',
+              '4 breakfasts, 3 lunches, 4 dinners, plus all-inclusive in Zanzibar',
+              'All transfers and park entrance fees',
+              'Guided game drives in the Serengeti and Ngorongoro Crater',
+              'English-speaking guide for the safari portion of the trip',
+              'WiFi on the safari jeep; mineral water and soft drinks'],
+    notIncluded:['Visas and vaccinations',
+                 'Drinks not explicitly listed as included',
+                 'Tips and gratuities',
+                 'Zanzibar departure tax, $5/person (cash only)',
+                 'Optional excursions (Maasai village, hot air balloon, Stone Town tour, spice tour, dhow cruise)'],
+    tip:'A valid yellow fever certificate and other vaccinations may be required or recommended for Tanzania — check current CDC/embassy guidance before you travel. Children must share a room with at least one adult, and travelers with reduced mobility should reach out before booking (wheelchair rental available, approx. $150). Your trip advisor can confirm exact night distribution across Arusha, Serengeti, and Karatu, and walk you through visa and vaccination requirements when you request your quote.'
   }
 ];
 
 const FEATURED = ['maldives-package','japan-grand-tour','heart-of-the-inca-peru'];
 
-const MARQUEE = ['Santorini','Kyoto','Machu Picchu','Istanbul','Venice','Prague','Maldives','Singapore','Mykonos','Tokyo','Budapest','Borneo','Rome','Cusco','Athens','Hiroshima'];
+const MARQUEE = ['Santorini','Kyoto','Machu Picchu','Istanbul','Venice','Prague','Maldives','Singapore','Serengeti','Cappadocia','Marrakech','Giza','Bali','Paris','Mykonos','Tokyo','Budapest','Borneo','Cape Town','Galápagos','Rome','Phuket','Cusco','Arenal','Athens','London','Zanzibar','Hiroshima'];
 
 /* Sample testimonials. Replace with verified reviews before launch. */
 const REVIEWS = [
@@ -1881,7 +2553,12 @@ const countIO = new IntersectionObserver(entries => {
    ========================================================================== */
 const nav = $('#nav');
 const navIO = new IntersectionObserver(entries => {
-  entries.forEach(en => { if (en.target.closest('.view').classList.contains('active')) nav.classList.toggle('scrolled', !en.isIntersecting); });
+  entries.forEach(en => {
+    /* renderDetail() replaces the view's markup, which detaches the old sentinel. */
+    const view = en.target.closest('.view');
+    if (!view) return navIO.unobserve(en.target);
+    if (view.classList.contains('active')) nav.classList.toggle('scrolled', !en.isIntersecting);
+  });
 }, {threshold:0});
 $$('[data-sentinel]').forEach(s => navIO.observe(s));
 
@@ -2196,7 +2873,8 @@ function toast(msg){ const t = $('#toast'); $('span', t).textContent = msg; t.cl
    ALL PACKAGES: filters
    ========================================================================== */
 const F = { q:'', region:'all', sort:'featured', dur:new Set() };
-makeSelect($('#f-region'), {value:'all', options:[{v:'all',l:'All regions'},{v:'Europe',l:'Europe'},{v:'Asia',l:'Asia'},{v:'Americas',l:'Americas'}], onChange:v => { F.region = v; applyFilters(); }});
+const REGIONS = [...new Set(PACKAGES.map(p => p.region))].sort();
+makeSelect($('#f-region'), {value:'all', options:[{v:'all',l:'All regions'}, ...REGIONS.map(r => ({v:r,l:r}))], onChange:v => { F.region = v; applyFilters(); }});
 makeSelect($('#f-sort'), {value:'featured', options:[{v:'featured',l:'Featured'},{v:'price-asc',l:'Price, low to high'},{v:'price-desc',l:'Price, high to low'},{v:'nights',l:'Longest first'}], onChange:v => { F.sort = v; applyFilters(); }});
 $('#f-search').addEventListener('input', e => { F.q = e.target.value.trim().toLowerCase(); applyFilters(); });
 $('#f-duration').addEventListener('change', e => { const v = e.target.value; e.target.checked ? F.dur.add(v) : F.dur.delete(v); applyFilters(); });
