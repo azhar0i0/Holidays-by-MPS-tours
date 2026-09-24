@@ -911,6 +911,7 @@ textarea.input{height:auto;min-height:120px;padding:14px 16px;resize:vertical}
   .feat__grid{grid-template-columns:1fr}
   .feat__grid .fcard:last-child{aspect-ratio:4/4.6}
   .form-grid{grid-template-columns:1fr}
+  #f-duration{display:none}
   .footer__grid{grid-template-columns:1fr}
   .hl-grid,.inc-grid{grid-template-columns:1fr}
   .sugg__track{grid-template-columns:1fr}
@@ -2573,12 +2574,25 @@ burger.addEventListener('click', () => setMenu(!burger.classList.contains('open'
 menu.addEventListener('click', e => { if (e.target.closest('a')) setMenu(false); });
 
 /* ==========================================================================
-   ROUTER  (hash based: #/, #/packages, #/package/<slug>, #/privacy, #/sms-terms)
+   ROUTER  (hash based: #/, #/packages[/<region>], #/package/<slug>, #/privacy, #/sms-terms)
    ========================================================================== */
 let pendingScroll = null;
+function runPendingScroll(){
+  if (!pendingScroll) return;
+  const target = $('#'+pendingScroll); pendingScroll = null;
+  if (!target) return;
+  requestAnimationFrame(() => setTimeout(() => {
+    const y = target.getBoundingClientRect().top + window.scrollY - 40;
+    window.scrollTo({top:y, behavior:'smooth'});
+  }, 80));
+}
 document.addEventListener('click', e => {
   const a = e.target.closest('a[data-to]');
-  if (a) pendingScroll = a.dataset.to;
+  if (!a) return;
+  pendingScroll = a.dataset.to;
+  /* An identical hash fires no hashchange, so route() never runs and would
+     leave the scroll pending forever. Handle those links here instead. */
+  if (a.getAttribute('href') === location.hash){ setMenu(false); runPendingScroll(); }
 });
 const STATIC_VIEWS = {
   '#/packages':  {id:'view-packages',   title:'All packages'},
@@ -2590,7 +2604,7 @@ function route(){
   const m = h.match(/^#\/package\/([\w-]+)/);
   const stat = Object.keys(STATIC_VIEWS).find(k => h.startsWith(k));
   let id = 'view-home';
-  if (stat) id = STATIC_VIEWS[stat].id;
+  if (stat) { id = STATIC_VIEWS[stat].id; if (id === 'view-packages') syncRegionFromHash(); }
   else if (m) { id = 'view-detail'; renderDetail(m[1]); }
   $$('.view').forEach(v => v.classList.toggle('active', v.id === id));
   window.scrollTo({top:0, behavior:'instant'});
@@ -2598,13 +2612,7 @@ function route(){
   setMenu(false);
   bindReveal($('#'+id));
   if (id === 'view-home') $$('[data-count]').forEach(el => countIO.observe(el));
-  if (pendingScroll){
-    const target = $('#'+pendingScroll); pendingScroll = null;
-    if (target) requestAnimationFrame(() => setTimeout(() => {
-      const y = target.getBoundingClientRect().top + window.scrollY - 40;
-      window.scrollTo({top:y, behavior:'smooth'});
-    }, 80));
-  }
+  runPendingScroll();
   document.title = id === 'view-home' ? 'Holidays by MPS Tours | Signature holiday packages'
                  : stat ? `${STATIC_VIEWS[stat].title} | Holidays by MPS Tours`
                  : `${byS(m[1])?.name || 'Package'} | Holidays by MPS Tours`;
@@ -2663,7 +2671,10 @@ function renderHomePackages(){
 }
 renderHomePackages();
 addEventListener('resize', renderHomePackages);
-$('#footer-packages').innerHTML = PACKAGES.map(p => `<li><a href="#/package/${p.slug}">${esc(shortName(p))}</a></li>`).join('');
+/* Footer: one link per region, opening All packages filtered to it */
+$('#footer-packages').innerHTML = [...new Set(PACKAGES.map(p => p.region))].sort()
+  .map(r => `<li><a href="#/packages/${r.toLowerCase()}">${esc(r)}</a></li>`).join('')
+  + `<li><a href="#/packages">All packages</a></li>`;
 
 /* Featured */
 $('#featured-grid').innerHTML = FEATURED.map((s,i) => { const p = byS(s); return `
@@ -2709,7 +2720,7 @@ function closeAllPopovers(except){
   $$('.sel.open, .dp.open').forEach(el => { if (el !== except) el.classList.remove('open'); });
 }
 document.addEventListener('click', e => { const inside = e.composedPath().some(el => el.classList && (el.classList.contains('sel') || el.classList.contains('dp'))); if (!inside) closeAllPopovers(); });
-document.addEventListener('keydown', e => { if (e.key === 'Escape'){ closeAllPopovers(); closeModal(); } });
+document.addEventListener('keydown', e => { if (e.key === 'Escape'){ closeAllPopovers(); closeModal(); setMenu(false); } });
 
 function makeSelect(host, {options, placeholder='Select', value=null, onChange}){
   host.classList.add('sel');
@@ -2874,7 +2885,16 @@ function toast(msg){ const t = $('#toast'); $('span', t).textContent = msg; t.cl
    ========================================================================== */
 const F = { q:'', region:'all', sort:'featured', dur:new Set() };
 const REGIONS = [...new Set(PACKAGES.map(p => p.region))].sort();
-makeSelect($('#f-region'), {value:'all', options:[{v:'all',l:'All regions'}, ...REGIONS.map(r => ({v:r,l:r}))], onChange:v => { F.region = v; applyFilters(); }});
+const regionSel = makeSelect($('#f-region'), {value:'all', options:[{v:'all',l:'All regions'}, ...REGIONS.map(r => ({v:r,l:r}))], onChange:v => {
+  F.region = v; applyFilters();
+  history.replaceState(null, '', v === 'all' ? '#/packages' : '#/packages/' + v.toLowerCase());
+}});
+/* #/packages/<region> (footer links) preselects that region */
+function syncRegionFromHash(){
+  const slug = (location.hash.match(/^#\/packages\/([\w-]+)/) || [])[1];
+  const r = REGIONS.find(x => x.toLowerCase() === slug) || 'all';
+  if (r !== F.region){ regionSel.set(r, true); F.region = r; applyFilters(); }
+}
 makeSelect($('#f-sort'), {value:'featured', options:[{v:'featured',l:'Featured'},{v:'price-asc',l:'Price, low to high'},{v:'price-desc',l:'Price, high to low'},{v:'nights',l:'Longest first'}], onChange:v => { F.sort = v; applyFilters(); }});
 $('#f-search').addEventListener('input', e => { F.q = e.target.value.trim().toLowerCase(); applyFilters(); });
 $('#f-duration').addEventListener('change', e => { const v = e.target.value; e.target.checked ? F.dur.add(v) : F.dur.delete(v); applyFilters(); });
