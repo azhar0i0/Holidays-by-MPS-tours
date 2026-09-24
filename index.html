@@ -890,7 +890,8 @@ textarea.input{height:auto;min-height:120px;padding:14px 16px;resize:vertical}
   .stats{grid-template-columns:1fr 1fr;gap:24px 0}
   .stat:nth-child(3){border-left:0}
   .filters{grid-template-columns:1fr;margin-top:-30px}
-  .sugg__track{grid-template-columns:1fr 1fr}
+  .sugg__track{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .sugg__track > :nth-child(n+3){display:none}
   .stay__intro{grid-template-columns:1fr}
 }
 @media (max-width:640px){
@@ -915,7 +916,7 @@ textarea.input{height:auto;min-height:120px;padding:14px 16px;resize:vertical}
   #f-duration{display:none}
   .footer__grid{grid-template-columns:1fr}
   .hl-grid,.inc-grid{grid-template-columns:1fr}
-  .sugg__track{grid-template-columns:1fr}
+  .sugg__track{gap:12px}
   .day{grid-template-columns:1fr;gap:6px}
   .hero{padding-bottom:64px}
   .hero-card__in{padding:14px}
@@ -2994,7 +2995,7 @@ function renderDetail(slug){
   <div class="section" style="padding-top:0">
     <div class="container">
       <div class="feat__head">
-        <div><h2 class="h-2 rv">You might also like</h2><p class="lead rv" style="--d:.06s;margin-top:10px">Three more itineraries in the same spirit.</p></div>
+        <div><h2 class="h-2 rv">You might also like</h2><p class="lead rv" style="--d:.06s;margin-top:10px">More itineraries in the same spirit.</p></div>
         <a class="link-arrow rv" href="#/packages">See all packages <i class="ph-bold ph-arrow-right"></i></a>
       </div>
       <div class="sugg__track">${suggested.map(cardHTML).join('')}</div>
