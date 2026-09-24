@@ -5,12 +5,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Holidays by MPS Tours | Signature holiday packages, planned by one advisor</title>
 <meta name="description" content="Flights, hotels, transfers and guided days arranged by one trip advisor. Signature holiday packages to Greece, Italy, Japan, Peru, the Maldives and more. From $1,459 per person.">
-<meta name="theme-color" content="#0b3a3d">
+<meta name="theme-color" content="#073f32">
 <meta property="og:title" content="Holidays by MPS Tours">
 <meta property="og:description" content="The whole trip, handled. Signature holiday packages with flights, hotels, transfers and guided days included.">
 <meta property="og:type" content="website">
 
-<!-- Favicon: the H mark with the swoosh, inline SVG -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TravelAgency",
+  "name": "Holidays by MPS Tours",
+  "telephone": "+1-517-234-4046",
+  "email": "holidays@mpstours.com",
+  "areaServed": "Worldwide",
+  "address": { "@type": "PostalAddress", "streetAddress": "1055 Laurence Ave", "addressLocality": "Jackson", "addressRegion": "MI", "postalCode": "49202", "addressCountry": "US" },
+  "sameAs": ["https://www.instagram.com/mps.tours", "https://www.facebook.com/profile.php?id=61570550305228"]
+}
+</script>
+
+<!-- Favicon: the H mark with the swoosh -->
 <link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon.png">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 
@@ -25,25 +38,37 @@
 <style>
 /* ==========================================================================
    TOKENS
-   Brand palette from the brief, plus two derived neutrals for text and surfaces.
+   Deep green + gold on ivory/sage neutrals. The six brand values are the source
+   of truth; the older names below are kept as aliases so nothing downstream
+   has to change.
    ========================================================================== */
 :root{
-  --amber-glow:#ff9f1c;
-  --honey-bronze:#ffbf69;
-  --white:#ffffff;
-  --frozen-water:#cbf3f0;
-  --light-sea-green:#2ec4b6;
+  /* --- brand --- */
+  --green:#0b5d4b;
+  --green-deep:#073f32;
+  --gold:#c7a54a;
+  --gold-soft:#e4ce94;
+  --ivory:#faf7f0;
+  --sage:#eef4f1;
+  --whatsapp:#25d366;
 
-  --lagoon:#0b3a3d;          /* deep ink, from the logo wordmark */
-  --lagoon-2:#0f4c50;
-  --sea-deep:#159a90;        /* darker teal for text-on-white uses (AA) */
-  --ink:#122a2b;
-  --ink-2:#3d5658;
-  --ink-3:#6b8284;
-  --surface:#f4fbfa;
-  --surface-2:#eaf7f5;
-  --line:rgba(11,58,61,.10);
-  --line-2:rgba(11,58,61,.16);
+  /* --- aliases --- */
+  --amber-glow:var(--gold);
+  --honey-bronze:var(--gold-soft);
+  --white:#ffffff;
+  --frozen-water:var(--sage);
+  --light-sea-green:var(--green);
+
+  --lagoon:var(--green-deep);
+  --lagoon-2:var(--green);
+  --sea-deep:var(--green);   /* accent for text-on-white uses (AA) */
+  --ink:#15221d;
+  --ink-2:#4c5c55;
+  --ink-3:#7c8b84;
+  --surface:var(--ivory);
+  --surface-2:var(--sage);
+  --line:rgba(7,63,50,.10);
+  --line-2:rgba(7,63,50,.16);
 
   --font-display:"Plus Jakarta Sans",system-ui,sans-serif;
   --font-body:"Rubik",system-ui,sans-serif;
@@ -56,9 +81,9 @@
   --ease-soft:cubic-bezier(.32,.72,0,1);
   --dur:.7s;
 
-  --shadow-card:0 1px 2px rgba(11,58,61,.04), 0 18px 40px -18px rgba(11,58,61,.22);
-  --shadow-lift:0 2px 4px rgba(11,58,61,.05), 0 30px 60px -22px rgba(11,58,61,.32);
-  --shadow-amber:0 14px 30px -12px rgba(255,159,28,.55);
+  --shadow-card:0 1px 2px rgba(7,63,50,.05), 0 18px 40px -18px rgba(7,63,50,.22);
+  --shadow-lift:0 2px 4px rgba(7,63,50,.06), 0 30px 60px -22px rgba(7,63,50,.32);
+  --shadow-amber:0 12px 26px -12px rgba(199,165,74,.55);
 
   --nav-h:76px;
   --container:1280px;
@@ -123,14 +148,13 @@ p{margin:0}
 .btn:hover{transform:translateY(-2px)}
 .btn:active{transform:translateY(0) scale(.98)}
 .btn--amber{--bg:var(--amber-glow);--fg:var(--lagoon);box-shadow:var(--shadow-amber)}
-.btn--amber:hover{--bg:#ffab3a}
+.btn--amber:hover{--bg:#d4b256}
 .btn--white{--bg:#fff;--fg:var(--lagoon);box-shadow:var(--shadow-card)}
 .btn--ghost{--bg:transparent;--fg:var(--lagoon);box-shadow:inset 0 0 0 1.5px var(--line-2)}
 .btn--ghost:hover{background:var(--surface)}
 .btn--ghost.on-dark{--fg:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.35)}
 .btn--ghost.on-dark:hover{background:rgba(255,255,255,.08)}
-.btn--teal{--bg:var(--light-sea-green);--fg:var(--lagoon)}
-.btn--wa{--bg:#25d366;--fg:#062d17}
+.btn--wa{--bg:var(--whatsapp);--fg:#062d17}
 .btn--sm{padding:11px 18px;font-size:.88rem}
 .btn--lg{padding:17px 32px;font-size:1.02rem}
 .btn--block{width:100%}
@@ -156,7 +180,7 @@ p{margin:0}
 .nav.scrolled{
   background:rgba(255,255,255,.86);backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%);
   color:var(--lagoon);
-  box-shadow:0 1px 0 var(--line),0 12px 30px -20px rgba(11,58,61,.35);
+  box-shadow:0 1px 0 var(--line),0 12px 30px -20px rgba(7,63,50,.35);
 }
 .nav__inner{
   height:100%;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:24px;
@@ -227,8 +251,8 @@ p{margin:0}
 .hero__bg img{width:100%;height:100%;object-fit:cover;object-position:center 60%;transform:scale(1.08);animation:heroZoom 2.2s var(--ease-out) forwards}
 @keyframes heroZoom{to{transform:scale(1)}}
 .hero__scrim{position:absolute;inset:0;z-index:-1;background:
-  linear-gradient(180deg,rgba(11,58,61,.45) 0%,rgba(11,58,61,.12) 35%,rgba(11,58,61,.55) 78%,rgba(11,58,61,.86) 100%),
-  linear-gradient(90deg,rgba(11,58,61,.55) 0%,rgba(11,58,61,.1) 60%)}
+  linear-gradient(180deg,rgba(7,63,50,.45) 0%,rgba(7,63,50,.12) 35%,rgba(7,63,50,.55) 78%,rgba(7,63,50,.86) 100%),
+  linear-gradient(90deg,rgba(7,63,50,.55) 0%,rgba(7,63,50,.1) 60%)}
 .hero__grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:40px;align-items:end}
 .hero h1{color:#fff;max-width:14ch}
 .hero .lead{color:rgba(255,255,255,.86);margin-top:20px;max-width:46ch}
@@ -298,35 +322,48 @@ p{margin:0}
 .pk-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(14px,2vw,24px)}
 .pk{
   display:flex;flex-direction:column;background:#fff;border-radius:var(--r-card);overflow:hidden;
-  box-shadow:0 0 0 1px var(--line);transition:transform .6s var(--ease-soft),box-shadow .6s var(--ease-soft);
-  position:relative;
+  box-shadow:0 0 0 1px var(--line),var(--shadow-card);
+  transition:transform .6s var(--ease-soft),box-shadow .6s var(--ease-soft);position:relative;
 }
 .pk:hover{transform:translateY(-6px);box-shadow:0 0 0 1px var(--line),var(--shadow-lift)}
-.pk__media{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--surface-2)}
-.pk__media img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s var(--ease-soft)}
+.pk__media{
+  position:relative;display:flex;align-items:flex-end;padding:16px;
+  height:168px;overflow:hidden;background:var(--green-deep);
+}
+.pk__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.1s var(--ease-soft)}
 .pk:hover .pk__media img{transform:scale(1.07)}
+.pk__media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,63,50,0) 45%,rgba(7,42,34,.65) 100%)}
+.pk__tier{
+  position:relative;z-index:1;color:#fff;font-family:var(--font-display);font-size:.72rem;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;background:rgba(0,0,0,.32);padding:6px 12px;
+  border-radius:var(--r-pill);border:1px solid rgba(255,255,255,.3);backdrop-filter:blur(2px);
+}
 .pk__go{
-  position:absolute;top:12px;right:12px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.9);color:var(--lagoon);
+  position:absolute;top:12px;right:12px;z-index:1;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.9);color:var(--lagoon);
   display:grid;place-items:center;font-size:18px;backdrop-filter:blur(6px);
   transform:translate(6px,-6px) scale(.85);opacity:0;transition:transform .55s var(--ease-soft),opacity .4s;
 }
 .pk:hover .pk__go{transform:none;opacity:1}
-.pk__body{padding:16px 16px 18px;display:flex;flex-direction:column;gap:6px;flex:1}
-.pk__route{font-size:.8rem;color:var(--sea-deep);font-weight:500;display:flex;align-items:center;gap:6px}
-.pk__route i{font-size:.9rem}
-.pk__title{font-size:1.06rem;line-height:1.25}
-.pk__meta{margin-top:auto;padding-top:12px;display:flex;justify-content:space-between;align-items:flex-end;gap:10px;border-top:1px solid var(--line)}
-.pk__meta .nights{font-size:.85rem;color:var(--ink-3);display:flex;align-items:center;gap:6px}
-.pk__price{font-family:var(--font-display);font-weight:800;color:var(--lagoon);font-size:1.05rem;white-space:nowrap;text-align:right}
-.pk__price small{display:block;font-weight:500;font-size:.7rem;color:var(--ink-3);letter-spacing:0}
+.pk__body{padding:22px 22px 24px;display:flex;flex-direction:column;flex:1}
+.pk__title{font-size:1.2rem;line-height:1.25;margin-bottom:2px}
+.pk__title a{transition:color .3s}
+.pk:hover .pk__title a{color:var(--green)}
+.pk__nights{font-size:.8rem;color:var(--ink-3);font-weight:500;margin-bottom:12px}
+.pk__price{font-family:var(--font-display);font-weight:800;font-size:1.6rem;line-height:1.15;color:var(--lagoon)}
+.pk__price span{display:block;font-family:var(--font-body);font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+.pk__price small{font-family:var(--font-body);font-size:.85rem;font-weight:500;color:var(--ink-3)}
+.pk__list{margin:14px 0 18px;flex:1;display:grid;gap:8px;align-content:start}
+.pk__list li{display:flex;gap:8px;align-items:flex-start;font-size:.87rem;line-height:1.45;color:var(--ink-2)}
+.pk__list i{flex:none;margin-top:3px;font-size:.85rem;color:var(--gold)}
+.pk__cta{display:grid;gap:8px}
 .pk-more{display:flex;justify-content:center;margin-top:clamp(32px,4vw,48px)}
 
 /* ==========================================================================
    PUNCH (the one dark block on the page)
    ========================================================================== */
 .punch{background:var(--lagoon);color:#fff;position:relative;overflow:hidden}
-.punch::before{content:"";position:absolute;width:60vw;height:60vw;max-width:800px;max-height:800px;border-radius:50%;right:-20vw;top:-30vw;background:radial-gradient(closest-side,rgba(46,196,182,.28),transparent 70%)}
-.punch::after{content:"";position:absolute;width:40vw;height:40vw;max-width:600px;max-height:600px;border-radius:50%;left:-15vw;bottom:-25vw;background:radial-gradient(closest-side,rgba(255,159,28,.2),transparent 70%)}
+.punch::before{content:"";position:absolute;width:60vw;height:60vw;max-width:800px;max-height:800px;border-radius:50%;right:-20vw;top:-30vw;background:radial-gradient(closest-side,rgba(199,165,74,.26),transparent 70%)}
+.punch::after{content:"";position:absolute;width:40vw;height:40vw;max-width:600px;max-height:600px;border-radius:50%;left:-15vw;bottom:-25vw;background:radial-gradient(closest-side,rgba(228,206,148,.20),transparent 70%)}
 .punch__grid{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(32px,5vw,80px);align-items:center}
 .punch h2{color:#fff;font-size:clamp(2rem,4.2vw,3.6rem);line-height:1.05;max-width:16ch}
 .punch h2 em{font-style:italic;color:var(--honey-bronze)}
@@ -338,7 +375,7 @@ p{margin:0}
   transition:background .4s,transform .5s var(--ease-soft);
 }
 .pain:hover{background:rgba(255,255,255,.1);transform:translateX(6px)}
-.pain i{flex:none;width:38px;height:38px;border-radius:12px;background:rgba(255,159,28,.15);color:var(--honey-bronze);display:grid;place-items:center;font-size:18px}
+.pain i{flex:none;width:38px;height:38px;border-radius:12px;background:rgba(199,165,74,.18);color:var(--honey-bronze);display:grid;place-items:center;font-size:18px}
 .pain p{color:rgba(255,255,255,.88);font-size:.98rem}
 .pain p b{color:#fff;font-family:var(--font-display)}
 
@@ -376,7 +413,7 @@ p{margin:0}
 .fcard:hover{transform:translateY(-6px);box-shadow:var(--shadow-lift)}
 .fcard img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform 1.2s var(--ease-soft)}
 .fcard:hover img{transform:scale(1.06)}
-.fcard::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(11,58,61,0) 40%,rgba(11,58,61,.9) 100%)}
+.fcard::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(7,63,50,0) 40%,rgba(7,63,50,.9) 100%)}
 .fcard__go{position:absolute;top:16px;right:16px;width:46px;height:46px;border-radius:50%;border:1.5px solid rgba(255,255,255,.7);display:grid;place-items:center;font-size:20px;transition:background .4s,transform .55s var(--ease-soft)}
 .fcard:hover .fcard__go{background:#fff;color:var(--lagoon);transform:rotate(45deg)}
 .fcard__body{padding:24px}
@@ -460,19 +497,19 @@ p{margin:0}
 /* Form system */
 .form-card{background:#fff;border-radius:var(--r-card);overflow:hidden;box-shadow:0 0 0 1px var(--line),var(--shadow-lift)}
 .form-card__head{
-  background:linear-gradient(135deg,var(--lagoon) 0%,var(--lagoon-2) 55%,#13646a 100%);
+  background:linear-gradient(135deg,var(--lagoon) 0%,var(--lagoon-2) 55%,#0e6f58 100%);
   color:#fff;padding:clamp(22px,3vw,30px) clamp(20px,3vw,32px);position:relative;
 }
 .form-card__head::before{
   content:"";position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(120% 140% at 100% 0%,rgba(46,196,182,.35),transparent 60%);
+  background:radial-gradient(120% 140% at 100% 0%,rgba(199,165,74,.30),transparent 60%);
 }
 .form-card__head::after{
   content:"";position:absolute;left:0;right:0;bottom:0;height:3px;
-  background:linear-gradient(90deg,var(--amber-glow),var(--honey-bronze) 45%,var(--light-sea-green));
+  background:linear-gradient(90deg,var(--gold),var(--gold-soft) 55%,rgba(255,255,255,.4));
 }
 .form-card__head h3{color:#fff;position:relative}
-.form-card__head p{color:rgba(219,245,243,.82);position:relative;margin:6px 0 0;font-size:.92rem}
+.form-card__head p{color:rgba(238,244,241,.82);position:relative;margin:6px 0 0;font-size:.92rem}
 .form-card__in{background:#fff;padding:clamp(22px,3vw,32px)}
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 .field{display:flex;flex-direction:column;gap:8px;position:relative}
@@ -487,9 +524,9 @@ p{margin:0}
   font:inherit;color:var(--ink);transition:border-color .3s,box-shadow .3s,background .3s;
 }
 textarea.input{height:auto;min-height:120px;padding:14px 16px;resize:vertical}
-.input::placeholder{color:#8aa1a3}
+.input::placeholder{color:#98a79f}
 .input:hover{box-shadow:inset 0 0 0 1px var(--line-2)}
-.input:focus{outline:0;background:#fff;border-color:var(--light-sea-green);box-shadow:0 0 0 4px rgba(46,196,182,.2)}
+.input:focus{outline:0;background:#fff;border-color:var(--light-sea-green);box-shadow:0 0 0 4px rgba(11,93,75,.16)}
 .field.invalid .input{border-color:#b3261e;background:#fdf4f3;box-shadow:none}
 
 /* Custom select */
@@ -500,9 +537,9 @@ textarea.input{height:auto;min-height:120px;padding:14px 16px;resize:vertical}
   display:flex;align-items:center;text-align:left;color:var(--ink);transition:border-color .3s,box-shadow .3s,background .3s;
 }
 .sel__btn:hover{box-shadow:inset 0 0 0 1px var(--line-2)}
-.sel__btn.placeholder{color:#8aa1a3}
+.sel__btn.placeholder{color:#98a79f}
 .sel__btn i{position:absolute;right:16px;color:var(--ink-3);transition:transform .5s var(--ease-soft)}
-.sel.open .sel__btn{background:#fff;border-color:var(--light-sea-green);box-shadow:0 0 0 4px rgba(46,196,182,.2)}
+.sel.open .sel__btn{background:#fff;border-color:var(--light-sea-green);box-shadow:0 0 0 4px rgba(11,93,75,.16)}
 .sel.open .sel__btn i{transform:rotate(180deg)}
 .sel__menu{
   position:absolute;top:calc(100% + 8px);left:0;right:0;background:#fff;border-radius:14px;padding:6px;z-index:5;
@@ -523,14 +560,14 @@ textarea.input{height:auto;min-height:120px;padding:14px 16px;resize:vertical}
   padding:9px 15px 9px 11px;border-radius:var(--r-pill);background:var(--surface);
   box-shadow:inset 0 0 0 1px var(--line);transition:background .3s,box-shadow .3s;
 }
-.chk:has(input:checked){background:var(--frozen-water);box-shadow:inset 0 0 0 1px rgba(46,196,182,.55)}
+.chk:has(input:checked){background:var(--frozen-water);box-shadow:inset 0 0 0 1px rgba(11,93,75,.35)}
 .chk input{position:absolute;opacity:0;width:0;height:0}
 .chk__box{width:20px;height:20px;border-radius:6px;border:1.5px solid var(--line-2);background:#fff;flex:none;display:grid;place-items:center;transition:background .3s,border-color .3s,transform .3s var(--ease-soft)}
 .chk__box i{font-size:13px;color:#fff;transform:scale(0);transition:transform .4s var(--ease-soft)}
 .chk input:checked + .chk__box{background:var(--lagoon);border-color:var(--lagoon)}
 .chk input:checked + .chk__box i{transform:scale(1)}
 .chk:hover .chk__box{border-color:var(--light-sea-green)}
-.chk input:focus-visible + .chk__box{box-shadow:0 0 0 4px rgba(46,196,182,.18)}
+.chk input:focus-visible + .chk__box{box-shadow:0 0 0 4px rgba(11,93,75,.18)}
 .chk-row{display:flex;flex-wrap:wrap;gap:10px}
 
 /* Custom date picker */
@@ -538,12 +575,12 @@ textarea.input{height:auto;min-height:120px;padding:14px 16px;resize:vertical}
 .dp__btn{
   width:100%;height:52px;border-radius:var(--r-input);background:var(--surface);border:1.5px solid transparent;
   box-shadow:inset 0 0 0 1px var(--line);padding:0 44px 0 16px;
-  display:flex;align-items:center;text-align:left;color:#8aa1a3;transition:border-color .3s,box-shadow .3s,background .3s;
+  display:flex;align-items:center;text-align:left;color:#98a79f;transition:border-color .3s,box-shadow .3s,background .3s;
 }
 .dp__btn:hover{box-shadow:inset 0 0 0 1px var(--line-2)}
 .dp__btn.has{color:var(--ink)}
 .dp__btn i{position:absolute;right:16px;color:var(--ink-3)}
-.dp.open .dp__btn{background:#fff;border-color:var(--light-sea-green);box-shadow:0 0 0 4px rgba(46,196,182,.2)}
+.dp.open .dp__btn{background:#fff;border-color:var(--light-sea-green);box-shadow:0 0 0 4px rgba(11,93,75,.16)}
 .cal{
   position:absolute;top:calc(100% + 8px);left:0;width:min(320px,100%);background:#fff;border-radius:16px;padding:14px;z-index:6;
   box-shadow:0 0 0 1px var(--line),var(--shadow-lift);transform-origin:top left;
@@ -558,7 +595,7 @@ textarea.input{height:auto;min-height:120px;padding:14px 16px;resize:vertical}
 .cal__dow{text-align:center;font-size:.72rem;color:var(--ink-3);font-weight:500;padding:4px 0}
 .cal__d{aspect-ratio:1;border-radius:9px;display:grid;place-items:center;font-size:.88rem;color:var(--ink);position:relative;transition:background .25s,color .25s}
 .cal__d:hover:not(:disabled){background:var(--surface-2)}
-.cal__d:disabled{color:#b6c6c7;cursor:not-allowed}
+.cal__d:disabled{color:#c2ccc6;cursor:not-allowed}
 .cal__d.today{font-weight:600;color:var(--sea-deep)}
 .cal__d.in{background:var(--frozen-water);border-radius:0}
 .cal__d.start,.cal__d.end{background:var(--lagoon);color:#fff;border-radius:9px}
@@ -585,18 +622,18 @@ textarea.input{height:auto;min-height:120px;padding:14px 16px;resize:vertical}
    ========================================================================== */
 .lhero{
   position:relative;color:#fff;overflow:hidden;
-  background:linear-gradient(135deg,var(--lagoon) 0%,var(--lagoon-2) 52%,#0d5258 100%);
+  background:linear-gradient(135deg,var(--lagoon) 0%,var(--lagoon-2) 52%,#0e6f58 100%);
   padding:calc(var(--nav-h) + 54px) 0 clamp(44px,5vw,66px);
   border-bottom:3px solid var(--amber-glow);
 }
-.lhero::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(90% 130% at 88% 0%,rgba(46,196,182,.3),transparent 62%)}
+.lhero::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(90% 130% at 88% 0%,rgba(199,165,74,.26),transparent 62%)}
 .lhero .container{position:relative}
 .lhero__crumb{display:flex;flex-wrap:wrap;gap:8px;font-family:var(--font-display);font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(203,243,240,.62);margin-bottom:20px}
 .lhero__crumb a:hover{color:#fff}
 .lhero h1{color:#fff;max-width:18ch}
 .lhero h1 em{font-style:italic;font-weight:600;color:var(--honey-bronze)}
-.lhero .lead{color:rgba(219,245,243,.78);margin-top:16px;max-width:52ch}
-.lpill{display:inline-flex;align-items:center;gap:9px;margin-top:24px;padding:9px 18px;border-radius:var(--r-pill);background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.2);font-size:.84rem;color:rgba(219,245,243,.85)}
+.lhero .lead{color:rgba(238,244,241,.78);margin-top:16px;max-width:52ch}
+.lpill{display:inline-flex;align-items:center;gap:9px;margin-top:24px;padding:9px 18px;border-radius:var(--r-pill);background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.2);font-size:.84rem;color:rgba(238,244,241,.85)}
 .lpill b{color:var(--honey-bronze);font-weight:600}
 
 .legal{background:var(--surface)}
@@ -624,22 +661,22 @@ textarea.input{height:auto;min-height:120px;padding:14px 16px;resize:vertical}
 .lcall b{color:var(--lagoon)}
 
 /* keyword pills, e.g. Reply STOP */
-.lchip{display:inline-flex;align-items:center;gap:8px;margin-top:18px;padding:8px 16px;border-radius:var(--r-pill);font-family:var(--font-display);font-weight:600;font-size:.85rem;background:var(--frozen-water);color:var(--lagoon);box-shadow:inset 0 0 0 1px rgba(46,196,182,.4)}
+.lchip{display:inline-flex;align-items:center;gap:8px;margin-top:18px;padding:8px 16px;border-radius:var(--r-pill);font-family:var(--font-display);font-weight:600;font-size:.85rem;background:var(--frozen-water);color:var(--lagoon);box-shadow:inset 0 0 0 1px rgba(199,165,74,.35)}
 .lchip--stop{background:#fdeeee;color:#9b2c22;box-shadow:inset 0 0 0 1px rgba(179,38,30,.22)}
-.lchip--help{background:#fff4e2;color:#8a5200;box-shadow:inset 0 0 0 1px rgba(255,159,28,.35)}
+.lchip--help{background:#faf3e3;color:#6b5312;box-shadow:inset 0 0 0 1px rgba(199,165,74,.35)}
 
 /* contact card */
 .help-card{
   margin-top:clamp(48px,6vw,72px);border-radius:var(--r-card);text-align:center;color:#fff;
-  background:linear-gradient(135deg,var(--lagoon) 0%,var(--lagoon-2) 60%,#0d5258 100%);
+  background:linear-gradient(135deg,var(--lagoon) 0%,var(--lagoon-2) 60%,#0e6f58 100%);
   padding:clamp(34px,4.5vw,52px) clamp(22px,4vw,44px);box-shadow:var(--shadow-lift);position:relative;overflow:hidden;
 }
-.help-card::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(80% 120% at 50% 0%,rgba(46,196,182,.28),transparent 62%)}
+.help-card::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(80% 120% at 50% 0%,rgba(199,165,74,.26),transparent 62%)}
 .help-card > *{position:relative}
 .help-card__eyebrow{font-family:var(--font-display);font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--honey-bronze)}
 .help-card h2{color:#fff;margin-top:12px}
 .help-card h2 em{font-style:italic;font-weight:600;color:var(--honey-bronze)}
-.help-card__rows{display:grid;gap:10px;margin-top:22px;font-size:.95rem;color:rgba(219,245,243,.85)}
+.help-card__rows{display:grid;gap:10px;margin-top:22px;font-size:.95rem;color:rgba(238,244,241,.85)}
 .help-card__rows b{color:var(--honey-bronze);font-weight:600;margin-right:6px}
 .help-card__rows a:hover{color:#fff}
 
@@ -665,7 +702,7 @@ textarea.input{height:auto;min-height:120px;padding:14px 16px;resize:vertical}
 .footer__social a{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.08);display:grid;place-items:center;font-size:18px;color:#fff;transition:background .3s,transform .4s var(--ease-soft)}
 .footer__social a:hover{background:var(--amber-glow);color:var(--lagoon);transform:translateY(-3px)}
 .footer__social a.is-wa{background:rgba(37,211,102,.18);color:#5df299}
-.footer__social a.is-wa:hover{background:#25d366;color:#062d17}
+.footer__social a.is-wa:hover{background:var(--whatsapp);color:#062d17}
 .footer__bottom{margin-top:48px;padding-top:22px;border-top:1px solid rgba(255,255,255,.1);display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:.85rem;color:rgba(255,255,255,.55)}
 .footer__bottom a:hover{color:#fff}
 
@@ -681,7 +718,7 @@ textarea.input{height:auto;min-height:120px;padding:14px 16px;resize:vertical}
 .phero.tall{min-height:76vh}
 .phero__bg{position:absolute;inset:0;z-index:-2}
 .phero__bg img{width:100%;height:100%;object-fit:cover;transform:scale(1.06);animation:heroZoom 1.8s var(--ease-out) forwards}
-.phero__scrim{position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(11,58,61,.4) 0%,rgba(11,58,61,.15) 40%,rgba(11,58,61,.85) 100%)}
+.phero__scrim{position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(7,63,50,.4) 0%,rgba(7,63,50,.15) 40%,rgba(7,63,50,.85) 100%)}
 .phero h1{color:#fff;max-width:18ch}
 .phero .lead{color:rgba(255,255,255,.85);margin-top:14px}
 .crumb{display:inline-flex;align-items:center;gap:8px;font-size:.88rem;color:rgba(255,255,255,.8);margin-bottom:18px}
@@ -716,7 +753,7 @@ textarea.input{height:auto;min-height:120px;padding:14px 16px;resize:vertical}
 .tabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:4px;margin:22px -4px 0;background:var(--surface);border-radius:var(--r-pill);width:fit-content;max-width:100%}
 .tabs::-webkit-scrollbar{display:none}
 .tab{flex:none;padding:10px 16px;border-radius:var(--r-pill);font-family:var(--font-display);font-weight:600;font-size:.9rem;color:var(--ink-2);transition:background .35s,color .3s,box-shadow .35s;white-space:nowrap}
-.tab.active{background:#fff;color:var(--lagoon);box-shadow:0 0 0 1px var(--line),0 6px 14px -8px rgba(11,58,61,.3)}
+.tab.active{background:#fff;color:var(--lagoon);box-shadow:0 0 0 1px var(--line),0 6px 14px -8px rgba(7,63,50,.3)}
 .tab:hover:not(.active){color:var(--lagoon)}
 .stay{margin-top:22px;animation:stayIn .55s var(--ease-out)}
 @keyframes stayIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
@@ -742,7 +779,7 @@ textarea.input{height:auto;min-height:120px;padding:14px 16px;resize:vertical}
 .inc li{display:flex;gap:10px;align-items:flex-start;font-size:.93rem;color:var(--ink-2);padding:6px 0}
 .inc li i{flex:none;margin-top:4px;color:var(--light-sea-green);font-size:.9rem}
 .inc.no li i{color:#c9a19c}
-.tip{margin-top:14px;padding:18px 20px;border-radius:16px;background:linear-gradient(135deg,#fff6e8,#fff1d9);display:flex;gap:14px;align-items:flex-start;font-size:.93rem;color:var(--ink-2)}
+.tip{margin-top:14px;padding:18px 20px;border-radius:16px;background:linear-gradient(135deg,#faf5e9,#f5edda);display:flex;gap:14px;align-items:flex-start;font-size:.93rem;color:var(--ink-2)}
 .tip i{flex:none;color:var(--amber-glow);font-size:22px}
 .tip b{color:var(--lagoon)}
 .price-table{width:100%;border-collapse:separate;border-spacing:0;margin-top:16px;font-size:.92rem;overflow:hidden;border-radius:14px;box-shadow:0 0 0 1px var(--line)}
@@ -775,7 +812,7 @@ textarea.input{height:auto;min-height:120px;padding:14px 16px;resize:vertical}
 /* Modal */
 .modal{position:fixed;inset:0;z-index:var(--z-modal);display:grid;place-items:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .4s}
 .modal.open{opacity:1;pointer-events:auto}
-.modal__bd{position:absolute;inset:0;background:rgba(11,58,61,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.modal__bd{position:absolute;inset:0;background:rgba(7,63,50,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
 .modal__panel{position:relative;width:min(720px,100%);max-height:calc(100dvh - 32px);overflow:auto;transform:translateY(24px) scale(.97);transition:transform .6s var(--ease-soft);border-radius:var(--r-card)}
 .modal.open .modal__panel{transform:none}
 .modal__close{position:absolute;top:18px;right:18px;width:40px;height:40px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:18px;color:var(--lagoon);box-shadow:0 0 0 1px var(--line);z-index:2;transition:transform .4s var(--ease-soft),background .3s}
@@ -785,11 +822,38 @@ textarea.input{height:auto;min-height:120px;padding:14px 16px;resize:vertical}
 /* Toast */
 .toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);z-index:var(--z-toast);background:var(--lagoon);color:#fff;padding:12px 18px;border-radius:var(--r-pill);font-weight:500;font-size:.92rem;opacity:0;pointer-events:none;transition:opacity .35s,transform .5s var(--ease-soft);display:flex;gap:10px;align-items:center;box-shadow:var(--shadow-lift)}
 .toast.show{opacity:1;transform:translate(-50%,0)}
-.toast i{color:var(--light-sea-green)}
+.toast i{color:var(--gold-soft)}
 
 /* Floating WhatsApp */
-.fab{position:fixed;right:20px;bottom:20px;z-index:var(--z-nav);width:56px;height:56px;border-radius:50%;background:#25d366;color:#fff;display:grid;place-items:center;font-size:28px;box-shadow:0 14px 30px -10px rgba(37,211,102,.6);transition:transform .5s var(--ease-soft)}
+.fab{position:fixed;right:20px;bottom:20px;z-index:var(--z-nav);width:56px;height:56px;border-radius:50%;background:var(--whatsapp);color:#fff;display:grid;place-items:center;font-size:28px;box-shadow:0 14px 30px -10px rgba(37,211,102,.6);transition:transform .5s var(--ease-soft)}
 .fab:hover{transform:translateY(-3px) scale(1.04)}
+
+/* Mobile action bar (phones only; the FAB takes over from 640px up) */
+.mbar{
+  position:fixed;left:0;right:0;bottom:0;z-index:var(--z-toast);display:none;
+  background:#fff;border-top:1px solid var(--line);
+  box-shadow:0 -8px 24px -12px rgba(7,63,50,.25);
+  padding-bottom:env(safe-area-inset-bottom);
+}
+.mbar a{
+  flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
+  padding:9px 4px 10px;font-family:var(--font-display);font-size:.68rem;font-weight:700;
+  color:var(--lagoon);transition:background .3s;
+}
+.mbar a i{font-size:20px;line-height:1}
+.mbar a:active{background:var(--surface)}
+.mbar .mbar--wa i{color:var(--whatsapp)}
+.mbar .mbar--call i{color:var(--green)}
+.mbar .mbar--quote{background:var(--gold);color:var(--green-deep)}
+.mbar .mbar--quote:active{background:#d4b256}
+@media (max-width:640px){
+  .mbar{display:flex}
+  .fab{display:none}
+  body{padding-bottom:62px}
+  .toast{bottom:76px}
+  /* The menu and the quote modal carry their own CTAs, so the bar steps aside. */
+  body.no-scroll .mbar{display:none}
+}
 
 /* Scroll reveal */
 .rv{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease-out),transform 1s var(--ease-out);transition-delay:var(--d,0s)}
@@ -831,11 +895,19 @@ textarea.input{height:auto;min-height:120px;padding:14px 16px;resize:vertical}
 @media (max-width:640px){
   .section{padding-block:64px}
   .pk-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-  .pk__body{padding:12px 12px 14px}
-  .pk__title{font-size:.95rem}
-  .pk__price{font-size:.95rem}
-  .pk__meta{flex-direction:column;align-items:flex-start;gap:4px}
-  .pk__price{text-align:left}
+  .pk__media{height:112px;padding:9px}
+  .pk__tier{font-size:.58rem;padding:4px 8px;letter-spacing:.05em}
+  .pk__body{padding:13px 13px 15px}
+  .pk__title{font-size:.98rem}
+  .pk__nights{font-size:.7rem;line-height:1.35;margin-bottom:8px}
+  .pk__price{font-size:1.15rem}
+  .pk__price span{font-size:.62rem}
+  .pk__price small{font-size:.72rem}
+  .pk__list{margin:9px 0 12px;gap:5px}
+  .pk__list li{font-size:.74rem;line-height:1.35;gap:6px}
+  .pk__list i{font-size:.72rem;margin-top:2px}
+  .pk__cta{gap:6px}
+  .pk__cta .btn{padding:9px 10px;font-size:.76rem;gap:5px}
   .feat__grid{grid-template-columns:1fr}
   .feat__grid .fcard:last-child{aspect-ratio:4/4.6}
   .form-grid{grid-template-columns:1fr}
@@ -1079,8 +1151,7 @@ textarea.input{height:auto;min-height:120px;padding:14px 16px;resize:vertical}
           <a class="crow rv" style="--d:.1s" href="tel:+15172344046"><i class="ic ph ph-phone"></i><div><small>Call</small><b>(517) 234-4046</b></div><i class="arr ph-bold ph-arrow-up-right"></i></a>
           <a class="crow rv" style="--d:.16s" href="https://wa.me/17342095812" target="_blank" rel="noopener"><i class="ic ph ph-whatsapp-logo"></i><div><small>WhatsApp</small><b>+1 (734) 209-5812</b></div><i class="arr ph-bold ph-arrow-up-right"></i></a>
           <a class="crow rv" style="--d:.22s" href="mailto:holidays@mpstours.com"><i class="ic ph ph-envelope-simple"></i><div><small>Email</small><b>holidays@mpstours.com</b></div><i class="arr ph-bold ph-arrow-up-right"></i></a>
-          <!-- TODO: replace with the full street address -->
-          <div class="crow rv" style="--d:.28s"><i class="ic ph ph-map-pin"></i><div><small>Office</small><b>MPS Tours LLC, Michigan, United States</b></div></div>
+          <a class="crow rv" style="--d:.28s" href="https://maps.google.com/?q=1055+Laurence+Ave,+Jackson,+MI+49202" target="_blank" rel="noopener"><i class="ic ph ph-map-pin"></i><div><small>Office</small><b>1055 Laurence Ave, Jackson, MI 49202, USA</b></div><i class="arr ph-bold ph-arrow-up-right"></i></a>
         </div>
       </div>
       <div class="form-card rv rv--scale" style="--d:.1s" id="contact-form-card"></div>
@@ -1245,8 +1316,7 @@ textarea.input{height:auto;min-height:120px;padding:14px 16px;resize:vertical}
             <a href="mailto:holidays@mpstours.com"><b>Email</b>holidays@mpstours.com</a>
             <a href="tel:+15172344046"><b>Phone</b>(517) 234-4046</a>
             <a href="https://wa.me/17342095812" target="_blank" rel="noopener"><b>WhatsApp</b>+1 (734) 209-5812</a>
-            <!-- TODO: replace with the full street address -->
-            <span><b>Office</b>MPS Tours LLC, Michigan, United States</span>
+            <span><b>Office</b>1055 Laurence Ave, Jackson, MI 49202, USA</span>
           </div>
         </div>
         <p class="legal__updated">Last updated: September 2026</p>
@@ -1345,8 +1415,7 @@ textarea.input{height:auto;min-height:120px;padding:14px 16px;resize:vertical}
             <a href="mailto:holidays@mpstours.com"><b>Email</b>holidays@mpstours.com</a>
             <a href="tel:+15172344046"><b>Phone</b>(517) 234-4046</a>
             <a href="https://wa.me/17342095812" target="_blank" rel="noopener"><b>WhatsApp</b>+1 (734) 209-5812</a>
-            <!-- TODO: replace with the full street address -->
-            <span><b>Office</b>MPS Tours LLC, Michigan, United States</span>
+            <span><b>Office</b>1055 Laurence Ave, Jackson, MI 49202, USA</span>
           </div>
         </div>
         <p class="legal__updated">Last updated: September 2026</p>
@@ -1366,8 +1435,8 @@ textarea.input{height:auto;min-height:120px;padding:14px 16px;resize:vertical}
         </a>
         <p class="footer__about">Signature holiday packages with flights, hotels, transfers and guided days included, planned by one advisor from first quote to flight home.</p>
         <div class="footer__social">
-          <a href="#" aria-label="Instagram"><i class="ph ph-instagram-logo"></i></a>
-          <a href="#" aria-label="Facebook"><i class="ph ph-facebook-logo"></i></a>
+          <a href="https://www.instagram.com/mps.tours" target="_blank" rel="noopener" aria-label="Instagram"><i class="ph ph-instagram-logo"></i></a>
+          <a href="https://www.facebook.com/profile.php?id=61570550305228" target="_blank" rel="noopener" aria-label="Facebook"><i class="ph ph-facebook-logo"></i></a>
           <a class="is-wa" href="https://wa.me/17342095812" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp"><i class="ph-fill ph-whatsapp-logo"></i></a>
         </div>
       </div>
@@ -1393,7 +1462,7 @@ textarea.input{height:auto;min-height:120px;padding:14px 16px;resize:vertical}
           <li><a href="tel:+15172344046">(517) 234-4046</a></li>
           <li><a href="https://wa.me/17342095812" target="_blank" rel="noopener">WhatsApp +1 (734) 209-5812</a></li>
           <li><a href="mailto:holidays@mpstours.com">holidays@mpstours.com</a></li>
-          <li>Michigan, United States</li>
+          <li><a href="https://maps.google.com/?q=1055+Laurence+Ave,+Jackson,+MI+49202" target="_blank" rel="noopener">1055 Laurence Ave, Jackson, MI 49202, USA</a></li>
         </ul>
       </div>
     </div>
@@ -1414,6 +1483,13 @@ textarea.input{height:auto;min-height:120px;padding:14px 16px;resize:vertical}
 </div>
 
 <a class="fab" href="https://wa.me/17342095812" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><i class="ph-fill ph-whatsapp-logo"></i></a>
+
+<!-- Mobile action bar -->
+<nav class="mbar" aria-label="Quick contact">
+  <a class="mbar--call" href="tel:+15172344046"><i class="ph ph-phone"></i>Call</a>
+  <a class="mbar--wa" href="https://wa.me/17342095812" target="_blank" rel="noopener"><i class="ph-fill ph-whatsapp-logo"></i>WhatsApp</a>
+  <a class="mbar--quote" href="#/" data-quote><i class="ph ph-note-pencil"></i>Quote</a>
+</nav>
 <div class="toast" id="toast"><i class="ph-fill ph-check-circle"></i><span></span></div>
 <script>
 /* ==========================================================================
@@ -1425,12 +1501,14 @@ textarea.input{height:auto;min-height:120px;padding:14px 16px;resize:vertical}
 const CONTACT = {
   phone:'(517) 234-4046', tel:'tel:+15172344046',
   wa:'https://wa.me/17342095812', waDisplay:'+1 (734) 209-5812',
-  email:'holidays@mpstours.com'
+  email:'holidays@mpstours.com',
+  address:'1055 Laurence Ave, Jackson, MI 49202, USA'
 };
 const PACKAGES = [
   {
     slug:'greece-signature-escape', name:'Greece Signature Escape', tagline:'History meets paradise',
-    region:'Europe', days:9, nights:8, price:2990, priceNote:'Based on 2 adults sharing. Flexible dates.',
+    tier:'Greece', region:'Europe', days:9, nights:8, price:2990, priceNote:'Based on 2 adults sharing. Flexible dates.',
+    points:['4 hotels across 3 destinations','3 signature experiences included','Round-trip flights & all transfers'],
     route:['Athens','Mykonos','Santorini'], tags:['islands','beach','history','ferry'],
     summary:'Nine days across Athens, Mykonos and Santorini with flights, boutique hotels, private transfers and three signature experiences included. Every ferry and flight is pre-arranged, so you just show up and go.',
     img:'assets/img/greece-card.jpg', hero:'assets/img/greece-hero.jpg', portrait:'assets/img/greece-portrait.jpg',
@@ -1470,7 +1548,8 @@ const PACKAGES = [
   },
   {
     slug:'greece-turkey-signature-escape', name:'Greece + Turkey: Two Shores, One Journey', short:'Greece + Turkey Signature Escape', tagline:'The Greek islands, plus two nights in Istanbul on us',
-    region:'Europe', days:11, nights:10, price:2990, priceNote:'Same price as Greece alone. Based on 2 adults sharing.',
+    tier:'Greece & Turkey', region:'Europe', days:11, nights:10, price:2990, priceNote:'Same price as Greece alone. Based on 2 adults sharing.',
+    points:['Same price as Greece alone','2 complimentary nights in Istanbul','Private-table Bosphorus dinner cruise'],
     route:['Athens','Mykonos','Santorini','Istanbul'], tags:['islands','beach','history','istanbul','cruise'],
     summary:'Everything in the Greece Signature Escape, plus two complimentary nights in a 5-star Istanbul hotel and a private-table Bosphorus dinner cruise, at the same price as Greece alone.',
     img:'assets/img/turkey-card.jpg', hero:'assets/img/turkey-hero.jpg', portrait:'assets/img/turkey-portrait.jpg',
@@ -1515,7 +1594,8 @@ const PACKAGES = [
   },
   {
     slug:'italian-train-journey', name:'The Italian Train Journey', tagline:'Rome, Florence, Venice and Milan',
-    region:'Europe', days:9, nights:8, price:2490, priceNote:'Based on double occupancy. Final quote confirmed for your departure city.',
+    tier:'Italy', region:'Europe', days:9, nights:8, price:2490, priceNote:'Based on double occupancy. Final quote confirmed for your departure city.',
+    points:['5 guided tours included','High-speed rail between every city','Fly into Rome, home from Milan'],
     route:['Rome','Florence','Venice','Milan'], tags:['train','art','history','city','lakes'],
     summary:'Eight nights in four cities, connected by high-speed train. Superior category hotels, round-trip flights (into Rome, home from Milan) and five guided tours with skip-the-line access included.',
     img:'assets/img/italy-card.jpg', hero:'assets/img/italy-hero.jpg', portrait:'assets/img/italy-portrait.jpg',
@@ -1545,7 +1625,8 @@ const PACKAGES = [
   },
   {
     slug:'imperial-europe-escape', name:'Imperial Europe Escape', tagline:'Czech Republic, Austria and Hungary',
-    region:'Europe', days:9, nights:7, price:2290, priceNote:'Based on 2 adults sharing. Charm category hotels.',
+    tier:'Central Europe', region:'Europe', days:9, nights:7, price:2290, priceNote:'Based on 2 adults sharing. Charm category hotels.',
+    points:['Self-guided, train by train','Guided city tour in each capital','Charm category hotels included'],
     route:['Prague','Vienna','Budapest'], tags:['train','city','history','self-guided'],
     summary:'Prague, Vienna and Budapest, self-guided and train by train. Flights, Charm category hotels, airport transfers and a guided city tour in each capital, with free time in between to explore on your own.',
     img:'assets/img/imperial-card.jpg', hero:'assets/img/imperial-hero.jpg', portrait:'assets/img/imperial-portrait.jpg',
@@ -1582,7 +1663,8 @@ const PACKAGES = [
   },
   {
     slug:'japan-grand-tour', name:'Japan Grand Tour', tagline:'Temples, trains and neon lights',
-    region:'Asia', days:15, nights:14, price:null, priceLabel:'Personalized quote', priceNote:'Based on your departure city and selected excursions.',
+    tier:'Japan', region:'Asia', days:15, nights:14, price:null, priceLabel:'Personalized quote', priceNote:'Based on your departure city and selected excursions.',
+    points:['6 cities by bullet train','Choose your own excursions','Flights from all major US gateways'],
     route:['Tokyo','Kanazawa','Takayama','Kyoto','Hiroshima','Osaka'], tags:['train','culture','city','temples','food'],
     summary:'Fourteen nights across six cities by bullet train, with round-trip economy flights, every hotel and every transfer fixed. Excursions are optional: choose the ones that fit your pace and skip the rest.',
     img:'assets/img/japan-card.jpg', hero:'assets/img/japan-hero.jpg', portrait:'assets/img/japan-portrait.jpg',
@@ -1627,7 +1709,8 @@ const PACKAGES = [
   },
   {
     slug:'malaysia-singapore-package', name:'From Nature to Future: Malaysia and Singapore', short:'Malaysia and Singapore', tagline:'Modern cities, Borneo culture, island beaches',
-    region:'Asia', days:12, nights:11, price:2690, priceNote:'Based on double occupancy. Final quote confirmed by your trip advisor.',
+    tier:'Malaysia & Singapore', region:'Asia', days:12, nights:11, price:2690, priceNote:'Based on double occupancy. Final quote confirmed by your trip advisor.',
+    points:['4 stops, 2 countries','5 guided sightseeing experiences','3 regional flights included'],
     route:['Kuala Lumpur','Kuching','Damai Beach','Singapore'], tags:['city','beach','culture','nature','borneo'],
     summary:'Twelve days across five destinations, from the Petronas Towers to Borneo\'s Sarawak villages, a beach stay on the Damai coast, and Singapore\'s skyline to finish. Flights, hotels, transfers and five guided experiences included.',
     img:'assets/img/sea-card.jpg', hero:'assets/img/sea-hero.jpg', portrait:'assets/img/sea-portrait.jpg',
@@ -1662,7 +1745,8 @@ const PACKAGES = [
   },
   {
     slug:'maldives-package', name:'Maldives: An Escape to Serenity', short:'Maldives All-Inclusive Escape', tagline:'All-inclusive, seaplane included',
-    region:'Asia', days:7, nights:6, price:3499, priceNote:'Based on double occupancy. Final quote confirmed by your trip advisor.',
+    tier:'Maldives', region:'Asia', days:7, nights:6, price:3499, priceNote:'Based on double occupancy. Final quote confirmed by your trip advisor.',
+    points:['5-star overwater & beachfront villas','Seaplane transfers included','Perfect for honeymoons'],
     route:['South Ari Atoll'], tags:['beach','island','honeymoon','all-inclusive','diving'],
     summary:'Six nights at the 5-star Machchafushi Island Resort and Spa in the South Ari Atoll, with round-trip flights, seaplane transfers and an all-inclusive stay across six restaurants and bars. Built for honeymoons, anniversaries and couples.',
     img:'assets/img/maldives-card.jpg', hero:'assets/img/maldives-hero.jpg', portrait:'assets/img/maldives-portrait.jpg',
@@ -1693,7 +1777,8 @@ const PACKAGES = [
   },
   {
     slug:'heart-of-the-inca-peru', name:'Heart of the Inca', tagline:'Lima, Cusco and Machu Picchu',
-    region:'Americas', days:6, nights:5, price:1459, priceNote:'Double or triple occupancy, Budget category. 2026 rates.',
+    tier:'Peru', region:'Americas', days:6, nights:5, price:1459, priceNote:'Double or triple occupancy, Budget category. 2026 rates.',
+    points:['Small group or private','Daily departures, year-round','Zero postponement fees up to 20 days out'],
     route:['Lima','Cusco','Sacred Valley','Machu Picchu'], tags:['mountains','history','small-group','adventure'],
     summary:'Six days through Lima, Cusco, the Sacred Valley and Machu Picchu with small groups, expert local guides and 24/7 in-trip assistance. Fully customizable, with four hotel categories to choose from.',
     img:'assets/img/peru-card.jpg', hero:'assets/img/peru-hero.jpg', portrait:'assets/img/peru-portrait.jpg',
@@ -1852,16 +1937,55 @@ window.addEventListener('hashchange', route);
 /* ==========================================================================
    RENDER: package cards
    ========================================================================== */
+/* "Athens, Mykonos & Santorini" */
+const routeLine = r => r.length < 2 ? r.join('') : r.slice(0,-1).join(', ') + ' & ' + r[r.length-1];
+
+/* The three selling points under the price. A package can set `points`;
+   otherwise we take the first three lines of what's included. */
+const cardPoints = p => (p.points || p.included || []).slice(0,3);
+
+/* Tier badge: the country/area chip that sits on the photo. */
+const cardTier = p => p.tier || p.region;
+
 function cardHTML(p, i=0){
-  return `<a class="pk rv" style="--d:${(i%4)*.07}s" href="#/package/${p.slug}" aria-label="${esc(shortName(p))}">
-    <div class="pk__media"><img src="${p.img}" alt="${esc(shortName(p))}" width="900" height="700" loading="lazy" decoding="async"><span class="pk__go"><i class="ph-bold ph-arrow-up-right"></i></span></div>
+  const href = `#/package/${p.slug}`;
+  const name = esc(shortName(p));
+  const wa = `${CONTACT.wa}?text=${encodeURIComponent(`Hi, I'm interested in the ${shortName(p)} package. Please send pricing and availability.`)}`;
+  return `<article class="pk rv" style="--d:${(i%4)*.07}s">
+    <a class="pk__media" href="${href}" tabindex="-1" aria-hidden="true">
+      <img src="${p.img}" alt="" width="900" height="700" loading="lazy" decoding="async">
+      <span class="pk__go"><i class="ph-bold ph-arrow-up-right"></i></span>
+      <span class="pk__tier">${esc(cardTier(p))}</span>
+    </a>
     <div class="pk__body">
-      <div class="pk__route"><i class="ph ph-map-pin"></i>${esc(p.route.slice(0,3).join(', '))}${p.route.length>3?' +'+(p.route.length-3):''}</div>
-      <h3 class="pk__title">${esc(shortName(p))}</h3>
-      <div class="pk__meta"><span class="nights"><i class="ph ph-moon-stars"></i>${p.nights} nights</span><span class="pk__price">${p.price?'From ':''}${priceHTML(p)}</span></div>
-    </div></a>`;
+      <h3 class="pk__title"><a href="${href}">${name}</a></h3>
+      <div class="pk__nights">${p.days ? p.days + ' Days / ' : ''}${p.nights} Nights &middot; ${esc(routeLine(p.route))}</div>
+      <div class="pk__price">${p.price ? `<span>From</span>${money(p.price)} <small>/ person</small>` : `<span>Pricing</span>Custom <small>quote on request</small>`}</div>
+      <ul class="pk__list">${cardPoints(p).map(t => `<li><i class="ph-bold ph-check"></i>${esc(t)}</li>`).join('')}</ul>
+      <div class="pk__cta">
+        <a class="btn btn--amber btn--sm btn--block" href="${href}">View Full Itinerary</a>
+        <a class="btn btn--wa btn--sm btn--block" href="${wa}" target="_blank" rel="noopener"><i class="ph-fill ph-whatsapp-logo"></i>WhatsApp Us</a>
+      </div>
+    </div></article>`;
 }
-$('#home-packages').innerHTML = PACKAGES.map(cardHTML).join('');
+
+/* Home grid: full rows at every width. 4 on phones, 6 on tablets, 8 on laptops,
+   with "See all packages" picking up the rest. */
+const homeCount = () => window.innerWidth <= 640 ? 4 : window.innerWidth <= 1100 ? 6 : 8;
+let homeShown = 0;
+function renderHomePackages(){
+  const n = Math.min(homeCount(), PACKAGES.length);
+  if (n === homeShown) return;
+  const grid = $('#home-packages');
+  const wasRevealed = homeShown > 0 && !!grid.querySelector('.rv.in');
+  homeShown = n;
+  grid.innerHTML = PACKAGES.slice(0, n).map(cardHTML).join('');
+  /* Re-rendering on resize should not replay the entrance animation. */
+  if (wasRevealed) $$('.rv', grid).forEach(el => el.classList.add('in'));
+  else bindReveal(grid);
+}
+renderHomePackages();
+addEventListener('resize', renderHomePackages);
 $('#footer-packages').innerHTML = PACKAGES.map(p => `<li><a href="#/package/${p.slug}">${esc(shortName(p))}</a></li>`).join('');
 
 /* Featured */

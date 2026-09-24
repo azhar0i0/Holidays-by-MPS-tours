@@ -1,0 +1,9 @@
+# Reference material and drops, kept local
+Inspriration.html
+packages.zip
+packages/
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+desktop.ini
