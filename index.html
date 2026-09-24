@@ -196,6 +196,14 @@ p{margin:0}
 .nav__cta{margin-left:8px}
 .nav.scrolled .nav__cta{--bg:var(--lagoon);--fg:#fff}
 .nav:not(.scrolled) .nav__cta{--bg:#fff;--fg:var(--lagoon)}
+.nav__call{
+  flex:none;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;margin-left:4px;
+  background:var(--gold);color:var(--green-deep);font-size:19px;
+  box-shadow:0 0 0 0 rgba(199,165,74,.45);
+  transition:transform .45s var(--ease-soft),box-shadow .45s var(--ease-soft),background .3s;
+}
+.nav__call:hover{transform:translateY(-2px) rotate(-8deg);box-shadow:0 0 0 6px rgba(199,165,74,.22)}
+.nav__call:focus-visible{outline:0;box-shadow:0 0 0 4px rgba(199,165,74,.45)}
 /* Two baked variants: the standard mark, and a knockout for the dark contexts
    (nav over the hero, the open menu, the footer). */
 .logo{display:inline-flex;align-items:center;justify-content:center}
@@ -515,7 +523,8 @@ p{margin:0}
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 .field{display:flex;flex-direction:column;gap:8px;position:relative}
 .field.full{grid-column:1/-1}
-.field label{font-family:var(--font-display);font-weight:600;font-size:.82rem;letter-spacing:.04em;text-transform:uppercase;color:var(--sea-deep)}
+.field > label:not(.consent__lbl){font-family:var(--font-display);font-weight:600;font-size:.82rem;letter-spacing:.04em;text-transform:uppercase;color:var(--sea-deep)}
+.field > label .opt{margin-left:8px;padding:2px 8px;border-radius:var(--r-pill);background:var(--surface-2);color:var(--ink-3);font-family:var(--font-body);font-weight:500;font-size:.7rem;letter-spacing:0;text-transform:none;vertical-align:1px}
 .field .hint{font-size:.78rem;color:var(--ink-3)}
 .field .err{font-size:.78rem;color:#b3261e;display:none}
 .field.invalid .err{display:block}
@@ -610,6 +619,21 @@ textarea.input{height:auto;min-height:120px;padding:14px 16px;resize:vertical}
 
 .form-actions{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;margin-top:26px;padding-top:22px;border-top:1px solid var(--line)}
 .form-actions .fine{font-size:.78rem;color:var(--ink-3);max-width:34ch}
+.consent{flex:1 1 320px;gap:6px}
+.consent__lbl{display:flex;align-items:flex-start;gap:12px;cursor:pointer;padding:12px 14px;border-radius:12px;background:var(--surface);box-shadow:inset 0 0 0 1px var(--line);transition:background .3s,box-shadow .3s}
+.consent__lbl input{position:absolute;opacity:0;width:0;height:0}
+.consent__lbl .chk__box{margin-top:1px}
+.consent__lbl .chk__box i{font-size:13px;color:#fff;transform:scale(0);transition:transform .4s var(--ease-soft)}
+.consent__lbl input:checked + .chk__box{background:var(--lagoon);border-color:var(--lagoon)}
+.consent__lbl input:checked + .chk__box i{transform:scale(1)}
+.consent__lbl input:focus-visible + .chk__box{box-shadow:0 0 0 4px rgba(11,93,75,.18)}
+.consent__lbl:hover .chk__box{border-color:var(--light-sea-green)}
+.consent__lbl:has(input:checked){background:var(--frozen-water);box-shadow:inset 0 0 0 1px rgba(11,93,75,.35)}
+.consent__txt{font-size:.8rem;line-height:1.55;color:var(--ink-2)}
+.consent__txt a{color:var(--sea-deep);font-weight:500;text-decoration:underline;text-underline-offset:2px}
+.consent__txt a:hover{color:var(--lagoon)}
+.field.invalid .consent__lbl{background:#fdf4f3;box-shadow:inset 0 0 0 1.5px #b3261e}
+.field.invalid .consent__lbl .chk__box{border-color:#b3261e}
 .form-success{display:none;text-align:center;padding:30px 10px}
 .form-success i{font-size:54px;color:var(--light-sea-green)}
 .form-success h3{margin-top:12px}
@@ -617,6 +641,87 @@ textarea.input{height:auto;min-height:120px;padding:14px 16px;resize:vertical}
 .form-success .row{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:22px}
 .form-card.done form{display:none}
 .form-card.done .form-success{display:block}
+.form-card.done .fsteps{display:none}
+
+/* Two-step quote form */
+.fsteps{position:relative;display:flex;align-items:center;gap:12px;margin-top:20px}
+.fstep{display:flex;align-items:center;gap:10px;color:rgba(238,244,241,.62);font-family:var(--font-display);font-weight:600;font-size:.86rem;transition:color .4s}
+.fstep:hover{color:#fff}
+.fstep__n{position:relative;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;border:1.5px solid rgba(255,255,255,.32);font-size:.82rem;transition:background .45s,border-color .45s,color .45s,transform .5s var(--ease-soft)}
+.fstep__n b,.fstep__n i{grid-area:1/1;transition:opacity .3s,transform .45s var(--ease-soft)}
+.fstep__n i{opacity:0;transform:scale(.4)}
+.fstep.is-active{color:#fff}
+.fstep.is-active .fstep__n{background:var(--gold);border-color:var(--gold);color:var(--green-deep);transform:scale(1.06);box-shadow:0 0 0 5px rgba(199,165,74,.22)}
+.fstep.is-done .fstep__n{background:rgba(255,255,255,.14);border-color:transparent;color:var(--gold-soft)}
+.fstep.is-done .fstep__n b{opacity:0;transform:scale(.4)}
+.fstep.is-done .fstep__n i{opacity:1;transform:none}
+.fsteps__bar{flex:1;max-width:110px;height:2px;border-radius:2px;background:rgba(255,255,255,.18);overflow:hidden}
+.fsteps__bar::after{content:"";display:block;height:100%;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .7s var(--ease-soft)}
+[data-step="2"] .fsteps__bar::after{transform:scaleX(1)}
+
+.fpanel{display:none}
+.fpanel.is-active{display:block}
+.fpanel.fwd{animation:fpFwd .55s var(--ease-out)}
+.fpanel.back{animation:fpBack .55s var(--ease-out)}
+@keyframes fpFwd{from{opacity:0;transform:translateX(26px)}to{opacity:1;transform:none}}
+@keyframes fpBack{from{opacity:0;transform:translateX(-26px)}to{opacity:1;transform:none}}
+.fpanel__head{margin-bottom:20px}
+.fpanel__head small{font-family:var(--font-display);font-weight:700;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-deep,#9c7a22)}
+.fpanel__head h4{font-size:1.2rem;color:var(--lagoon);margin-top:4px}
+
+/* Preferred contact: segmented control */
+.seg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;padding:4px;height:52px;border-radius:var(--r-input);background:var(--surface);box-shadow:inset 0 0 0 1px var(--line)}
+.seg label{display:flex;align-items:center;justify-content:center;gap:6px;border-radius:10px;cursor:pointer;font-size:.88rem;color:var(--ink-2);transition:background .3s,color .3s,box-shadow .3s}
+.seg label i{font-size:17px}
+.seg input{position:absolute;opacity:0;width:0;height:0}
+.seg label:hover{color:var(--lagoon)}
+.seg label:has(input:checked){background:#fff;color:var(--lagoon);font-weight:600;box-shadow:0 0 0 1px var(--line),0 6px 14px -8px rgba(7,63,50,.35)}
+.seg label:has(input:focus-visible){box-shadow:0 0 0 3px rgba(11,93,75,.25)}
+
+/* Who we're quoting for (step 2 recap) */
+.fwho{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:14px;background:var(--surface);box-shadow:inset 0 0 0 1px var(--line);margin-bottom:22px}
+.fwho__av{flex:none;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--lagoon);color:var(--gold-soft);font-family:var(--font-display);font-weight:700;font-size:.9rem}
+.fwho__t{min-width:0;flex:1}
+.fwho__t b{display:block;font-family:var(--font-display);color:var(--lagoon);font-size:.95rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.fwho__t span{display:block;font-size:.8rem;color:var(--ink-3);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.fwho button{flex:none;display:inline-flex;align-items:center;gap:5px;padding:7px 12px;border-radius:var(--r-pill);font-size:.82rem;font-weight:500;color:var(--sea-deep);background:#fff;box-shadow:0 0 0 1px var(--line);transition:background .3s}
+.fwho button:hover{background:var(--frozen-water)}
+
+/* Traveler counters */
+.counts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.cnt{display:flex;align-items:center;justify-content:space-between;gap:10px;height:56px;padding:0 6px 0 16px;border-radius:var(--r-input);background:var(--surface);box-shadow:inset 0 0 0 1px var(--line)}
+.cnt__l b{display:block;font-size:.95rem;color:var(--ink);font-weight:500;line-height:1.2}
+.cnt__l small{font-size:.74rem;color:var(--ink-3)}
+.cnt__c{display:flex;align-items:center;gap:4px}
+.cnt__c button{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:#fff;color:var(--lagoon);box-shadow:0 0 0 1px var(--line);transition:background .3s,transform .3s var(--ease-soft),opacity .3s}
+.cnt__c button:hover:not(:disabled){background:var(--frozen-water)}
+.cnt__c button:active:not(:disabled){transform:scale(.9)}
+.cnt__c button:disabled{opacity:.35;cursor:not-allowed}
+.cnt__c output{min-width:24px;text-align:center;font-family:var(--font-display);font-weight:700;color:var(--lagoon);font-size:1.05rem}
+
+/* What matters most: icon tiles */
+.picks{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.pick{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:14px;border-radius:14px;background:var(--surface);box-shadow:inset 0 0 0 1px var(--line);cursor:pointer;user-select:none;font-size:.86rem;line-height:1.25;color:var(--ink-2);transition:background .3s,box-shadow .3s,transform .4s var(--ease-soft),color .3s}
+.pick:hover{transform:translateY(-2px);box-shadow:inset 0 0 0 1px var(--line-2)}
+.pick input{position:absolute;opacity:0;width:0;height:0}
+.pick > i{font-size:22px;color:var(--sea-deep);transition:color .3s,transform .45s var(--ease-soft)}
+.pick::after{content:"";position:absolute;top:10px;right:10px;width:18px;height:18px;border-radius:50%;box-shadow:inset 0 0 0 1.5px var(--line-2);background:#fff center/11px no-repeat;transition:background-color .3s,box-shadow .3s}
+.pick:has(input:checked){background:#fff;color:var(--lagoon);font-weight:500;box-shadow:inset 0 0 0 1.5px var(--lagoon),0 10px 22px -14px rgba(7,63,50,.45)}
+.pick:has(input:checked) > i{color:var(--gold);transform:scale(1.1)}
+.pick:has(input:checked)::after{background-color:var(--lagoon);box-shadow:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8.5l3 3 6-7' fill='none' stroke='%23fff' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}
+.pick:has(input:focus-visible){box-shadow:inset 0 0 0 1.5px var(--lagoon),0 0 0 4px rgba(11,93,75,.18)}
+
+.form-actions .btn-row{display:flex;gap:10px;margin-left:auto}
+.fine i{color:var(--sea-deep);margin-right:4px;vertical-align:-2px}
+@media (max-width:640px){
+  .picks{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .counts{grid-template-columns:1fr}
+  .form-actions .btn-row{width:100%}
+  .form-actions .btn-row .btn{flex:1;justify-content:center}
+  .form-actions .btn-row .btn--ghost{flex:0 0 auto}
+  .fsteps__bar{max-width:none}
+  .seg label i{display:none}
+}
 
 /* ==========================================================================
    LEGAL PAGES  (Privacy Policy, SMS Terms)
@@ -948,6 +1053,7 @@ textarea.input{height:auto;min-height:120px;padding:14px 16px;resize:vertical}
       <a class="nav__link" href="#/" data-to="reviews">Reviews</a>
       <a class="nav__link" href="#/" data-to="faq">FAQ</a>
       <a class="btn btn--sm nav__cta" href="#/" data-to="contact">Contact</a>
+      <a class="nav__call" href="tel:+15172344046" aria-label="Call us at (517) 234-4046" title="Call (517) 234-4046"><i class="ph-fill ph-phone"></i></a>
     </nav>
     <button class="burger nav__burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
   </div>
@@ -2788,36 +2894,69 @@ function makeDatePicker(host, {placeholder='Pick your dates', onChange}){
 /* ==========================================================================
    QUOTE FORM  (used inline in Contact and inside the modal)
    ========================================================================== */
-function buildForm(host, {pkg=null, compact=false}={}){
+const INTERESTS = [['Beaches','ph-umbrella-simple'],['Culture & history','ph-bank'],['Food & wine','ph-wine'],['Adventure','ph-mountains'],
+  ['Wildlife','ph-paw-print'],['Honeymoon','ph-heart'],['Family time','ph-users-three'],['Slow & relaxing','ph-coffee']];
+const CONTACT_WAYS = [['call','Call','ph-phone'],['whatsapp','WhatsApp','ph-whatsapp-logo'],['email','Email','ph-envelope-simple']];
+const PAX_MAX = 12;
+
+/* Two steps: 1) who you are, 2) the trip. Step 1 is validated before step 2 opens. */
+function buildForm(host, {pkg=null}={}){
   const uid = 'f' + Math.random().toString(36).slice(2,7);
+  const stepBtn = (n, t) => `<button type="button" class="fstep" data-s="${n}"><span class="fstep__n"><b>${n}</b><i class="ph-bold ph-check"></i></span><span>${t}</span></button>`;
+  const counter = (k, l, s) => `<div class="cnt"><div class="cnt__l"><b>${l}</b><small>${s}</small></div>
+    <div class="cnt__c"><button type="button" data-cnt="${k}" data-d="-1" aria-label="Fewer ${l.toLowerCase()}"><i class="ph-bold ph-minus"></i></button><output data-cntv="${k}" aria-live="polite"></output><button type="button" data-cnt="${k}" data-d="1" aria-label="More ${l.toLowerCase()}"><i class="ph-bold ph-plus"></i></button></div></div>`;
   host.innerHTML = `<div class="form-card__head">
       <h3 class="h-3">${pkg ? 'Get a free quote for this trip' : 'Get your free holiday quote'}</h3>
-      <p>Free, no obligation. A trip advisor replies within one business day.</p>
+      <p>Two quick steps. Free, no obligation. A trip advisor replies within one business day.</p>
+      <div class="fsteps">${stepBtn(1,'Your details')}<span class="fsteps__bar"></span>${stepBtn(2,'Your trip')}</div>
     </div>
     <div class="form-card__in">
     <form novalidate>
-      <div class="form-grid">
-        <div class="field"><label for="${uid}-name">Full name</label><input class="input" id="${uid}-name" name="name" type="text" autocomplete="name" placeholder="Your name"><span class="err">Please add your name.</span></div>
-        <div class="field"><label for="${uid}-phone">Phone number</label><input class="input" id="${uid}-phone" name="phone" type="tel" autocomplete="tel" placeholder="(517) 000-0000"><span class="err">Please add a phone number.</span></div>
-        <div class="field"><label for="${uid}-email">Email address</label><input class="input" id="${uid}-email" name="email" type="email" autocomplete="email" placeholder="you@example.com"><span class="err">Please add a valid email.</span></div>
-        <div class="field"><label>Number of travelers</label><div data-sel="travelers"></div><span class="err">Please choose a group size.</span></div>
-        <div class="field"><label>Package</label><div data-sel="package"></div></div>
-        <div class="field"><label>Travel dates</label><div data-dp></div><span class="hint">Rough dates are fine.</span></div>
-        <div class="field full"><label>What matters most?</label>
-          <div class="chk-row">
-            ${['Beaches','Culture and history','Food and wine','Adventure','Honeymoon'].map(v => `<label class="chk"><input type="checkbox" name="interest" value="${esc(v)}"><span class="chk__box"><i class="ph-bold ph-check"></i></span>${esc(v)}</label>`).join('')}
-          </div></div>
-        <div class="field full"><label for="${uid}-msg">Your message</label><textarea class="input" id="${uid}-msg" name="message" placeholder="Departure city, anything you want added or changed, questions..."></textarea></div>
+      <div class="fpanel" data-panel="1">
+        <div class="fpanel__head"><small>Step 1 of 2</small><h4>Who are we planning for?</h4></div>
+        <div class="form-grid">
+          <div class="field"><label for="${uid}-name">Full name</label><input class="input" id="${uid}-name" name="name" type="text" autocomplete="name" placeholder="Your name"><span class="err">Please add your name.</span></div>
+          <div class="field"><label for="${uid}-phone">Phone number</label><input class="input" id="${uid}-phone" name="phone" type="tel" autocomplete="tel" placeholder="(517) 000-0000"><span class="err">Please add a phone number.</span></div>
+          <div class="field"><label for="${uid}-email">Email address</label><input class="input" id="${uid}-email" name="email" type="email" autocomplete="email" placeholder="you@example.com"><span class="err">Please add a valid email.</span></div>
+          <div class="field"><label>Best way to reach you</label>
+            <div class="seg" role="radiogroup">${CONTACT_WAYS.map(([v,l,ic],i) => `<label><input type="radio" name="via" value="${v}" ${i?'':'checked'}><i class="ph ${ic}"></i><span>${l}</span></label>`).join('')}</div></div>
+        </div>
+        <div class="form-actions">
+          <span class="fine"><i class="ph-fill ph-lock-simple"></i>Your details stay with us. We never share or sell them.</span>
+          <div class="btn-row"><button class="btn btn--amber btn--lg" type="submit">Continue <i class="ph-bold ph-arrow-right"></i></button></div>
+        </div>
       </div>
+
+      <div class="fpanel" data-panel="2">
+        <div class="fwho"><span class="fwho__av" data-who-av></span><div class="fwho__t"><b data-who-name></b><span data-who-meta></span></div><button type="button" data-s="1"><i class="ph ph-pencil-simple"></i>Edit</button></div>
+        <div class="fpanel__head"><small>Step 2 of 2</small><h4>Now, tell us about the trip</h4></div>
+        <div class="form-grid">
+          <div class="field"><label>Package</label><div data-sel="package"></div></div>
+          <div class="field"><label>Travel dates</label><div data-dp></div><span class="hint">Rough dates are fine.</span></div>
+          <div class="field full"><label>Number of travelers</label><div class="counts">${counter('adults','Adults','Age 12 and over')}${counter('children','Children','Age 2 to 11')}</div></div>
+          <div class="field"><label>Budget per person <span class="opt">Optional</span></label><div data-sel="budget"></div></div>
+          <div class="field"><label for="${uid}-city">Departing from <span class="opt">Optional</span></label><input class="input" id="${uid}-city" name="city" type="text" autocomplete="address-level2" placeholder="e.g. Detroit, Chicago"></div>
+          <div class="field full"><label>What matters most? <span class="opt">Optional</span></label>
+            <div class="picks">${INTERESTS.map(([v,ic]) => `<label class="pick"><input type="checkbox" name="interest" value="${esc(v)}"><i class="ph ${ic}"></i>${esc(v)}</label>`).join('')}</div></div>
+          <div class="field full"><label for="${uid}-msg">Anything else? <span class="opt">Optional</span></label><textarea class="input" id="${uid}-msg" name="message" placeholder="Special occasions, must-sees, hotel preferences, questions..."></textarea></div>
+        </div>
       <div class="form-actions">
-        <span class="fine">By submitting, you agree to be contacted by phone, SMS or email about your trip.</span>
-        <button class="btn btn--amber btn--lg" type="submit">Get a free quote</button>
+        <div class="field consent">
+          <label class="consent__lbl" for="${uid}-consent">
+            <input type="checkbox" id="${uid}-consent" name="consent" value="yes" aria-required="true">
+            <span class="chk__box"><i class="ph-bold ph-check"></i></span>
+            <span class="consent__txt">I have read and agree to the <a href="#/privacy" target="_blank" rel="noopener">Privacy Policy</a> and <a href="#/sms-terms" target="_blank" rel="noopener">Terms &amp; Conditions</a>, and I consent to Holidays by MPS Tours contacting me by phone, SMS or email about my enquiry.</span>
+          </label>
+          <span class="err">Please accept the Privacy Policy and Terms &amp; Conditions to continue.</span>
+        </div>
+        <div class="btn-row"><button class="btn btn--ghost btn--lg" type="button" data-s="1" aria-label="Back to your details"><i class="ph-bold ph-arrow-left"></i></button><button class="btn btn--amber btn--lg" type="submit">Get my free quote</button></div>
+      </div>
       </div>
     </form>
     <div class="form-success">
       <i class="ph-fill ph-check-circle"></i>
-      <h3 class="h-3">Request received</h3>
-      <p>A trip advisor will call you within one business day. Want to speed it up? Send the same details straight to us.</p>
+      <h3 class="h-3" data-ok-title>Request received</h3>
+      <p data-ok-msg>A trip advisor will call you within one business day. Want to speed it up? Send the same details straight to us.</p>
       <div class="row">
         <a class="btn btn--wa" data-send-wa href="#" target="_blank" rel="noopener">Send on WhatsApp</a>
         <a class="btn btn--ghost" data-send-mail href="#">Send by email</a>
@@ -2825,41 +2964,91 @@ function buildForm(host, {pkg=null, compact=false}={}){
     </div>
   </div>`;
 
-  const travelers = makeSelect($('[data-sel="travelers"]', host), {placeholder:'Select', options:[
-    {v:'1',l:'1 traveler'},{v:'2',l:'2 travelers'},{v:'3-4',l:'3 to 4 travelers'},{v:'5+',l:'5+ travelers (family or group)'}]});
   const pkgSel = makeSelect($('[data-sel="package"]', host), {placeholder:'Not sure yet', value: pkg?.slug || 'custom', options:[
     {v:'custom', l:'Not sure yet / custom trip'}, ...PACKAGES.map(p => ({v:p.slug, l:shortName(p)}))]});
+  const budget = makeSelect($('[data-sel="budget"]', host), {placeholder:'Flexible', options:[
+    {v:'Under $2,000',l:'Under $2,000'},{v:'$2,000 to $3,000',l:'$2,000 to $3,000'},{v:'$3,000 to $5,000',l:'$3,000 to $5,000'},{v:'$5,000+',l:'$5,000 and up'},{v:'Flexible',l:'Flexible'}]});
   const dates = makeDatePicker($('[data-dp]', host), {});
-
   const form = $('form', host);
+
+  const pax = {adults:2, children:0};
+  const drawPax = () => Object.keys(pax).forEach(k => {
+    $(`[data-cntv="${k}"]`, host).value = pax[k];
+    $(`[data-cnt="${k}"][data-d="-1"]`, host).disabled = pax[k] <= (k === 'adults' ? 1 : 0);
+    $(`[data-cnt="${k}"][data-d="1"]`, host).disabled = pax.adults + pax.children >= PAX_MAX;
+  });
+  const paxText = () => [`${pax.adults} adult${pax.adults>1?'s':''}`, pax.children ? `${pax.children} child${pax.children>1?'ren':''}` : ''].filter(Boolean).join(', ');
+  drawPax();
+
+  const need = (sel, test) => { const f = $(sel, form).closest('.field'); const bad = !test(); f.classList.toggle('invalid', bad); return !bad; };
+  function validStep1(){
+    const ok = [need('[name=name]', () => form.name.value.trim().length > 1),
+                need('[name=phone]', () => form.phone.value.trim().length > 6),
+                need('[name=email]', () => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.value.trim()))].every(Boolean);
+    if (!ok) $('.field.invalid .input', form)?.focus();
+    return ok;
+  }
+
+  let step = 0;
+  function go(n, {focus=true}={}){
+    if (n === step) return;
+    const dir = n > step ? 'fwd' : 'back';
+    step = n; host.dataset.step = n;
+    $$('.fpanel', host).forEach(p => { const on = +p.dataset.panel === n; p.classList.remove('fwd','back'); p.classList.toggle('is-active', on); if (on && focus) p.classList.add(dir); });
+    $$('.fstep', host).forEach(s => { const k = +s.dataset.s; s.classList.toggle('is-active', k === n); s.classList.toggle('is-done', k < n); k === n ? s.setAttribute('aria-current','step') : s.removeAttribute('aria-current'); });
+    if (n === 2){
+      const name = form.name.value.trim();
+      $('[data-who-av]', host).textContent = name.split(/\s+/).slice(0,2).map(w => w[0]).join('').toUpperCase();
+      $('[data-who-name]', host).textContent = name;
+      $('[data-who-meta]', host).textContent = `${form.phone.value.trim()} · ${form.email.value.trim()}`;
+    }
+    if (!focus) return;
+    /* Bring the top of the card back into view: the modal panel scrolls, the inline form scrolls the page */
+    const panel = host.closest('.modal__panel');
+    if (panel) panel.scrollTo({top:0, behavior:'smooth'});
+    else { const top = host.getBoundingClientRect().top; if (top < 0) window.scrollTo({top: top + scrollY - 90, behavior:'smooth'}); }
+    setTimeout(() => $(`.fpanel[data-panel="${n}"] .input, .fpanel[data-panel="${n}"] .sel__btn`, host)?.focus({preventScroll:true}), 350);
+  }
+  go(1, {focus:false});
+
+  host.addEventListener('click', e => {
+    const c = e.target.closest('[data-cnt]');
+    if (c){ pax[c.dataset.cnt] += +c.dataset.d; drawPax(); return; }
+    const s = e.target.closest('[data-s]');
+    if (s){ const n = +s.dataset.s; if (n === 1 || validStep1()) go(n); }
+  });
+
   form.addEventListener('submit', e => {
     e.preventDefault();
-    let ok = true;
-    const need = (sel, test) => { const f = $(sel, form).closest('.field'); const bad = !test(); f.classList.toggle('invalid', bad); if (bad) ok = false; };
-    need('[name=name]', () => form.name.value.trim().length > 1);
-    need('[name=phone]', () => form.phone.value.trim().length > 6);
-    need('[name=email]', () => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.value.trim()));
-    const tf = $('[data-sel="travelers"]', host).closest('.field'); tf.classList.toggle('invalid', !travelers.value); if (!travelers.value) ok = false;
-    if (!ok){ $('.field.invalid .input, .field.invalid .sel__btn', form)?.focus(); return; }
+    if (step === 1){ if (validStep1()) go(2); return; }
+    if (!need('[name=consent]', () => form.consent.checked)){ form.consent.focus(); return; }
 
     const p = byS(pkgSel.value);
+    const way = CONTACT_WAYS.find(w => w[0] === form.querySelector('[name=via]:checked').value);
     const interests = $$('[name=interest]:checked', form).map(c => c.value).join(', ');
     const lines = [
       `Quote request from ${form.name.value.trim()}`,
       `Package: ${p ? p.name : 'Custom trip / not sure yet'}`,
-      `Travelers: ${$('.sel__opt.selected', $('[data-sel="travelers"]', host))?.textContent.trim()}`,
+      `Travelers: ${paxText()}`,
       dates.value ? `Dates: ${dates.value}` : null,
-      interests ? `Interests: ${interests}` : null,
+      budget.value ? `Budget per person: ${budget.value}` : null,
+      form.city.value.trim() ? `Departing from: ${form.city.value.trim()}` : null,
+      interests ? `What matters most: ${interests}` : null,
       `Phone: ${form.phone.value.trim()}`, `Email: ${form.email.value.trim()}`,
+      `Preferred contact: ${way[1]}`,
       form.message.value.trim() ? `Message: ${form.message.value.trim()}` : null
     ].filter(Boolean).join('\n');
     $('[data-send-wa]', host).href = `${CONTACT.wa}?text=${encodeURIComponent(lines)}`;
     $('[data-send-mail]', host).href = `mailto:${CONTACT.email}?subject=${encodeURIComponent('Quote request: ' + (p ? p.name : 'Custom trip'))}&body=${encodeURIComponent(lines)}`;
+    const how = {call:'call you', whatsapp:'message you on WhatsApp', email:'email you'}[way[0]];
+    $('[data-ok-title]', host).textContent = `Thank you, ${form.name.value.trim().split(/\s+/)[0]}`;
+    $('[data-ok-msg]', host).textContent = `A trip advisor will ${how} within one business day${p ? ` about ${p.name}` : ''}. Want to speed it up? Send the same details straight to us.`;
     host.classList.add('done');
     toast('Request sent. We will be in touch within one business day.');
   });
   form.addEventListener('input', e => e.target.closest('.field')?.classList.remove('invalid'));
-  return { setPackage(slug){ pkgSel.set(slug || 'custom', true); } };
+  form.addEventListener('change', e => e.target.closest('.field')?.classList.remove('invalid'));
+  return { setPackage(slug){ pkgSel.set(slug || 'custom', true); }, restart(){ go(1, {focus:false}); } };
 }
 buildForm($('#contact-form-card'));
 
@@ -2867,7 +3056,8 @@ buildForm($('#contact-form-card'));
 const modal = $('#quote-modal');
 const modalForm = buildForm($('#modal-form-card'));
 function openModal(slug){
-  $('#modal-form-card').classList.remove('done');
+  const card = $('#modal-form-card');
+  if (card.classList.contains('done')){ card.classList.remove('done'); modalForm.restart(); }
   modalForm.setPackage(slug);
   modal.classList.add('open'); document.body.classList.add('no-scroll');
   setTimeout(() => $('#modal-form-card input')?.focus(), 400);
