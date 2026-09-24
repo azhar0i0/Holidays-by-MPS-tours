@@ -490,7 +490,8 @@ p{margin:0}
 .crow:hover{background:var(--surface-2);transform:translateX(6px)}
 .crow i.ic{flex:none;width:46px;height:46px;border-radius:14px;background:#fff;color:var(--sea-deep);display:grid;place-items:center;font-size:21px;box-shadow:0 0 0 1px var(--line)}
 .crow small{display:block;color:var(--ink-3);font-size:.8rem}
-.crow b{font-family:var(--font-display);color:var(--lagoon);font-size:1.02rem}
+.crow > :not(i){min-width:0}
+.crow b{font-family:var(--font-display);color:var(--lagoon);font-size:1.02rem;overflow-wrap:anywhere}
 .crow i.arr{margin-left:auto;color:var(--ink-3);transition:transform .4s var(--ease-soft)}
 .crow:hover i.arr{transform:translate(3px,-3px);color:var(--lagoon)}
 
@@ -866,7 +867,7 @@ textarea.input{height:auto;min-height:120px;padding:14px 16px;resize:vertical}
 @media (max-width:1100px){
   .pk-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
   .footer__grid{grid-template-columns:1fr 1fr}
-  .detail__grid{grid-template-columns:1fr}
+  .detail__grid{grid-template-columns:minmax(0,1fr)}
   .side{position:static}
 }
 @media (max-width:900px){
@@ -878,7 +879,7 @@ textarea.input{height:auto;min-height:120px;padding:14px 16px;resize:vertical}
   .nav .nav__burger{display:grid;grid-column:3}
   .hero__grid{grid-template-columns:1fr}
   .hero__aside{justify-self:start}
-  .about__grid,.punch__grid,.rev__grid,.faq__grid,.contact__grid{grid-template-columns:1fr}
+  .about__grid,.punch__grid,.rev__grid,.faq__grid,.contact__grid{grid-template-columns:minmax(0,1fr)}
   .about__collage{max-width:100%}
   .rev__summary,.faq__side{position:static}
   .steps__grid{grid-template-columns:1fr}
