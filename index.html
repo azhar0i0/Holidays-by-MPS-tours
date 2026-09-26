@@ -249,80 +249,151 @@ p{margin:0}
 .menu.open .menu__foot{opacity:1;transform:none}
 
 /* ==========================================================================
-   HERO
+   HOME  (hero with quote form, trust strip, about, region-grouped packages,
+   what-you-get band, reviews, FAQ, final CTA, contact)
    ========================================================================== */
-.hero{
-  position:relative;min-height:100dvh;display:flex;align-items:flex-end;color:#fff;overflow:hidden;
-  padding:calc(var(--nav-h) + 40px) 0 clamp(56px,8vw,96px);
+.container--home{width:min(1180px,100% - var(--gutter)*2);margin-inline:auto}
+.hm-sec{padding-block:clamp(60px,7vw,84px)}
+.hm-sec--alt{background:var(--sage)}
+.hm-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;margin-bottom:14px;
+  font-family:var(--font-display);font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);
 }
-.hero__bg{position:absolute;inset:0;z-index:-2}
-.hero__bg img{width:100%;height:100%;object-fit:cover;object-position:center 60%;transform:scale(1.08);animation:heroZoom 2.2s var(--ease-out) forwards}
-@keyframes heroZoom{to{transform:scale(1)}}
-.hero__scrim{position:absolute;inset:0;z-index:-1;background:
-  linear-gradient(180deg,rgba(7,63,50,.45) 0%,rgba(7,63,50,.12) 35%,rgba(7,63,50,.55) 78%,rgba(7,63,50,.86) 100%),
-  linear-gradient(90deg,rgba(7,63,50,.55) 0%,rgba(7,63,50,.1) 60%)}
-.hero__grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:40px;align-items:end}
-.hero h1{color:#fff;max-width:14ch}
-.hero .lead{color:rgba(255,255,255,.86);margin-top:20px;max-width:46ch}
-.hero__cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
-.hero__aside{justify-self:end;width:min(100%,360px)}
-.hero-card{display:block;border-radius:var(--r-card);box-shadow:var(--shadow-lift);transition:transform .6s var(--ease-soft)}
-.hero-card:hover{transform:translateY(-4px)}
-.hero-card__in{background:#fff;color:var(--lagoon);border-radius:var(--r-card);padding:18px 20px;display:flex;gap:14px;align-items:center}
-.hero-card__in img{width:64px;height:64px;border-radius:14px;object-fit:cover;flex:none}
-.hero-card__in .h-4{line-height:1.2}
-.hero-card__in .muted{font-size:.85rem;margin-top:3px}
-.hero-card__in .price{margin-left:auto;text-align:right;font-family:var(--font-display);font-weight:800;font-size:1.05rem;white-space:nowrap}
-.hero-card__in .price small{display:block;font-weight:500;font-size:.72rem;color:var(--ink-3)}
+.hm-eyebrow::before{content:"";width:22px;height:1px;background:currentColor}
+.hm-head{max-width:640px;margin:0 auto 44px;text-align:center}
+.hm-head h2{font-size:clamp(1.7rem,1.1rem + 2.4vw,2.5rem);font-weight:800;line-height:1.15}
+.hm-head p{margin-top:14px;font-size:1.05rem;color:var(--ink-2)}
 
-/* Line-mask reveal for the hero headline */
-.mask{display:block;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em}
-.mask > span{display:block;transform:translateY(110%);transition:transform 1.1s var(--ease-out)}
-.hero.ready .mask > span{transform:none}
-.hero.ready .mask:nth-child(2) > span{transition-delay:.08s}
-.hero.ready .mask:nth-child(3) > span{transition-delay:.16s}
-.hero__fade{opacity:0;transform:translateY(18px);transition:opacity .9s var(--ease-out),transform 1s var(--ease-out)}
-.hero.ready .hero__fade{opacity:1;transform:none}
-.hero.ready .hero__fade.d1{transition-delay:.35s}
-.hero.ready .hero__fade.d2{transition-delay:.5s}
-.hero.ready .hero__fade.d3{transition-delay:.65s}
+/* Hero: copy on the left, the quote form on the right */
+.hm-hero{
+  position:relative;overflow:hidden;color:#fff;
+  padding:calc(var(--nav-h) + clamp(32px,5vw,56px)) 0 clamp(56px,7vw,80px);
+  background:
+    linear-gradient(160deg,rgba(7,63,50,.90) 0%,rgba(11,93,75,.82) 55%,rgba(6,45,36,.93) 100%),
+    url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=70') center 60%/cover;
+}
+.hm-hero__pattern{position:absolute;inset:0;opacity:.10;pointer-events:none;background-image:radial-gradient(circle,var(--gold) 1px,transparent 1px);background-size:26px 26px}
+.hm-hero__grid{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:56px;align-items:start}
+.hm-hero__copy{padding-top:clamp(8px,3vw,40px)}
+.hm-hero__eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:18px;font-family:var(--font-display);font-size:.8rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-soft)}
+.hm-hero__eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--gold)}
+.hm-hero h1{color:#fff;font-size:clamp(2.1rem,1.3rem + 3.4vw,3.6rem);font-weight:800;line-height:1.06}
+.hm-hero h1 em{font-style:italic;color:var(--gold-soft)}
+.hm-hero__lede{margin-top:20px;max-width:52ch;font-size:1.08rem;color:rgba(255,255,255,.86)}
+.hm-hero__cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px}
+.hm-badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.hm-badge{
+  display:flex;align-items:center;gap:7px;padding:8px 13px;border-radius:var(--r-pill);
+  font-size:.78rem;font-weight:500;color:#fff;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22);
+}
+.hm-badge i{font-size:.85rem;color:var(--gold-soft)}
+.hm-hero__form{box-shadow:0 30px 60px -24px rgba(0,0,0,.5)}
+.hm-hero__form .seg label i{display:none}
 
-/* Scroll-driven parallax on hero image (progressive enhancement) */
-@supports (animation-timeline: scroll()){
-  .hero__bg img{animation:heroZoom 2.2s var(--ease-out) forwards, heroDrift linear both;animation-timeline:auto, scroll(root);animation-range:normal, 0 100vh}
-  @keyframes heroDrift{to{transform:translateY(12%) scale(1.02)}}
+/* Trust strip */
+.hm-trust{background:var(--ivory);border-bottom:1px solid var(--line);padding:18px 0}
+.hm-trust .container--home{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:14px 40px}
+.hm-tp{display:flex;align-items:center;gap:9px;padding-right:26px;border-right:1px solid var(--line-2);font-family:var(--font-display);font-size:.84rem;font-weight:700;color:var(--green-deep)}
+.hm-tp__stars{display:inline-flex;gap:1px;color:#00b67a;font-size:15px}
+.hm-tp span:last-child{font-weight:600}
+.hm-trust__item{display:flex;align-items:center;gap:9px;font-family:var(--font-display);font-size:.84rem;font-weight:700;color:var(--green-deep)}
+.hm-trust__item i{font-size:18px;color:var(--gold)}
+
+/* About */
+.hm-intro{max-width:760px;margin:0 auto 44px;text-align:center}
+.hm-intro p{font-size:1.02rem;line-height:1.75;color:var(--ink-2)}
+.hm-icons{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.hm-icon{background:#fff;border:1px solid rgba(11,93,75,.09);border-radius:16px;padding:22px 18px;box-shadow:0 10px 24px -20px rgba(7,63,50,.3)}
+.hm-icon__ic{width:42px;height:42px;border-radius:12px;background:var(--sage);display:grid;place-items:center;margin-bottom:14px;font-size:22px;color:var(--green)}
+.hm-icon h3{font-size:.98rem;font-weight:700;margin-bottom:4px;color:var(--green-deep)}
+.hm-icon p{font-size:.84rem;color:var(--ink-3)}
+
+.hm-divider{display:flex;align-items:center;justify-content:center;gap:14px;padding-top:6px}
+.hm-divider span{height:1px;width:40px;background:linear-gradient(90deg,transparent,rgba(199,165,74,.55),transparent)}
+.hm-divider svg{width:20px;height:20px}
+
+/* Packages, grouped by region */
+.hm-region{margin-bottom:56px}
+.hm-region:last-child{margin-bottom:0}
+.hm-region__head{margin-bottom:28px;padding-bottom:16px;border-bottom:2px solid var(--line)}
+.hm-region__head h3{font-size:clamp(1.3rem,1.1rem + .8vw,1.7rem);font-weight:700;margin-bottom:6px}
+.hm-region__head p{font-size:.92rem;color:var(--ink-3)}
+.hm-region .pk-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:26px}
+
+/* What you get (dark band) */
+.hm-cred{background:var(--green-deep);color:#fff}
+.hm-cred .hm-eyebrow,.hm-cta .hm-eyebrow{color:var(--gold-soft)}
+.hm-cred .hm-head h2,.hm-cta .hm-head h2{color:#fff}
+.hm-cred__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.hm-cred__item{display:flex;gap:14px;align-items:flex-start;padding:6px 4px}
+.hm-cred__item i{flex:none;font-size:26px;color:var(--gold-soft)}
+.hm-cred__item h3{color:#fff;font-size:.98rem;font-weight:700;margin-bottom:4px}
+.hm-cred__item p{font-size:.84rem;color:rgba(255,255,255,.72)}
+
+/* Reviews */
+.hm-testi{display:flex;gap:20px;overflow-x:auto;padding:6px 4px 18px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+.hm-testi__card{flex:0 0 300px;scroll-snap-align:start;display:flex;flex-direction:column;background:#fff;border-radius:22px;padding:24px 22px;box-shadow:0 14px 30px -18px rgba(7,63,50,.28);border:1px solid rgba(11,93,75,.07)}
+.hm-testi__stars{display:flex;gap:3px;margin-bottom:14px;color:var(--gold);font-size:16px}
+.hm-testi__card p{flex:1;font-size:.92rem;font-style:italic;color:var(--ink);margin-bottom:18px}
+.hm-testi__who{display:flex;align-items:center;gap:12px}
+.hm-testi__av{flex:none;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--green);color:#fff;font-family:var(--font-display);font-weight:700;font-size:.9rem}
+.hm-testi__who b{display:block;font-family:var(--font-display);font-size:.9rem;color:var(--green-deep)}
+.hm-testi__who small{font-size:.78rem;color:var(--ink-3)}
+
+/* FAQ */
+.hm-faq{max-width:760px;margin:0 auto}
+.hm-faq__item{border-bottom:1px solid rgba(11,93,75,.14)}
+.hm-faq__q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:19px 4px;text-align:left;font-family:var(--font-display);font-weight:700;font-size:.98rem;color:var(--green-deep)}
+.hm-faq__q i{flex:none;font-size:18px;color:var(--gold);transition:transform .25s ease}
+.hm-faq__item.open .hm-faq__q i{transform:rotate(45deg)}
+.hm-faq__a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s ease}
+.hm-faq__item.open .hm-faq__a{grid-template-rows:1fr}
+.hm-faq__a > div{overflow:hidden}
+.hm-faq__a p{padding:0 4px 19px;font-size:.92rem;line-height:1.65;color:var(--ink-2)}
+
+/* Final CTA */
+.hm-cta{
+  color:#fff;text-align:center;padding:80px 0;
+  background:
+    linear-gradient(160deg,rgba(7,63,50,.92),rgba(11,93,75,.88)),
+    url('https://images.unsplash.com/photo-1565330770968-0240c0046ce3?auto=format&fit=crop&w=1800&q=70') center/cover;
+}
+.hm-cta .hm-head h2{font-size:clamp(1.9rem,1.2rem + 2.8vw,2.9rem)}
+.hm-cta .hm-head p{color:rgba(255,255,255,.85)}
+.hm-cta__btns{display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
+
+/* Contact */
+.hm-contact{max-width:560px;margin:0 auto;background:#fff;border-radius:22px;padding:32px 30px;box-shadow:0 14px 30px -18px rgba(7,63,50,.28);border:1px solid rgba(11,93,75,.07)}
+.hm-contact h3{font-size:1.1rem;margin-bottom:4px}
+.hm-contact > p{font-size:.9rem;color:var(--ink-3)}
+.hm-contact ul{margin:18px 0 24px}
+.hm-contact li{margin-bottom:14px}
+.hm-contact li a{display:flex;align-items:flex-start;gap:12px;font-size:.95rem;color:var(--ink-2);transition:color .2s}
+.hm-contact li a:hover{color:var(--green)}
+.hm-contact li i{flex:none;font-size:19px;color:var(--gold);margin-top:2px}
+.hm-contact__btns{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+
+@media (max-width:980px){
+  .hm-hero__grid{grid-template-columns:minmax(0,1fr);gap:40px}
+  .hm-hero__copy{padding-top:0}
+  .hm-region .pk-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:780px){
+  .hm-cred__grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:640px){
+  .hm-icons{grid-template-columns:1fr}
+  .hm-trust .container--home{gap:10px 18px}
+  .hm-tp{padding-right:0;border-right:0;width:100%;justify-content:center;margin-bottom:2px}
+  .hm-region .pk-grid{grid-template-columns:minmax(0,1fr);gap:18px}
+  .hm-cred__grid{grid-template-columns:1fr}
+  .hm-contact{padding:26px 20px}
+  .hm-contact__btns{grid-template-columns:1fr}
+  .hm-hero__cta .btn{flex:1}
 }
 
-/* ==========================================================================
-   MARQUEE (the one marquee on the page)
-   ========================================================================== */
-.marquee{background:var(--lagoon);color:#fff;padding:18px 0;overflow:hidden;position:relative;--gap:18px}
-.marquee__track{display:flex;gap:var(--gap);width:max-content;animation:marquee 46s linear infinite}
-.marquee:hover .marquee__track{animation-play-state:paused}
-.marquee__item{display:inline-flex;align-items:center;gap:var(--gap);font-family:var(--font-display);font-weight:700;font-size:1.05rem;white-space:nowrap;padding-right:var(--gap)}
-.marquee__item i{color:var(--amber-glow);font-size:1rem}
-@keyframes marquee{to{transform:translateX(-50%)}}
-
-/* ==========================================================================
-   ABOUT
-   ========================================================================== */
-.about__grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(40px,6vw,96px);align-items:center}
-.about__collage{position:relative;aspect-ratio:1/1;max-width:560px}
-.about__collage img{position:absolute;object-fit:cover;border-radius:var(--r-card);box-shadow:var(--shadow-lift)}
-.about__collage .im1{width:66%;height:72%;left:0;top:0}
-.about__collage .im2{width:52%;height:52%;right:0;bottom:0;outline:8px solid #fff}
-.about__badge{
-  position:absolute;left:8%;bottom:6%;background:#fff;border-radius:16px;padding:14px 18px;box-shadow:var(--shadow-lift);
-  display:flex;align-items:center;gap:12px;
-}
-.about__badge i{width:42px;height:42px;border-radius:12px;background:var(--frozen-water);color:var(--sea-deep);display:grid;place-items:center;font-size:20px}
-.about__badge b{font-family:var(--font-display);font-size:1.15rem;display:block;line-height:1.1;color:var(--lagoon)}
-.about__badge small{color:var(--ink-3);font-size:.8rem}
-.about__points{display:grid;gap:18px;margin-top:32px}
-.point{display:flex;gap:14px;align-items:flex-start}
-.point i{flex:none;width:40px;height:40px;border-radius:12px;background:var(--frozen-water);color:var(--sea-deep);display:grid;place-items:center;font-size:19px}
-.point b{font-family:var(--font-display);color:var(--lagoon);display:block;margin-bottom:2px}
-.point p{color:var(--ink-2);font-size:.95rem}
+/* Page-hero image settle (all packages + detail) */
+@keyframes heroZoom{from{transform:scale(1.08)}to{transform:scale(1)}}
 
 /* ==========================================================================
    PACKAGE CARDS
@@ -364,144 +435,7 @@ p{margin:0}
 .pk__list li{display:flex;gap:8px;align-items:flex-start;font-size:.87rem;line-height:1.45;color:var(--ink-2)}
 .pk__list i{flex:none;margin-top:3px;font-size:.85rem;color:var(--gold)}
 .pk__cta{display:grid;gap:8px}
-.pk-more{display:flex;justify-content:center;margin-top:clamp(32px,4vw,48px)}
-
-/* ==========================================================================
-   PUNCH (the one dark block on the page)
-   ========================================================================== */
-.punch{background:var(--lagoon);color:#fff;position:relative;overflow:hidden}
-.punch::before{content:"";position:absolute;width:60vw;height:60vw;max-width:800px;max-height:800px;border-radius:50%;right:-20vw;top:-30vw;background:radial-gradient(closest-side,rgba(199,165,74,.26),transparent 70%)}
-.punch::after{content:"";position:absolute;width:40vw;height:40vw;max-width:600px;max-height:600px;border-radius:50%;left:-15vw;bottom:-25vw;background:radial-gradient(closest-side,rgba(228,206,148,.20),transparent 70%)}
-.punch__grid{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(32px,5vw,80px);align-items:center}
-.punch h2{color:#fff;font-size:clamp(2rem,4.2vw,3.6rem);line-height:1.05;max-width:16ch}
-.punch h2 em{font-style:italic;color:var(--honey-bronze)}
-.punch .lead{color:rgba(255,255,255,.78)}
-.punch__pains{display:grid;gap:12px}
-.pain{
-  display:flex;gap:14px;align-items:center;padding:16px 18px;border-radius:16px;
-  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
-  transition:background .4s,transform .5s var(--ease-soft);
-}
-.pain:hover{background:rgba(255,255,255,.1);transform:translateX(6px)}
-.pain i{flex:none;width:38px;height:38px;border-radius:12px;background:rgba(199,165,74,.18);color:var(--honey-bronze);display:grid;place-items:center;font-size:18px}
-.pain p{color:rgba(255,255,255,.88);font-size:.98rem}
-.pain p b{color:#fff;font-family:var(--font-display)}
-
-/* ==========================================================================
-   STEPS (numbered, stair-stepped on desktop)
-   ========================================================================== */
-.steps{background:var(--surface)}
-.steps__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2.4vw,28px);align-items:start}
-.step{
-  background:#fff;border-radius:var(--r-card);padding:8px;box-shadow:0 0 0 1px var(--line);
-  transition:transform .6s var(--ease-soft),box-shadow .6s var(--ease-soft);
-}
-.step:hover{transform:translateY(-6px);box-shadow:0 0 0 1px var(--line),var(--shadow-lift)}
-.step:nth-child(2){margin-top:40px}
-.step:nth-child(3){margin-top:80px}
-.step__in{border-radius:calc(var(--r-card) - 8px);background:var(--surface);padding:26px 24px 28px;height:100%}
-.step__num{
-  font-family:var(--font-display);font-weight:800;font-size:2.6rem;line-height:1;color:var(--light-sea-green);
-  display:flex;align-items:center;justify-content:space-between;
-}
-.step__num i{font-size:1.5rem;color:var(--lagoon);width:48px;height:48px;border-radius:14px;background:#fff;display:grid;place-items:center;box-shadow:0 0 0 1px var(--line)}
-.step h3{margin-top:22px;font-size:1.3rem}
-.step p{margin-top:10px;color:var(--ink-2);font-size:.97rem}
-.step__tag{margin-top:18px;display:inline-flex;align-items:center;gap:8px;font-size:.85rem;font-weight:500;color:var(--sea-deep)}
-
-/* ==========================================================================
-   FEATURED (full-image cards + stats)
-   ========================================================================== */
 .feat__head{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;margin-bottom:clamp(32px,4vw,48px)}
-.feat__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2vw,24px)}
-.fcard{
-  position:relative;border-radius:var(--r-card);overflow:hidden;aspect-ratio:4/4.6;color:#fff;display:flex;align-items:flex-end;
-  isolation:isolate;box-shadow:var(--shadow-card);transition:transform .6s var(--ease-soft),box-shadow .6s var(--ease-soft);
-}
-.fcard:hover{transform:translateY(-6px);box-shadow:var(--shadow-lift)}
-.fcard img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform 1.2s var(--ease-soft)}
-.fcard:hover img{transform:scale(1.06)}
-.fcard::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(7,63,50,0) 40%,rgba(7,63,50,.9) 100%)}
-.fcard__go{position:absolute;top:16px;right:16px;width:46px;height:46px;border-radius:50%;border:1.5px solid rgba(255,255,255,.7);display:grid;place-items:center;font-size:20px;transition:background .4s,transform .55s var(--ease-soft)}
-.fcard:hover .fcard__go{background:#fff;color:var(--lagoon);transform:rotate(45deg)}
-.fcard__body{padding:24px}
-.fcard__body h3{color:#fff;font-size:1.35rem;max-width:16ch}
-.fcard__meta{display:flex;justify-content:space-between;align-items:baseline;margin-top:14px;gap:12px}
-.fcard__meta span{font-size:.9rem;color:rgba(255,255,255,.85)}
-.fcard__meta b{font-family:var(--font-display);font-size:1.2rem;white-space:nowrap}
-.stats{margin-top:clamp(48px,6vw,80px);padding-top:clamp(40px,5vw,64px);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr)}
-.stat{text-align:center;padding:12px 16px;border-left:1px solid var(--line)}
-.stat:first-child{border-left:0}
-.stat b{font-family:var(--font-display);font-weight:800;font-size:clamp(2.2rem,4vw,3.2rem);line-height:1;display:block;letter-spacing:-.03em}
-.stat:nth-child(odd) b{color:var(--amber-glow)}
-.stat:nth-child(even) b{color:var(--light-sea-green)}
-.stat span{display:block;margin-top:10px;font-weight:500;color:var(--ink-2)}
-
-/* ==========================================================================
-   REVIEWS
-   ========================================================================== */
-.reviews{background:var(--surface)}
-.rev__grid{display:grid;grid-template-columns:minmax(260px,.9fr) minmax(0,2.1fr);gap:clamp(32px,5vw,72px);align-items:start}
-.rev__summary{position:sticky;top:calc(var(--nav-h) + 24px)}
-.rev__score{display:flex;align-items:baseline;gap:10px;margin-top:22px}
-.rev__score b{font-family:var(--font-display);font-size:4rem;font-weight:800;line-height:1;color:var(--lagoon);letter-spacing:-.04em}
-.rev__stars{color:var(--amber-glow);font-size:1.1rem;display:flex;gap:2px}
-.rev__ctrls{display:flex;gap:10px;margin-top:28px}
-.rev__btn{width:46px;height:46px;border-radius:50%;background:#fff;box-shadow:0 0 0 1px var(--line);display:grid;place-items:center;font-size:18px;color:var(--lagoon);transition:background .35s,transform .45s var(--ease-soft),color .3s}
-.rev__btn:hover{background:var(--lagoon);color:#fff;transform:translateY(-2px)}
-.rev__track{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:6px var(--gutter) 6px 6px;margin:-6px calc(-1 * var(--gutter)) -6px -6px;-webkit-overflow-scrolling:touch}
-.rev__track::-webkit-scrollbar{display:none}
-.rcard{
-  flex:0 0 min(100%,380px);scroll-snap-align:start;background:#fff;border-radius:var(--r-card);padding:26px 26px 22px;
-  box-shadow:0 0 0 1px var(--line);display:flex;flex-direction:column;gap:16px;
-  transition:transform .6s var(--ease-soft),box-shadow .6s var(--ease-soft);
-}
-.rcard:hover{transform:translateY(-5px);box-shadow:0 0 0 1px var(--line),var(--shadow-lift)}
-.rcard__top{display:flex;justify-content:space-between;align-items:center}
-.rcard__trip{font-size:.8rem;font-weight:500;color:var(--sea-deep);background:var(--frozen-water);padding:5px 10px;border-radius:var(--r-pill)}
-.rcard q{quotes:"\201C" "\201D";font-size:1.02rem;line-height:1.55;color:var(--ink);font-weight:400}
-.rcard q::before,.rcard q::after{color:var(--light-sea-green);font-family:var(--font-display);font-weight:800}
-.rcard__who{display:flex;align-items:center;gap:12px;margin-top:auto;padding-top:14px;border-top:1px solid var(--line)}
-.avatar{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-family:var(--font-display);font-weight:800;font-size:.85rem;color:var(--lagoon);background:linear-gradient(135deg,var(--frozen-water),var(--honey-bronze))}
-.rcard__who b{font-family:var(--font-display);display:block;line-height:1.15;color:var(--lagoon)}
-.rcard__who small{color:var(--ink-3)}
-
-/* ==========================================================================
-   FAQ
-   ========================================================================== */
-.faq__grid{display:grid;grid-template-columns:minmax(260px,.9fr) minmax(0,1.6fr);gap:clamp(32px,5vw,80px);align-items:start}
-.faq__side{position:sticky;top:calc(var(--nav-h) + 24px)}
-.faq__list{display:grid;gap:10px}
-.faq{
-  background:#fff;border-radius:16px;box-shadow:0 0 0 1px var(--line);overflow:hidden;
-  transition:box-shadow .5s var(--ease-soft),background .4s;
-}
-.faq.open{box-shadow:0 0 0 1px var(--line-2),var(--shadow-card)}
-.faq__q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 22px;text-align:left;font-family:var(--font-display);font-weight:700;font-size:1.05rem;color:var(--lagoon)}
-.faq__q i{flex:none;width:34px;height:34px;border-radius:50%;background:var(--surface-2);color:var(--sea-deep);display:grid;place-items:center;font-size:16px;transition:transform .6s var(--ease-soft),background .4s,color .4s}
-.faq.open .faq__q i{transform:rotate(135deg);background:var(--lagoon);color:#fff}
-.faq__a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .6s var(--ease-soft)}
-.faq.open .faq__a{grid-template-rows:1fr}
-.faq__a > div{overflow:hidden}
-.faq__a p{padding:0 22px 22px;color:var(--ink-2);max-width:62ch;opacity:0;transform:translateY(-6px);transition:opacity .45s .1s,transform .5s .1s var(--ease-out)}
-.faq.open .faq__a p{opacity:1;transform:none}
-
-/* ==========================================================================
-   CONTACT
-   ========================================================================== */
-.contact__grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(32px,5vw,80px);align-items:start}
-.contact__list{display:grid;gap:12px;margin-top:32px}
-.crow{
-  display:flex;gap:16px;align-items:center;padding:16px 18px;border-radius:16px;background:var(--surface);
-  transition:transform .5s var(--ease-soft),background .4s;
-}
-.crow:hover{background:var(--surface-2);transform:translateX(6px)}
-.crow i.ic{flex:none;width:46px;height:46px;border-radius:14px;background:#fff;color:var(--sea-deep);display:grid;place-items:center;font-size:21px;box-shadow:0 0 0 1px var(--line)}
-.crow small{display:block;color:var(--ink-3);font-size:.8rem}
-.crow > :not(i){min-width:0}
-.crow b{font-family:var(--font-display);color:var(--lagoon);font-size:1.02rem;overflow-wrap:anywhere}
-.crow i.arr{margin-left:auto;color:var(--ink-3);transition:transform .4s var(--ease-soft)}
-.crow:hover i.arr{transform:translate(3px,-3px);color:var(--lagoon)}
 
 /* Form system */
 .form-card{background:#fff;border-radius:var(--r-card);overflow:hidden;box-shadow:0 0 0 1px var(--line),var(--shadow-lift)}
@@ -977,18 +911,7 @@ textarea.input{height:auto;min-height:120px;padding:14px 16px;resize:vertical}
   .logo{justify-self:start}
   .logo__mark{height:30px}
   .nav .nav__burger{display:grid;grid-column:3}
-  .hero__grid{grid-template-columns:1fr}
-  .hero__aside{justify-self:start}
-  .about__grid,.punch__grid,.rev__grid,.faq__grid,.contact__grid{grid-template-columns:minmax(0,1fr)}
-  .about__collage{max-width:100%}
-  .rev__summary,.faq__side{position:static}
-  .steps__grid{grid-template-columns:1fr}
-  .step:nth-child(2),.step:nth-child(3){margin-top:0}
   .feat__head{flex-direction:column;align-items:flex-start;gap:14px}
-  .feat__grid{grid-template-columns:1fr 1fr}
-  .feat__grid .fcard:last-child{grid-column:1/-1;aspect-ratio:16/9}
-  .stats{grid-template-columns:1fr 1fr;gap:24px 0}
-  .stat:nth-child(3){border-left:0}
   .filters{grid-template-columns:1fr;margin-top:-30px}
   .sugg__track{grid-template-columns:repeat(2,minmax(0,1fr))}
   .sugg__track > :nth-child(n+3){display:none}
@@ -996,38 +919,34 @@ textarea.input{height:auto;min-height:120px;padding:14px 16px;resize:vertical}
 }
 @media (max-width:640px){
   .section{padding-block:64px}
-  .pk-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-  .pk__media{height:112px;padding:9px}
-  .pk__tier{font-size:.58rem;padding:4px 8px;letter-spacing:.05em}
-  .pk__body{padding:13px 13px 15px}
-  .pk__title{font-size:.98rem}
-  .pk__nights{font-size:.7rem;line-height:1.35;margin-bottom:8px}
-  .pk__price{font-size:1.15rem}
-  .pk__price span{font-size:.62rem}
-  .pk__price small{font-size:.72rem}
-  .pk__list{margin:9px 0 12px;gap:5px}
-  .pk__list li{font-size:.74rem;line-height:1.35;gap:6px}
-  .pk__list i{font-size:.72rem;margin-top:2px}
-  .pk__cta{gap:6px}
-  .pk__cta .btn{padding:9px 10px;font-size:.76rem;gap:5px}
-  .feat__grid{grid-template-columns:1fr}
-  .feat__grid .fcard:last-child{aspect-ratio:4/4.6}
+  /* Package grids: one full-size card per row. Suggestions stay two-up, so they get the compact card. */
+  .pk-grid{grid-template-columns:minmax(0,1fr);gap:18px}
+  .pk__media{height:190px}
+  .sugg__track .pk__media{height:112px;padding:9px}
+  .sugg__track .pk__tier{font-size:.58rem;padding:4px 8px;letter-spacing:.05em}
+  .sugg__track .pk__body{padding:13px 13px 15px}
+  .sugg__track .pk__title{font-size:.98rem}
+  .sugg__track .pk__nights{font-size:.7rem;line-height:1.35;margin-bottom:8px}
+  .sugg__track .pk__price{font-size:1.15rem}
+  .sugg__track .pk__price span{font-size:.62rem}
+  .sugg__track .pk__price small{font-size:.72rem}
+  .sugg__track .pk__list{margin:9px 0 12px;gap:5px}
+  .sugg__track .pk__list li{font-size:.74rem;line-height:1.35;gap:6px}
+  .sugg__track .pk__list i{font-size:.72rem;margin-top:2px}
+  .sugg__track .pk__cta{gap:6px}
+  .sugg__track .pk__cta .btn{padding:9px 10px;font-size:.76rem;gap:5px}
   .form-grid{grid-template-columns:1fr}
   #f-duration{display:none}
   .footer__grid{grid-template-columns:1fr}
   .hl-grid,.inc-grid{grid-template-columns:1fr}
   .sugg__track{gap:12px}
   .day{grid-template-columns:1fr;gap:6px}
-  .hero{padding-bottom:64px}
-  .hero-card__in{padding:14px}
-  .hero-card__in .price{display:none}
   .contact-strip__btns .btn{flex:1;justify-content:space-between}
 }
 
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
-  .rv,.hero__fade,.mask>span{opacity:1;transform:none}
-  .marquee__track{animation:none}
+  .rv{opacity:1;transform:none}
 }
 </style>
 </head>
@@ -1075,190 +994,156 @@ textarea.input{height:auto;min-height:120px;padding:14px 16px;resize:vertical}
 <section class="view active" id="view-home">
   <div class="nav-sentinel" data-sentinel></div>
 
-  <!-- HERO -->
-  <div class="hero" id="hero">
-    <div class="hero__bg"><img src="assets/img/hero-santorini.jpg" alt="Whitewashed houses above the Santorini caldera at sunset" width="1920" height="1080" fetchpriority="high" decoding="async"></div>
-    <div class="hero__scrim"></div>
-    <div class="container hero__grid">
-      <div>
-        <h1 class="h-display">
-          <span class="mask"><span>The whole trip,</span></span>
-          <span class="mask"><span>handled. You</span></span>
-          <span class="mask"><span>just pack.</span></span>
-        </h1>
-        <p class="lead hero__fade d1">Flights, hotels, transfers and guided days, arranged by one advisor. Signature packages from $1,459 per person.</p>
-        <div class="hero__cta hero__fade d2">
-          <a class="btn btn--amber btn--lg" href="#/packages">Explore packages</a>
-          <button class="btn btn--ghost on-dark btn--lg" data-quote>Get a free quote</button>
+  <!-- HERO (with the quote form) -->
+  <div class="hm-hero" id="hero">
+    <div class="hm-hero__pattern" aria-hidden="true"></div>
+    <div class="container--home hm-hero__grid">
+      <div class="hm-hero__copy">
+        <div class="hm-hero__eyebrow"><span class="dot"></span>A New Journey from MPS Tours</div>
+        <h1>Your Next Holiday, <em>Made Simple</em></h1>
+        <p class="hm-hero__lede">Comfort-focused vacation packages to destinations worldwide: beach escapes, city breaks, family trips, and more, planned by the team behind MPS Tours.</p>
+        <div class="hm-hero__cta">
+          <button class="btn btn--amber btn--lg" type="button" data-focus-form>Get Free Quote</button>
+          <a class="btn btn--ghost on-dark btn--lg" href="#/" data-to="packages">Explore Packages</a>
+        </div>
+        <div class="hm-badges">
+          <span class="hm-badge"><i class="ph-bold ph-check"></i>Worldwide Destinations</span>
+          <span class="hm-badge"><i class="ph-bold ph-check"></i>Mid-Range Comfort</span>
+          <span class="hm-badge"><i class="ph-bold ph-check"></i>Backed by MPS Tours</span>
+          <span class="hm-badge"><i class="ph-bold ph-check"></i>24/7 Support</span>
         </div>
       </div>
-      <div class="hero__aside hero__fade d3">
-        <a class="hero-card" href="#/package/greece-signature-escape" aria-label="Greece Signature Escape, 9 days, from $2,990">
-          <div class="hero-card__in">
-            <img src="assets/img/mykonos-thumb.jpg" alt="" width="400" height="400" loading="lazy" decoding="async">
-            <div>
-              <div class="h-4">Greece Signature Escape</div>
-              <div class="muted">Athens, Mykonos, Santorini. 9 days.</div>
-            </div>
-            <div class="price">$2,990<small>per person</small></div>
-          </div>
-        </a>
-      </div>
+      <div class="form-card hm-hero__form" id="contact-form-card"></div>
     </div>
   </div>
 
-  <!-- MARQUEE -->
-  <div class="marquee" aria-hidden="true">
-    <div class="marquee__track" id="marquee"></div>
+  <!-- TRUST STRIP -->
+  <div class="hm-trust">
+    <div class="container--home">
+      <a class="hm-tp" href="https://www.trustpilot.com/review/mpstours.com" target="_blank" rel="noopener">
+        <span class="hm-tp__stars"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></span>
+        100% 5-Star Reviews <span>on Trustpilot</span>
+      </a>
+      <span class="hm-trust__item"><i class="ph ph-map-pin"></i>Worldwide Destinations</span>
+      <span class="hm-trust__item"><i class="ph ph-house-line"></i>Comfort-Focused Packages</span>
+      <span class="hm-trust__item"><i class="ph ph-lock-simple"></i>Secure Payments</span>
+      <span class="hm-trust__item"><i class="ph ph-shield-check"></i>Backed by MPS Tours</span>
+      <span class="hm-trust__item"><i class="ph ph-clock"></i>24/7 Support</span>
+    </div>
   </div>
 
   <!-- ABOUT -->
-  <div class="section" id="about">
-    <div class="container about__grid">
-      <div class="about__collage rv rv--scale">
-        <img class="im1" src="assets/img/about-kyoto.jpg" alt="Vermilion torii gates at Fushimi Inari in Kyoto" width="800" height="1000" loading="lazy" decoding="async">
-        <img class="im2" src="assets/img/about-maldives.jpg" alt="Overwater villas in the Maldives" width="760" height="760" loading="lazy" decoding="async">
-        <div class="about__badge"><i class="ph ph-timer"></i><div><b>1 business day</b><small>average time to your first quote</small></div></div>
+  <div class="hm-sec" id="about">
+    <div class="container--home">
+      <div class="hm-head">
+        <div class="hm-eyebrow">About Us</div>
+        <h2>A New Journey, A Familiar Name</h2>
       </div>
-      <div>
-        <h2 class="h-2 rv">One advisor. One plan. Zero tabs open.</h2>
-        <p class="lead rv" style="--d:.08s">Holidays by MPS Tours is the holiday arm of MPS Tours LLC. We package flights, hotels, transfers and guided days into one itinerary, then a real person builds it around your dates.</p>
-        <div class="about__points">
-          <div class="point rv" style="--d:.12s"><i class="ph ph-airplane-tilt"></i><div><b>Flights are part of it</b><p>Round-trip international flights from major US gateways are included in most packages, not bolted on later.</p></div></div>
-          <div class="point rv" style="--d:.18s"><i class="ph ph-car-profile"></i><div><b>Met at every airport</b><p>Private transfers on arrival, between cities, and back to the airport for your flight home.</p></div></div>
-          <div class="point rv" style="--d:.24s"><i class="ph ph-chats-circle"></i><div><b>One person, start to finish</b><p>Your trip advisor quotes, books, and stays on WhatsApp with you for the whole trip.</p></div></div>
-        </div>
+      <div class="hm-intro">
+        <p>Holidays by MPS Tours is a new venture from the team behind MPS Tours, the Michigan-licensed agency known for its Umrah travel planning. We're bringing that same hands-on, detail-first approach to everyday vacations: beach getaways, city breaks, family trips, and more, built around real budgets and real comfort, not rock-bottom corner-cutting or over-the-top luxury price tags.</p>
+      </div>
+      <div class="hm-icons">
+        <div class="hm-icon rv"><div class="hm-icon__ic"><i class="ph ph-map-pin"></i></div><h3>Worldwide Destinations</h3><p>Beaches, cities, and everything between. One team to plan wherever you want to go next.</p></div>
+        <div class="hm-icon rv" style="--d:.08s"><div class="hm-icon__ic"><i class="ph ph-heart"></i></div><h3>Comfort, Not Compromise</h3><p>Vetted mid-range hotels and honest pricing. Comfortable trips without luxury markups.</p></div>
+        <div class="hm-icon rv" style="--d:.16s"><div class="hm-icon__ic"><i class="ph ph-shield-check"></i></div><h3>Backed by a Trusted Name</h3><p>The same licensed agency and support team behind MPS Tours' Umrah travel planning.</p></div>
       </div>
     </div>
   </div>
 
-  <!-- PACKAGES -->
-  <div class="section" id="packages" style="padding-top:0">
-    <div class="container">
-      <div class="section-head">
-        <h2 class="h-2 rv">Signature packages</h2>
-        <p class="lead rv" style="--d:.08s">Nineteen itineraries we have priced, tested and refined. Each one is a starting point your advisor adjusts to your dates, group and departure city.</p>
+  <div class="hm-divider" aria-hidden="true">
+    <span></span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="#C7A54A" stroke-width="1.2"><path d="M12 2l2.6 6.9 7.4.4-5.8 4.7 2 7.2L12 17.1l-6.2 4.1 2-7.2-5.8-4.7 7.4-.4L12 2z"/></svg>
+    <span></span>
+  </div>
+
+  <!-- PACKAGES (grouped by region, rendered by JS) -->
+  <div class="hm-sec" id="packages">
+    <div class="container--home">
+      <div class="hm-head">
+        <div class="hm-eyebrow">Our Packages</div>
+        <h2>Ready-Built Itineraries, Fully Customizable</h2>
+        <p>Every package below is a complete, real itinerary. Click through for the full day-by-day, or get a quote built around your own dates and party size.</p>
       </div>
-      <div class="pk-grid" id="home-packages"></div>
-      <div class="pk-more rv"><a class="btn btn--lg" href="#/packages">See all packages</a></div>
+      <div id="home-regions"></div>
     </div>
   </div>
 
-  <!-- PUNCH -->
-  <div class="section punch">
-    <div class="container punch__grid">
-      <div>
-        <h2 class="rv">Booking a great holiday shouldn't feel like a second job.</h2>
-        <p class="lead rv" style="--d:.1s;margin-top:20px">Forty tabs, three currencies, and a hotel that may or may not be near anything. We do that part, then send you one clean plan.</p>
-        <div class="rv" style="--d:.2s;margin-top:32px"><button class="btn btn--amber btn--lg" data-quote>Get a free quote</button></div>
+  <!-- WHAT YOU GET -->
+  <div class="hm-sec hm-cred" id="steps">
+    <div class="container--home">
+      <div class="hm-head">
+        <div class="hm-eyebrow">Every Trip Includes</div>
+        <h2>What You Get With Every Holiday</h2>
       </div>
-      <div class="punch__pains">
-        <div class="pain rv" style="--d:.1s"><i class="ph ph-browsers"></i><p><b>The tab pile-up.</b> Forty windows open and still no clearer answer.</p></div>
-        <div class="pain rv" style="--d:.18s"><i class="ph ph-map-trifold"></i><p><b>Transfer roulette.</b> Guessing how to get from the port to the hotel at 11pm.</p></div>
-        <div class="pain rv" style="--d:.26s"><i class="ph ph-clock-countdown"></i><p><b>The 2am price check.</b> Fares that change while you sleep on it.</p></div>
-        <div class="pain rv" style="--d:.34s"><i class="ph ph-question"></i><p><b>The "is it included?" spiral.</b> Breakfast, tickets, taxes. Nobody says.</p></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- STEPS -->
-  <div class="section steps" id="steps">
-    <div class="container">
-      <div class="section-head">
-        <h2 class="h-2 rv">Three steps from idea to boarding pass</h2>
-        <p class="lead rv" style="--d:.08s">No payment to start. No commitment until the itinerary reads exactly the way you want it.</p>
-      </div>
-      <div class="steps__grid">
-        <div class="step rv" style="--d:0s">
-          <div class="step__in">
-            <div class="step__num">1 <i class="ph ph-chat-teardrop-text"></i></div>
-            <h3>Tell us the shape of it</h3>
-            <p>Pick a package or describe the trip in your own words. Dates, group size, departure airport. Two minutes, nothing to pay.</p>
-            <span class="step__tag"><i class="ph-bold ph-check"></i> Free quote within 1 business day</span>
-          </div>
-        </div>
-        <div class="step rv" style="--d:.12s">
-          <div class="step__in">
-            <div class="step__num">2 <i class="ph ph-sliders-horizontal"></i></div>
-            <h3>We build it around you</h3>
-            <p>Your advisor prices flights from your airport, adjusts nights and hotel categories, and sends back one clear itinerary.</p>
-            <span class="step__tag"><i class="ph-bold ph-check"></i> Change anything, as often as you like</span>
-          </div>
-        </div>
-        <div class="step rv" style="--d:.24s">
-          <div class="step__in">
-            <div class="step__num">3 <i class="ph ph-airplane-takeoff"></i></div>
-            <h3>Confirm and go</h3>
-            <p>Lock it in with a deposit. Tickets, transfers and hotel confirmations arrive while you pack, and support stays on WhatsApp.</p>
-            <span class="step__tag"><i class="ph-bold ph-check"></i> Support for the whole trip</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- FEATURED -->
-  <div class="section" id="featured">
-    <div class="container">
-      <div class="feat__head">
-        <div style="max-width:640px">
-          <h2 class="h-2 rv">Three trips, three very different ways to travel</h2>
-          <p class="lead rv" style="--d:.08s">An all-inclusive island, a bullet-train grand tour, and a small-group climb to Machu Picchu. Flights and transfers included.</p>
-        </div>
-        <a class="link-arrow rv" href="#/packages" style="--d:.15s">See all packages <i class="ph-bold ph-arrow-right"></i></a>
-      </div>
-      <div class="feat__grid" id="featured-grid"></div>
-      <div class="stats">
-        <div class="stat rv"><b data-count="27000" data-suffix="K+" data-div="1000">0</b><span>Happy travelers</span></div>
-        <div class="stat rv" style="--d:.08s"><b data-count="50" data-suffix="+">0</b><span>Top destinations</span></div>
-        <div class="stat rv" style="--d:.16s"><b data-count="4.8" data-suffix="/5" data-dec="1">0</b><span>Customer rating</span></div>
-        <div class="stat rv" style="--d:.24s"><b data-count="30" data-suffix="+">0</b><span>Countries covered</span></div>
+      <div class="hm-cred__grid">
+        <div class="hm-cred__item rv"><i class="ph ph-globe-hemisphere-west"></i><div><h3>Flights &amp; Transfers Arranged</h3><p>We handle the routing and airport transfers, not just the hotel.</p></div></div>
+        <div class="hm-cred__item rv" style="--d:.06s"><i class="ph ph-buildings"></i><div><h3>Comfort-Vetted Hotels</h3><p>Every property is checked for cleanliness, location, and real guest reviews.</p></div></div>
+        <div class="hm-cred__item rv" style="--d:.12s"><i class="ph ph-user-circle"></i><div><h3>A Dedicated Trip Advisor</h3><p>One point of contact from your first quote to your return flight home.</p></div></div>
+        <div class="hm-cred__item rv" style="--d:.18s"><i class="ph ph-lock-simple"></i><div><h3>Flexible Payment Plans</h3><p>Book with a deposit and pay the balance before you travel.</p></div></div>
+        <div class="hm-cred__item rv" style="--d:.24s"><i class="ph ph-clock"></i><div><h3>24/7 Support While Traveling</h3><p>Real help if plans change or something comes up mid-trip.</p></div></div>
+        <div class="hm-cred__item rv" style="--d:.3s"><i class="ph ph-shield-check"></i><div><h3>Backed by an Established Agency</h3><p>The same team and standards behind MPS Tours' Umrah travel planning.</p></div></div>
       </div>
     </div>
   </div>
 
   <!-- REVIEWS -->
-  <div class="section reviews" id="reviews">
-    <div class="container rev__grid">
-      <div class="rev__summary">
-        <h2 class="h-2 rv">What travelers say when they get home</h2>
-        <div class="rev__score rv" style="--d:.08s"><b>4.8</b><div><div class="rev__stars"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star-half"></i></div><div class="muted" style="font-size:.9rem">average customer rating</div></div></div>
-        <p class="lead rv" style="--d:.12s;margin-top:16px;font-size:1rem">Real trips, real names, lightly edited for length. Ask your advisor and we will happily put you in touch with past travelers.</p>
-        <div class="rev__ctrls rv" style="--d:.18s">
-          <button class="rev__btn" id="rev-prev" aria-label="Previous reviews"><i class="ph-bold ph-arrow-left"></i></button>
-          <button class="rev__btn" id="rev-next" aria-label="Next reviews"><i class="ph-bold ph-arrow-right"></i></button>
-        </div>
+  <div class="hm-sec hm-sec--alt" id="reviews">
+    <div class="container--home">
+      <div class="hm-head">
+        <div class="hm-eyebrow">Traveler Stories</div>
+        <h2>What Travelers Say When They Get Home</h2>
       </div>
-      <div class="rev__track" id="rev-track"></div>
+      <div class="hm-testi" id="rev-track"></div>
     </div>
   </div>
 
   <!-- FAQ -->
-  <div class="section" id="faq">
-    <div class="container faq__grid">
-      <div class="faq__side">
-        <h2 class="h-2 rv">Questions people ask before they book</h2>
-        <p class="lead rv" style="--d:.08s;margin-top:14px">If yours is not here, a trip advisor will answer it in plain language. No script.</p>
-        <div class="rv" style="--d:.14s;margin-top:24px"><a class="btn btn--ghost" href="https://wa.me/17342095812" target="_blank" rel="noopener">Ask on WhatsApp</a></div>
+  <div class="hm-sec" id="faq">
+    <div class="container--home">
+      <div class="hm-head">
+        <div class="hm-eyebrow">Good to Know</div>
+        <h2>Questions People Ask Before They Book</h2>
       </div>
-      <div class="faq__list" id="faq-list"></div>
+      <div class="hm-faq" id="faq-list"></div>
+    </div>
+  </div>
+
+  <!-- FINAL CTA -->
+  <div class="hm-cta">
+    <div class="container--home">
+      <div class="hm-head">
+        <div class="hm-eyebrow">Ready When You Are</div>
+        <h2>Ready for Your Next Getaway?</h2>
+        <p>Tell us where you'd like to go, and we'll build a comfortable, worry-free package around it.</p>
+      </div>
+      <div class="hm-cta__btns">
+        <button class="btn btn--amber btn--lg" type="button" data-quote>Get Free Quote</button>
+        <a class="btn btn--white btn--lg" href="tel:+15172344046"><i class="ph ph-phone"></i>Call Now</a>
+        <a class="btn btn--wa btn--lg" href="https://wa.me/17342095812" target="_blank" rel="noopener"><i class="ph-fill ph-whatsapp-logo"></i>WhatsApp Us</a>
+      </div>
     </div>
   </div>
 
   <!-- CONTACT -->
-  <div class="section" id="contact" style="padding-top:0">
-    <div class="container contact__grid">
-      <div>
-        <h2 class="h-2 rv">Talk to a trip advisor</h2>
-        <p class="lead rv" style="--d:.08s;margin-top:14px">Call, message, or send the form. Replies within one business day, usually much faster.</p>
-        <div class="contact__list">
-          <a class="crow rv" style="--d:.1s" href="tel:+15172344046"><i class="ic ph ph-phone"></i><div><small>Call</small><b>(517) 234-4046</b></div><i class="arr ph-bold ph-arrow-up-right"></i></a>
-          <a class="crow rv" style="--d:.16s" href="https://wa.me/17342095812" target="_blank" rel="noopener"><i class="ic ph ph-whatsapp-logo"></i><div><small>WhatsApp</small><b>+1 (734) 209-5812</b></div><i class="arr ph-bold ph-arrow-up-right"></i></a>
-          <a class="crow rv" style="--d:.22s" href="mailto:holidays@mpstours.com"><i class="ic ph ph-envelope-simple"></i><div><small>Email</small><b>holidays@mpstours.com</b></div><i class="arr ph-bold ph-arrow-up-right"></i></a>
-          <a class="crow rv" style="--d:.28s" href="https://maps.google.com/?q=1055+Laurence+Ave,+Jackson,+MI+49202" target="_blank" rel="noopener"><i class="ic ph ph-map-pin"></i><div><small>Office</small><b>1055 Laurence Ave, Jackson, MI 49202, USA</b></div><i class="arr ph-bold ph-arrow-up-right"></i></a>
+  <div class="hm-sec" id="contact">
+    <div class="container--home">
+      <div class="hm-head">
+        <div class="hm-eyebrow">Get In Touch</div>
+        <h2>We're Here to Help</h2>
+      </div>
+      <div class="hm-contact">
+        <h3>Talk to a Trip Advisor</h3>
+        <p>Call, WhatsApp, or email. We typically reply within one business day.</p>
+        <ul>
+          <li><a href="tel:+15172344046"><i class="ph ph-phone"></i>(517) 234-4046</a></li>
+          <li><a href="mailto:holidays@mpstours.com"><i class="ph ph-envelope-simple"></i>holidays@mpstours.com</a></li>
+          <li><a href="https://maps.google.com/?q=1055+Laurence+Ave,+Jackson,+MI+49202" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>1055 Laurence Ave, Jackson, MI 49202, USA</a></li>
+        </ul>
+        <div class="hm-contact__btns">
+          <button class="btn btn--amber btn--sm" type="button" data-focus-form>Get Free Quote</button>
+          <a class="btn btn--wa btn--sm" href="https://wa.me/17342095812" target="_blank" rel="noopener"><i class="ph-fill ph-whatsapp-logo"></i>WhatsApp</a>
         </div>
       </div>
-      <div class="form-card rv rv--scale" style="--d:.1s" id="contact-form-card"></div>
     </div>
   </div>
 </section>
@@ -2586,9 +2471,7 @@ const PACKAGES = [
   }
 ];
 
-const FEATURED = ['maldives-package','japan-grand-tour','heart-of-the-inca-peru'];
 
-const MARQUEE = ['Santorini','Kyoto','Machu Picchu','Istanbul','Venice','Prague','Maldives','Singapore','Serengeti','Cappadocia','Marrakech','Giza','Bali','Paris','Mykonos','Tokyo','Budapest','Borneo','Cape Town','Galápagos','Rome','Phuket','Cusco','Arenal','Athens','London','Zanzibar','Hiroshima'];
 
 /* Sample testimonials. Replace with verified reviews before launch. */
 const REVIEWS = [
@@ -2635,22 +2518,6 @@ const revealIO = new IntersectionObserver(entries => {
   entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); revealIO.unobserve(en.target); } });
 }, {threshold:.12, rootMargin:'0px 0px -6% 0px'});
 function bindReveal(root=document){ $$('.rv:not(.in)', root).forEach(el => revealIO.observe(el)); }
-
-/* Count-up for stats */
-const countIO = new IntersectionObserver(entries => {
-  entries.forEach(en => {
-    if (!en.isIntersecting) return;
-    const el = en.target; countIO.unobserve(el);
-    const target = parseFloat(el.dataset.count), div = parseFloat(el.dataset.div||1), dec = parseInt(el.dataset.dec||0), suf = el.dataset.suffix||'';
-    const t0 = performance.now(), dur = 1600;
-    const step = now => {
-      const k = Math.min(1,(now-t0)/dur), e = 1 - Math.pow(1-k, 4);
-      el.textContent = (target*e/div).toFixed(dec) + suf;
-      if (k < 1) requestAnimationFrame(step); else el.textContent = (target/div).toFixed(dec) + suf;
-    };
-    requestAnimationFrame(step);
-  });
-}, {threshold:.6});
 
 /* ==========================================================================
    NAV: transparent over hero, glass once scrolled (sentinel-based)
@@ -2714,7 +2581,6 @@ function route(){
   nav.classList.remove('scrolled');
   setMenu(false);
   bindReveal($('#'+id));
-  if (id === 'view-home') $$('[data-count]').forEach(el => countIO.observe(el));
   runPendingScroll();
   document.title = id === 'view-home' ? 'Holidays by MPS Tours | Signature holiday packages'
                  : stat ? `${STATIC_VIEWS[stat].title} | Holidays by MPS Tours`
@@ -2757,63 +2623,57 @@ function cardHTML(p, i=0){
     </div></article>`;
 }
 
-/* Home grid: full rows at every width. 4 on phones, 6 on tablets, 8 on laptops,
-   with "See all packages" picking up the rest. */
-const homeCount = () => window.innerWidth <= 640 ? 4 : window.innerWidth <= 1100 ? 6 : 8;
-let homeShown = 0;
-function renderHomePackages(){
-  const n = Math.min(homeCount(), PACKAGES.length);
-  if (n === homeShown) return;
-  const grid = $('#home-packages');
-  const wasRevealed = homeShown > 0 && !!grid.querySelector('.rv.in');
-  homeShown = n;
-  grid.innerHTML = PACKAGES.slice(0, n).map(cardHTML).join('');
-  /* Re-rendering on resize should not replay the entrance animation. */
-  if (wasRevealed) $$('.rv', grid).forEach(el => el.classList.add('in'));
-  else bindReveal(grid);
-}
-renderHomePackages();
-addEventListener('resize', renderHomePackages);
+/* Home: every package, grouped by region */
+const REGION_COPY = {
+  Europe:   ['European Escapes', 'Historic capitals, island-hopping, and countryside castles.'],
+  Asia:     ['Asian Adventures', 'Temples, bullet trains, rice terraces, and overwater villas.'],
+  Americas: ['The Americas', "From the Andes to the Galápagos and Costa Rica's rainforests."],
+  Africa:   ['Africa', 'Safaris, ancient temples, and the Kasbah Route through Morocco.']
+};
+/* Turkey is filed under Europe for the filters, but the home page shows it with Asia */
+const HOME_REGION = {'turkey-cappadocia-istanbul':'Asia'};
+const homeRegion = p => HOME_REGION[p.slug] || p.region;
+const homeRegions = [...Object.keys(REGION_COPY), ...PACKAGES.map(homeRegion)].filter((r,i,a) => a.indexOf(r) === i);
+$('#home-regions').innerHTML = homeRegions.map(r => {
+  const list = PACKAGES.filter(p => homeRegion(p) === r);
+  if (!list.length) return '';
+  const [title, blurb] = REGION_COPY[r] || [r, ''];
+  return `<div class="hm-region">
+    <div class="hm-region__head"><h3>${esc(title)}</h3>${blurb ? `<p>${esc(blurb)}</p>` : ''}</div>
+    <div class="pk-grid">${list.map(cardHTML).join('')}</div>
+  </div>`;
+}).join('');
 /* Footer: one link per region, opening All packages filtered to it */
 $('#footer-packages').innerHTML = [...new Set(PACKAGES.map(p => p.region))].sort()
   .map(r => `<li><a href="#/packages/${r.toLowerCase()}">${esc(r)}</a></li>`).join('')
   + `<li><a href="#/packages">All packages</a></li>`;
 
-/* Featured */
-$('#featured-grid').innerHTML = FEATURED.map((s,i) => { const p = byS(s); return `
-  <a class="fcard rv" style="--d:${i*.1}s" href="#/package/${p.slug}">
-    <img src="${p.portrait}" alt="${esc(shortName(p))}" width="900" height="1100" loading="lazy" decoding="async">
-    <span class="fcard__go"><i class="ph-bold ph-arrow-up-right"></i></span>
-    <div class="fcard__body"><h3>${esc(shortName(p))}</h3><div class="fcard__meta"><span>${p.nights} nights</span><b>${p.price?'From '+money(p.price):'Custom quote'}</b></div></div>
-  </a>`;}).join('');
-
-/* Marquee (duplicated for a seamless loop) */
-const mItems = MARQUEE.map(d => `<span class="marquee__item">${esc(d)}<i class="ph-fill ph-airplane-tilt"></i></span>`).join('');
-$('#marquee').innerHTML = mItems + mItems;
-
 /* Reviews */
 $('#rev-track').innerHTML = REVIEWS.map(r => `
-  <article class="rcard">
-    <div class="rcard__top"><div class="rev__stars"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div><span class="rcard__trip">${esc(r.trip)}</span></div>
-    <q>${esc(r.q)}</q>
-    <div class="rcard__who"><span class="avatar">${esc(initials(r.name))}</span><div><b>${esc(r.name)}</b><small>${esc(r.where)}</small></div></div>
+  <article class="hm-testi__card">
+    <div class="hm-testi__stars"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
+    <p>&ldquo;${esc(r.q)}&rdquo;</p>
+    <div class="hm-testi__who"><span class="hm-testi__av">${esc(initials(r.name))}</span><div><b>${esc(r.name)}</b><small>${esc(r.where)} &middot; ${esc(r.trip)}</small></div></div>
   </article>`).join('');
-const revTrack = $('#rev-track');
-const revStep = () => (revTrack.firstElementChild?.getBoundingClientRect().width || 380) + 18;
-$('#rev-prev').addEventListener('click', () => revTrack.scrollBy({left:-revStep(), behavior:'smooth'}));
-$('#rev-next').addEventListener('click', () => revTrack.scrollBy({left:revStep(), behavior:'smooth'}));
 
 /* FAQ */
-$('#faq-list').innerHTML = FAQS.map((f,i) => `
-  <div class="faq rv" style="--d:${i*.06}s">
-    <button class="faq__q" aria-expanded="false">${esc(f.q)}<i class="ph-bold ph-plus"></i></button>
-    <div class="faq__a"><div><p>${esc(f.a)}</p></div></div>
+$('#faq-list').innerHTML = FAQS.map(f => `
+  <div class="hm-faq__item">
+    <button class="hm-faq__q" type="button" aria-expanded="false">${esc(f.q)}<i class="ph-bold ph-plus"></i></button>
+    <div class="hm-faq__a"><div><p>${esc(f.a)}</p></div></div>
   </div>`).join('');
 $('#faq-list').addEventListener('click', e => {
-  const q = e.target.closest('.faq__q'); if (!q) return;
-  const item = q.parentElement, open = item.classList.contains('open');
-  $$('.faq.open', $('#faq-list')).forEach(f => { f.classList.remove('open'); $('.faq__q', f).setAttribute('aria-expanded','false'); });
-  if (!open){ item.classList.add('open'); q.setAttribute('aria-expanded','true'); }
+  const q = e.target.closest('.hm-faq__q'); if (!q) return;
+  const open = q.parentElement.classList.toggle('open');
+  q.setAttribute('aria-expanded', open);
+});
+
+/* "Get Free Quote" buttons on the home page jump to the form in the hero */
+document.addEventListener('click', e => {
+  if (!e.target.closest('[data-focus-form]')) return;
+  const card = $('#contact-form-card');
+  card.scrollIntoView({behavior:'smooth', block:'center'});
+  setTimeout(() => $('.fpanel.is-active .input', card)?.focus({preventScroll:true}), 500);
 });
 
 /* ==========================================================================
@@ -3214,7 +3074,6 @@ function renderDetail(slug){
    BOOT
    ========================================================================== */
 route();
-requestAnimationFrame(() => setTimeout(() => $('#hero').classList.add('ready'), 120));
 </script>
 </body>
 </html>
